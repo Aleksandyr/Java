@@ -1,0 +1,10 @@
+package PritnCharacters;
+
+public class PrintCharatcters {
+
+	public static void main(String[] args) {
+		System.out.print(3);
+
+	}
+
+}
