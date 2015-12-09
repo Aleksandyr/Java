@@ -21,7 +21,7 @@ public class GhettoNumeralSystem {
 		
 		
 		String result = "";
-		int reversedNumber = reverseNumber(n);
+		int reversedNumber = ReverseNumber(n);
 		while(reversedNumber != 0)
 		{
 			int index = reversedNumber % 10;
@@ -32,7 +32,7 @@ public class GhettoNumeralSystem {
 		System.out.print(result);
 	}
 	
-	public static int reverseNumber(int n)
+	public static int ReverseNumber(int n)
 	{
 		int result = 0;
 		while(n != 0)
