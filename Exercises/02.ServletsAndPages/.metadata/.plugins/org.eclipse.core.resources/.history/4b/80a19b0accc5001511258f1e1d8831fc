@@ -1,0 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+
+<html>
+	<head>
+		<title>This is page tag</title>
+	</head>
+	<body>
+		<ct:Header title="Page tag"></ct:Header>
+		<ct:Footer></ct:Footer>
+	</body>
+</html>
