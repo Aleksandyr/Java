@@ -1,0 +1,20 @@
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+
+<ct:PageTage title="Test page tage with tabel between tag">
+	<jsp:body>
+		<ct:verticalTable>
+			<jsp:attribute name="row1-title">
+				Course
+			</jsp:attribute>
+			<jsp:attribute name="row1-value">
+				Web Development Basics
+			</jsp:attribute>
+			<jsp:attribute name="row2-title">
+				Date
+			</jsp:attribute>
+			<jsp:attribute name="row2-value">
+				${date}
+			</jsp:attribute>
+		</ct:verticalTable>
+	</jsp:body>
+</ct:PageTage>

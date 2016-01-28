@@ -20,8 +20,4 @@
         <name>Table</name>
         <path>/WEB-INF/tags/Table.tag</path>
     </tag-file>
-    <tag-file>
-        <name>verticalTable</name>
-        <path>/WEB-INF/tags/VerticleTable.tag</path>
-    </tag-file>
 </taglib>
