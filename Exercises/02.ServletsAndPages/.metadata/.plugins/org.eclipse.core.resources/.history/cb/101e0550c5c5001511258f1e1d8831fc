@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>This is page tag</title>
+	</head>
+	<body>
+		<div>Here is content</div>
+		<footer>
+			<div>
+				Version 0.1
+			</div>
+		</footer>
+	</body>
+</html>
