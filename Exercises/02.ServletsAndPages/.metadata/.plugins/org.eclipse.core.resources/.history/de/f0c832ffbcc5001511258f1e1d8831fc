@@ -26,7 +26,7 @@ public class Table extends HttpServlet {
 		builder.append("<html>");
 		builder.append("<head><title>").append("Table").append("</title></head>");
 		builder.append("<body>");
-		builder.append("<table border=1>");
+		builder.append("<table style=\"border=1\">");
 		builder.append("<tr>");
 		builder.append("<th>").append("Topic").append("</th>");
 		builder.append("<th>").append("Date").append("</th>");
