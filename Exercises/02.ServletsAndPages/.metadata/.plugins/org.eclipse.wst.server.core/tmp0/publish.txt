@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Thu Jan 28 16:55:50 EET 2016
-org.eclipse.jst.jee.server\:ServletsAndPages=C\:\\apache-tomcat-8.0.30\\wtpwebapps\\ServletsAndPages
