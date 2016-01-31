@@ -12,6 +12,7 @@
 	<body>
 		<ct:PageTag>
 			<jsp:body>
+				<div>You are logged in!</div>
 				<div>Username: ${username}</div>
 			</jsp:body>
 		</ct:PageTag>
