@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+E:\Java\Homework\02.ServletsAndPages\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1861787828.index
-2995721387.index
-758351348.index
-381211316.index
-667120320.index
-202634795.index
