@@ -8,7 +8,7 @@
 </head>
 <body>
 	<body>
-		<form action="HomePage.jsp" method="post">
+		<form action="HomePageAfterLogin.jsp" method="post">
 			<label>Username:</label>
 			<input type="text" name="username">
 			<label>Password:</label>

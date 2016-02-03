@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="else if(requestUsername == &quot;pesho&quot; &amp;&amp; requestPassword == &quot;123&quot;){" key="selection"/>
+		<list key="findhistory">
+			<item value="else if(requestUsername == &quot;pesho&quot; &amp;&amp; requestPassword == &quot;123&quot;){"/>
+		</list>
+	</section>
+</section>
