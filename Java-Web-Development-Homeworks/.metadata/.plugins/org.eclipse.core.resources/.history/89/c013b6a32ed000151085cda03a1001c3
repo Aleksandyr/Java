@@ -1,0 +1,20 @@
+package bg.jwd.servlets;
+
+import javax.ejb.EJB;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+import bg.jwd.ejb.StatelessHelloWorld;
+
+@WebServlet("/Servlet")
+public class Servlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 304140117876337064L;
+	
+	@EJB
+	private StatelessHelloWorld statelessHelloWorld;
+
+}

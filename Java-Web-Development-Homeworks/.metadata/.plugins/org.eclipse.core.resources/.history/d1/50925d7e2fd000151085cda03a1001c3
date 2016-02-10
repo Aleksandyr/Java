@@ -1,0 +1,15 @@
+package bg.jwd.ejb;
+
+import java.util.Date;
+
+import javax.ejb.Stateless;
+
+@Stateless
+public class StatelessHelloWorldImpl implements StatelessHelloWorld {
+
+	@Override
+	public String helloWorld(String id) {
+		return id + " date: " + new Date();
+	}
+
+}
