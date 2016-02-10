@@ -1,0 +1,14 @@
+package bg.jwd.ejb;
+
+import javax.ejb.Stateful;
+
+@Stateful
+public class DateCollectionImpl implements DateCollection {
+
+	@Override
+	public String addAndReturn() {
+		
+		return null;
+	}
+
+}
