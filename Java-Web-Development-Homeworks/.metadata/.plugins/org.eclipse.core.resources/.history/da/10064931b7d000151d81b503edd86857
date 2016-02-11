@@ -1,0 +1,12 @@
+package bg.jwd.ejb;
+
+import java.util.Map;
+
+import javax.ejb.Local;
+
+@Local
+public interface BankOperation {
+	double deposite(Map<String, Double> users, double depositMoney);
+	
+	double withdraw(Map<String, Double> users, double withdrawMoney);
+}

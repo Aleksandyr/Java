@@ -1,0 +1,25 @@
+package bg.jwd.ejb;
+
+import java.util.Map;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
+
+@Stateful
+public class BankOperationImpl implements BankOperation {
+	
+	@EJB
+	private UserOperation userOperation;
+
+	@Override
+	public void deposite(Map<String, Double> users, String currentUser, double depositMoney) {
+		double userAmount = userOperation.getUserAmount(users, currentUser);
+	}
+
+	@Override
+	public void withdraw(Map<String, Double> users, String currentUser ,double withdrawMoney) {
+		double userAmount = userOperation.getUserAmount(users, currentUser);
+		
+	}
+
+}

@@ -1,12 +1,9 @@
-<form method="POST">
+<form action="../BankOperationController" method="POST">
 	<label>Client name:</label>
-	<input type="text" name="clientName" />
-	<br/>
-	<label>Bank account amount:</label>
-	<input type="number" name="bank_amount" />
+	<input type="text" name="client_name" />
 	<br/>
 	<label>Deposit or withdraw:</label>
-	<select id="deposti_withdraw">
+	<select id="deposti_withdraw" name="deposti_withdraw">
 	  <option value="deposit">Deposit</option>
 	  <option value="withdraw">Withdraw</option>
 	</select>

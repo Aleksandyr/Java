@@ -1,0 +1,10 @@
+package bg.jwd.ejb;
+
+import javax.ejb.Local;
+
+@Local
+public interface BankOperation {
+	double deposite(double amount, double depositMoney);
+	
+	double withdraw(double amount, double withdrawMoney);
+}

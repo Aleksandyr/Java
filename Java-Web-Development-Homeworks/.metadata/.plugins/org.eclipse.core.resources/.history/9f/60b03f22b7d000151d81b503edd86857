@@ -1,0 +1,26 @@
+package bg.jwd.ejb;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
+
+@Stateful
+public class BankOperationImpl implements BankOperation {
+	
+	@EJB
+	private UserOperation userOperation;
+
+	@Override
+	public double deposite(double amount, double depositMoney) {
+		amount += depositMoney;	
+		
+		return amount;
+	}
+
+	@Override
+	public double withdraw(double amount, double withdrawMoney) {
+		amount -= withdrawMoney;
+		
+		return amount;
+	}
+
+}

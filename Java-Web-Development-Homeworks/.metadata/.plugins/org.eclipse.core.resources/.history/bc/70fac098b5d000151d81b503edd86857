@@ -1,0 +1,28 @@
+package bg.jwd.ejb;
+
+import java.util.Map;
+
+import javax.ejb.Stateful;
+
+@Stateful
+public class UserOperationImpl implements UserOperation {
+
+	@Override
+	public String getUsername(Map<String, Double> users, String searchedUsername) {
+		String username = "";
+		for ( String key : users.keySet() ) {
+		    if(key == searchedUsername){
+		    	username = key;
+		    }
+		}
+		
+		return username;
+	}
+
+	@Override
+	public Double getUserAmount(Map<String, Double> users, String searchedUsername) {
+	
+		return users.get(searchedUsername);
+	}
+
+}
