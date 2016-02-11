@@ -1,0 +1,13 @@
+<form method="POST">
+	<label>Client name:</label>
+	<input type="text" name="clientName" />
+	<br/>
+	<label>Bank account amount:</label>
+	<input type="number" name="amount" />
+	<br/>
+	<label>Client name:</label>
+	<input type="text" name="clientName" />
+	<br/>
+	<label>Client name:</label>
+	<input type="text" name="clientName" />
+</form>

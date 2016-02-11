@@ -1,5 +1,4 @@
 <%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
-<%@ attribute name="title" %>
 
 
 <ct:Header title="Header"></ct:Header>

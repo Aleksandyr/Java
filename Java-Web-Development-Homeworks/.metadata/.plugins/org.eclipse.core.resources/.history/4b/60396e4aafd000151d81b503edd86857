@@ -1,0 +1,5 @@
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+
+<ct:Header title="Banking pade"></ct:Header>
+<<jsp:doBody></jsp:doBody>
+<ct:Footer verison="1.01"></ct:Footer>
