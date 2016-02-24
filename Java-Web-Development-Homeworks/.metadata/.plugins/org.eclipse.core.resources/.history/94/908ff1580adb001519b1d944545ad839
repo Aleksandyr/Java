@@ -1,0 +1,8 @@
+package bg.jwd.bankAcc.services;
+
+import bg.jwd.bankAcc.entities.User;
+
+public class BankAccountService {
+	void deposite(User user, Double amount);
+
+}

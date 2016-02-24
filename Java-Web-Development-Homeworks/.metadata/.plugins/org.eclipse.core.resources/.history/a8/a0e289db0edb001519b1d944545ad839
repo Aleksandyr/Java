@@ -1,0 +1,15 @@
+package bg.jwd.bankAcc.controllers;
+
+import javax.inject.Qualifier;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import bg.jwd.bankAcc.services.BankAccountService;
+
+@Controller
+public class BankAccountController {
+
+	@Autowired
+	private BankAccountService bankAccService;
+}

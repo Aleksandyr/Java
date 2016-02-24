@@ -1,5 +1,0 @@
-<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
-
-<ct:Header title="Banking pade"></ct:Header>
-<ct:BankFrom></ct:BankFrom>
-<ct:Footer version="1.01"></ct:Footer>

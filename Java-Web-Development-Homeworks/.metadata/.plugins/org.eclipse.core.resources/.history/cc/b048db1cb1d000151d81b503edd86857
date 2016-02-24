@@ -1,5 +1,0 @@
-<%@ attribute name="version" %>
-
-<footer>
-	<div>Version: ${verison}</div>
-</footer>

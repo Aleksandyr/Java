@@ -1,8 +1,0 @@
-package bg.jwd.ejb;
-
-import javax.ejb.Stateful;
-
-@Stateful
-public class UserOperationImpl {
-
-}
