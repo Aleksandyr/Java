@@ -1,14 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+
+
+<c:set var="username" value= '<%= session.getAttribute("client_name") %>' />
+<c:set var="amount" value= '<%= session.getAttribute("amount_to_change") %>' />
 <html>
 <head>
 	<title>Home</title>
 </head>
-<body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-</body>
+	<body>
+		<ct:BankingPage></ct:BankingPage>
+		<div>Username: ${username}</div>
+		<div>Amount: ${amount}</div>
+	</body>
 </html>

@@ -1,0 +1,18 @@
+package bg.jwd.bankAcc.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import bg.jwd.bankAcc.entities.User;
+
+public class ReqisterServiceImpl implements ReqisterService {
+	
+	private static List<User> users = new ArrayList<>();
+	
+	@Override
+	public boolean addUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

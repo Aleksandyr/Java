@@ -1,0 +1,10 @@
+package bg.jwd.bankAcc.services;
+
+import bg.jwd.bankAcc.entities.User;
+
+public interface ReqisterService {
+	
+	static List<User> users;
+
+	boolean addUser(User user);
+}

@@ -1,0 +1,13 @@
+package bg.jwd.bankAcc.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import bg.jwd.bankAcc.entities.User;
+
+public interface ReqisterService {
+	
+	private static List<User> users = new ArrayList<>();
+	
+	boolean addUser(User user);
+}
