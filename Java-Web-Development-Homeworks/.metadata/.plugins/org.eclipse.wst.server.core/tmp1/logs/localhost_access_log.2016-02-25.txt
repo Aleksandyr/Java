@@ -366,3 +366,16 @@
 0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:33:14 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 500 3909
 0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:33:23 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 500 3909
 0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:33:30 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 754
+127.0.0.1 - - [25/Feb/2016:18:38:30 +0200] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:39 +0200] "GET /bankAcc/ HTTP/1.1" 200 744
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:48 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 755
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:51 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 755
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:55 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 449
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:57 +0200] "POST /bankAcc/registerUser HTTP/1.1" 200 755
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:38:58 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 449
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:39:03 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 750
+127.0.0.1 - - [25/Feb/2016:18:55:08 +0200] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:55:10 +0200] "GET /bankAcc/ HTTP/1.1" 200 729
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:55:21 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 740
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:55:23 +0200] "POST /bankAcc/bankOperation HTTP/1.1" 200 449
+0:0:0:0:0:0:0:1 - - [25/Feb/2016:18:55:25 +0200] "POST /bankAcc/registerUser HTTP/1.1" 200 740

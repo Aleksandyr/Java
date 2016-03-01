@@ -1,0 +1,6 @@
+package bg.jwd.webBank.controllers;
+
+@Controller
+public class WebBankController {
+
+}

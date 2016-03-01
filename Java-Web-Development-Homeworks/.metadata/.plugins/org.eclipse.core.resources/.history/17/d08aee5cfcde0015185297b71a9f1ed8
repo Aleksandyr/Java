@@ -1,0 +1,19 @@
+package bg.jwd.webBank.database;
+
+import java.util.List;
+
+import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
+
+public interface DatabaseInt {
+
+	public User getUser(User user);
+
+	public List<User> getAllUsers();
+
+	public Account getCurrAccount(User user);
+
+	public void addUser(User user);
+
+	public void addAccToUser(User user, Account account);
+}

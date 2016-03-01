@@ -1,0 +1,5 @@
+package bg.jwd.webBank.database;
+
+public class WebBankDatabase {
+
+}

@@ -1,0 +1,79 @@
+package bg.jwd.webBank.controllers;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import bg.jwd.webBank.database.WebBankDatabase;
+import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
+
+@Controller
+public class WebBankController {
+	private WebBankDatabase db;
+
+	public WebBankController() {
+		this.db = new WebBankDatabase();
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+
+		return "registerPage";
+	}
+
+	@RequestMapping(value = "/registerPage", method = RequestMethod.POST)
+	public String registerPage(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		User user = this.db.getUser(username);
+
+		if (user == null) {
+			return "registerUser";
+		}
+
+		if (user.getAccount() == null) {
+			request.setAttribute("user", user);
+			return "registerAccount";
+		}
+
+		return "registerPage";
+	}
+
+	@RequestMapping(value = "/registerUser", method = RequestMethod.GET)
+	public String getRegisterUser() {
+		return "registerUser";
+	}
+
+	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+	public String registerUser(HttpServletRequest request) {
+		String username = request.getParameter("username");
+
+		User user = new User();
+		user.setUsername(username);
+
+		this.db.addUser(user);
+
+		return "registerPage";
+	}
+	
+	@RequestMapping(value = "/registerAccount", method = RequestMethod.GET)
+	public String getRegisterAccount() {
+		return "registerAccount";
+	}
+
+	@RequestMapping(value = "/registerAccount", method = RequestMethod.POST)
+	public String registerAccount(HttpServletRequest request, @ModelAttribute("account") Account account) {
+		String username = request.getParameter("username");
+
+		// User currUser = this.db.getUser(username);
+
+		// Account acc = new Account();
+		String number = account.getAccNumber();
+		// this.db.addUser(user);
+
+		return "registerPage";
+	}
+}

@@ -1,0 +1,18 @@
+package bg.jwd.webBank.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import bg.jwd.bankAcc.services.BankAccountService;
+
+@Controller
+public class WebBankController {
+	
+	@Autowired
+	private Database db;
+
+	
+	public WebBankController(){
+		//this.db = new Database();
+	}
+}

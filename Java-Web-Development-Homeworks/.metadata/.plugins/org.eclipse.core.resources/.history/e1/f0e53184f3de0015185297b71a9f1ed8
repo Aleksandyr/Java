@@ -1,0 +1,16 @@
+package bg.jwd.webBank.database;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
+
+public class Database {
+	private Map<User, Account> usersAccount;
+
+	public Database() {
+		this.usersAccount = new HashMap<>();
+	}
+
+}

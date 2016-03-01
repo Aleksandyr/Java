@@ -1,0 +1,12 @@
+package bg.jwd.webBank.controllers;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class WebBankController {
+	private Database db;
+	
+	public WebBankController(){
+		this.db = new DatabaseImpl();
+	}
+}

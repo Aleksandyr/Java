@@ -1,0 +1,22 @@
+package bg.jwd.webBank.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class WebBankController {
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+
+		return "registerPage";
+	}
+
+	@RequestMapping(value = "/registerPage", method = RequestMethod.GET)
+	public String registerPage(HtttpServletRequest request) {
+		String username = request.getParameter("username");
+
+		return "registerPage";
+	}
+}

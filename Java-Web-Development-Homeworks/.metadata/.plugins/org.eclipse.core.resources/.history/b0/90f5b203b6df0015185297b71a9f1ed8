@@ -1,0 +1,47 @@
+package bg.jwd.webBank.database;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
+
+public class WebBankDatabase {
+
+	private List<User> users;
+
+	public WebBankDatabase() {
+		this.users = new ArrayList<>();
+	}
+
+	public User getUser(User user) {
+		//this.users.stream().forEach(s -> System.out.println(s));
+		((Stream<User>) this.users).filter(u -> u.getUsername().equals(user.getUsername())).findFirst().get();
+		// User currUser = this.users.stream().filter(u ->
+		// u.getUsername().equals(user.getUsername())).findFirst().get();
+
+		return user;
+	}
+
+	public List<User> getAllUsers() {
+		return this.users;
+	}
+
+	public Account getCurrAccount(User user) {
+		// Account acc = this.users.stream().filter(u -> u.getUsername() ==
+		// user.getUsername()).findFirst().get()
+		// .getAccount();
+
+		return new Account();
+	}
+
+	public void addUser(User user) {
+		this.users.add(user);
+	}
+
+	public void addAccToUser(User user, Account account) {
+		User currUser = this.getUser(user);
+		currUser.setAccount(account);
+	}
+}
