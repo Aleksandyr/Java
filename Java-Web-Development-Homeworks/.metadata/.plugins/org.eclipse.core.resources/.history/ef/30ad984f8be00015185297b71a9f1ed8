@@ -36,7 +36,7 @@ public class BankOperationController extends BaseController {
 		}
 
 		request.getSession().setAttribute("balance_per_day", acc.getInitialAmount());
-
+		
 		Double currencyCalcAmount = this.currencyChecker(userInputCurrency, acc);
 		amount *= currencyCalcAmount;
 		if (operation.equals("deposit")) {

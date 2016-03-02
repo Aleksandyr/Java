@@ -27,7 +27,6 @@ public class BankOperationController extends BaseController {
 		String accNum = request.getParameter("accNumber");
 		String operation = request.getParameter("deposit_withdraw");
 		Double amount = Double.parseDouble(request.getParameter("amount_to_change"));
-		String userInputCurrency = request.getParameter("currency");
 
 		Account acc = this.db.getAccount(accNum);
 
@@ -37,8 +36,6 @@ public class BankOperationController extends BaseController {
 
 		request.getSession().setAttribute("balance_per_day", acc.getInitialAmount());
 
-		Double currencyCalcAmount = this.currencyChecker(userInputCurrency, acc);
-		amount *= currencyCalcAmount;
 		if (operation.equals("deposit")) {
 			bankOperation.deposite(acc, amount);
 		} else if (operation.equals("withdraw")) {

@@ -35,9 +35,9 @@ public class BankOperationController extends BaseController {
 			return "redirect:/registerAccount";
 		}
 
+		Double currencyCalcAmount = this.currencyChecker(userInputCurrency, acc);
 		request.getSession().setAttribute("balance_per_day", acc.getInitialAmount());
 
-		Double currencyCalcAmount = this.currencyChecker(userInputCurrency, acc);
 		amount *= currencyCalcAmount;
 		if (operation.equals("deposit")) {
 			bankOperation.deposite(acc, amount);
