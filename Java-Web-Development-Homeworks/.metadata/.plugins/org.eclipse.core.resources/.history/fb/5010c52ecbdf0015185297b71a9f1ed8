@@ -1,0 +1,33 @@
+package bg.jwd.webBank.services;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Service;
+
+import bg.jwd.webBank.entities.User;
+
+@Service
+public class BankAccountServiceImpl implements BankAccountService {
+
+	@Override
+	public void deposite(User user, double amount) {
+		double currAmount = user.getAccount().getInitialAmount();
+		if (amount > 0) {
+			currAmount += amount;
+			user.getAccount().setInitialAmount(currAmount);
+		}
+	}
+
+	@Override
+	public void withdraw(User user, double amount, HttpServletRequest request) {
+		double userAmount = user.getAccount().getInitialAmount();
+		double getMoneyFromSession = (Double) request.getSession().getAttribute("balance_per_day");
+		double halfOfUserAmount = getMoneyFromSession / 2;
+
+		if (userAmount > amount && amount > 0 && ((userAmount - amount) <= halfOfUserAmount)) {
+			userAmount -= amount;
+			user.getAccount().getInitialAmount();
+		}
+	}
+
+}

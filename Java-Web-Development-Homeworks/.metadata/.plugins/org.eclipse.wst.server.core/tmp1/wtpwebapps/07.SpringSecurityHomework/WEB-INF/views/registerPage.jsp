@@ -1,4 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:set var="accNum" value= '<%= session.getAttribute("accNum") %>' />
+<c:set var="accInitAmount" value= '<%= session.getAttribute("accInitAmount") %>' />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,6 +11,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<button type="button" onclick="location = 'bankOperation'">Bank Operation</button>
+
 	<form:form method="POST" action="registerPage">
 		<label>Username:</label>
 		<input type="text" name="username" />
@@ -22,5 +29,11 @@
 		<br/>
 		<input type="submit" value="Submit" />
 	</form:form>
+	<div>
+		<h3>Acc info:</h3>
+		<p>Account number: ${accNum}</p>
+		<p>Account inital amount: ${accInitAmount}</p>
+		
+	</div>
 </body>
 </html>

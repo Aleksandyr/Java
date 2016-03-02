@@ -1,0 +1,33 @@
+package bg.jwd.webBank.controllers;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
+
+@Controller
+public class BankOperationController extends BaseController {
+
+	@RequestMapping(value = "/bankOperation", method = RequestMethod.GET)
+	public String getRegisterUser() {
+		return "bankOperation";
+	}
+
+	@RequestMapping(value = "/bankOperation", method = RequestMethod.POST)
+	public String registerUser(HttpServletRequest request) {
+		String accNum = request.getParameter("accNum");
+		Account acc = this.db.getAccount(accNum);
+
+		if (acc == null) {
+			return "redirect:/registerAccount";
+		}
+
+		//this.db.addUser(user);
+
+		return "redirect:/home";
+	}
+}
