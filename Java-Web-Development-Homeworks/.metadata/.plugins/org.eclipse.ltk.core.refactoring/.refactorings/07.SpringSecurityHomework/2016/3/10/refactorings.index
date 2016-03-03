@@ -1,3 +1,8 @@
 1456841636678	Rename resource 'homePage.jsp'
 1456845614613	Rename compilation unit 'BaseController.java'
 1456849117549	Delete elements
+1456933283672	Rename resource 'servlet-context.xml'
+1456933288681	Move file
+1456933524061	Rename resource 'root-context.xml'
+1456933529250	Move file
+1457000821639	Rename resource 'scurity.xml'

@@ -25,6 +25,6 @@ public class UserController extends BaseController {
 
 		this.db.addUser(user);
 
-		return "redirect:/home";
+		return "redirect:/registerPage";
 	}
 }

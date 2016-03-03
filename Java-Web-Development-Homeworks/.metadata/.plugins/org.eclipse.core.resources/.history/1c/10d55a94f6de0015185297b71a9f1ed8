@@ -1,7 +1,0 @@
-package bg.jwd.webBank.entities;
-
-public class Account {
-	public String accNumber;
-	public Double initialAmount;
-	public string currency
-}

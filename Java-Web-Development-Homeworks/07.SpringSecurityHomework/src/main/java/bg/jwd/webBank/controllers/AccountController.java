@@ -21,6 +21,6 @@ public class AccountController extends BaseController {
 	public String registerAccount(HttpServletRequest request, @ModelAttribute("account") Account account) {
 		this.db.addAccount(account);
 
-		return "redirect:/home";
+		return "redirect:/registerPage";
 	}
 }

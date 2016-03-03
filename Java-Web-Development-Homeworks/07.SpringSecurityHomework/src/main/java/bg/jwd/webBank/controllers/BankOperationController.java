@@ -13,6 +13,8 @@ import bg.jwd.webBank.services.BankAccountService;
 
 @Controller
 public class BankOperationController extends BaseController {
+	private static final Double BGN_TO_EUR_VALUE = 1.92;
+	private static final Double EUR_TO_BGN_VALUE = 0.51;
 
 	@Autowired
 	private BankAccountService bankOperation;
@@ -50,7 +52,7 @@ public class BankOperationController extends BaseController {
 
 		// this.db.addUser(user);
 
-		return "redirect:/home";
+		return "redirect:/registerPage";
 	}
 
 	private Double currencyChecker(String userInputCurrency, Account acc) {
@@ -59,13 +61,13 @@ public class BankOperationController extends BaseController {
 
 		if (accCurrency.equals("bgn")) {
 			if (userInputCurrency.toLowerCase().equals("eur")) {
-				valueToAdd = 1.92;
+				valueToAdd = BGN_TO_EUR_VALUE;
 			}
 		}
 
 		if (accCurrency.equals("eur")) {
 			if (userInputCurrency.toLowerCase().equals("bgn")) {
-				valueToAdd = 0.51;
+				valueToAdd = EUR_TO_BGN_VALUE;
 			}
 		}
 

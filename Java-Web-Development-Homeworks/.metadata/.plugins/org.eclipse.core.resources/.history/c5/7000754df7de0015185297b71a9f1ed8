@@ -1,5 +1,0 @@
-package bg.jwd.webBank.database;
-
-public interface Database {
-
-}

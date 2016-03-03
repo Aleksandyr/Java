@@ -1,7 +1,0 @@
-package bg.jwd.webBank.database;
-
-import java.util.ArrayList;
-
-public class Database {
-	private List<User> users = new ArrayList<>();
-}

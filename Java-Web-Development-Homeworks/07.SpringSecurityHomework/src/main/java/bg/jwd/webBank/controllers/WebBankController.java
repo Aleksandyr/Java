@@ -12,7 +12,7 @@ import bg.jwd.webBank.entities.User;
 @Controller
 public class WebBankController extends BaseController {
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/registerPage", method = RequestMethod.GET)
 	public String home() {
 
 		return "registerPage";
