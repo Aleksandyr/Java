@@ -15,10 +15,7 @@
 			<input type="number" name="initialAmount" />
 			<br/>
 			<label>Currency:</label>
-			<select id="currency" name="currency">
-			  <option value="BGN">BGN</option>
-			  <option value="EUR">EUR</option>
-			</select>
+			<input type="text" name="currency" />
 			<br/>
 			<input type="submit" value="Submit" />
 		</form:form>
