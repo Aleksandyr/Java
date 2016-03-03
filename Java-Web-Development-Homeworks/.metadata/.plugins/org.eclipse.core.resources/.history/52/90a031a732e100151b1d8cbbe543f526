@@ -1,0 +1,41 @@
+package bg.jwd.webBank.security;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import bg.jwd.webBank.controllers.Database;
+import bg.jwd.webBank.database.WebBankDatabase;
+import bg.jwd.webBank.entities.User;
+
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+	private WebBankDatabase db;
+
+	public UserDetailsServiceImpl() {
+		db = Database.getDatabase();
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		//List<GrantedAuthority> authorities = new ArrayList<>();
+		//authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		// authorities.add(new SimpleGrantedAuthority("ROLE_BANK_EMPLOYEE"));
+		User user = this.db.getUser(username)
+
+		return User;
+	}
+
+	private UserDetails addUser(String username, String password, List<GrantedAuthority> authorities) {
+		User user = new User(username, password, authorities);
+
+		this.db.addUser(user);
+
+		return user;
+	}
+}

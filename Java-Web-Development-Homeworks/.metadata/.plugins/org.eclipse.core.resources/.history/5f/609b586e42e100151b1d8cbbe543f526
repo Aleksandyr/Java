@@ -1,0 +1,42 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>
+	Main menu!
+</h1>
+
+<button type="button" onclick="location = 'registerPage'">Register page</button>
+<sec:authorize access="hasRole('ROLE_BANK_EMPLOYEE')">
+	<button type="button" onclick="location = 'registerAccount'">New account</button>
+	<button type="button" onclick="location = 'allAccounts'">All accounts</button>
+</sec:authorize>
+
+<c:if test="${not empty accounts}">
+	<table border="1">
+			<thead>
+				<tr>
+					<td>Username</td>
+					<td>Account number</td>
+					<td>Initial amount</td>
+					<td>Currency</td>
+				</tr>
+			</thead>
+	    	<tbody>
+		        <c:forEach var="a" items="${accounts}">
+		            <tr>
+		            	<td>${user.getUsername()}</td>
+		                <td>${a.getAccNumber()}</td>
+		                <td>${a.getInitialAmount()}</td>
+		                <td>${a.getCurrency()}</td>
+		            </tr>
+		        </c:forEach>
+	        </tbody>
+		</table>
+	</c:if>
+</body>
+</html>

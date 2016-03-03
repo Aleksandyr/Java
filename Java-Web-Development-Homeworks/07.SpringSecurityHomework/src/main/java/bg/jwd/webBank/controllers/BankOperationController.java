@@ -3,12 +3,16 @@ package bg.jwd.webBank.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bg.jwd.webBank.entities.Account;
+import bg.jwd.webBank.entities.User;
 import bg.jwd.webBank.services.BankAccountService;
 
 @Controller
@@ -19,14 +23,21 @@ public class BankOperationController extends BaseController {
 	@Autowired
 	private BankAccountService bankOperation;
 
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/bankOperation", method = RequestMethod.GET)
-	public String getRegisterUser() {
+	public String getRegisterUser(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+
+		model.addAttribute("myAccounts", this.db.getUser(user.getUsername()).getAccounts());
+
 		return "bankOperation";
 	}
 
+	@Secured("ROLE_USER")
 	@RequestMapping(value = "/bankOperation", method = RequestMethod.POST)
 	public String registerUser(Model model, HttpServletRequest request) {
-		String accNum = request.getParameter("accNumber");
+		String accNum = request.getParameter("myAcc");
 		String operation = request.getParameter("deposit_withdraw");
 		Double amount = Double.parseDouble(request.getParameter("amount_to_change"));
 		String userInputCurrency = request.getParameter("currency");
@@ -49,8 +60,6 @@ public class BankOperationController extends BaseController {
 
 		request.getSession().setAttribute("accNum", acc.getAccNumber());
 		request.getSession().setAttribute("accInitAmount", acc.getInitialAmount());
-
-		// this.db.addUser(user);
 
 		return "redirect:/registerPage";
 	}

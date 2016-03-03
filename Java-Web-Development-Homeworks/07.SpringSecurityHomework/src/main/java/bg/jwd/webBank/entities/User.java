@@ -1,6 +1,8 @@
 package bg.jwd.webBank.entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +19,11 @@ public class User implements UserDetails {
 	private boolean enabled;
 	private String password;
 	private String username;
-	private Account account;
+	private List<Account> accounts;
 	private Collection<GrantedAuthority> authorities;
 
 	public User() {
-
+		this.accounts = new ArrayList<>();
 	}
 
 	public User(String username, String password, Collection<GrantedAuthority> authorities) {
@@ -32,6 +34,7 @@ public class User implements UserDetails {
 		this.username = username;
 		this.password = password;
 		this.authorities = authorities;
+		this.accounts = new ArrayList<>();
 	}
 
 	@Override
@@ -97,11 +100,19 @@ public class User implements UserDetails {
 		this.authorities = authorities;
 	}
 
-	public Account getAccount() {
-		return account;
+	// public Account getAccount() {
+	// return account;
+	// }
+	//
+	// public void setAccount(Account account) {
+	// this.account = account;
+	// }
+
+	public List<Account> getAccounts() {
+		return accounts;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 }

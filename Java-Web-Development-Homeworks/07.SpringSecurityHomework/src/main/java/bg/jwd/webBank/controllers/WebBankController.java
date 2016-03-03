@@ -1,8 +1,11 @@
 package bg.jwd.webBank.controllers;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,30 +16,15 @@ import bg.jwd.webBank.entities.User;
 public class WebBankController extends BaseController {
 
 	@RequestMapping(value = "/registerPage", method = RequestMethod.GET)
-	public String home() {
+	public String registerPage(Model model) {
 
-		return "registerPage";
-	}
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
 
-	@RequestMapping(value = "/registerPage", method = RequestMethod.POST)
-	public String registerPage(HttpServletRequest request) {
-		String username = request.getParameter("username");
-		String accountNumber = request.getParameter("acc_number");
+		List<Account> accounts = this.db.getAllAccounts();
 
-		User user = this.db.getUser(username);
-		Account acc = this.db.getAccount(accountNumber);
-
-		if (user == null) {
-			return "redirect:/registerUser";
-		}
-
-		if (acc == null) {
-			return "redirect:/registerAccount";
-		}
-
-		if (user.getAccount() == null) {
-			this.db.getUser(username).setAccount(acc);
-		}
+		model.addAttribute("username", user.getUsername());
+		model.addAttribute("accounts", accounts);
 
 		return "registerPage";
 	}

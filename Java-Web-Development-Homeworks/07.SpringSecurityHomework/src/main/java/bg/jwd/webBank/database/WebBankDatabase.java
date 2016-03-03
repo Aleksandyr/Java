@@ -38,10 +38,10 @@ public class WebBankDatabase {
 		return curAcc;
 	}
 
-	public Account getAccountFromUser(User user) {
+	public List<Account> getAccountsFromUser(User user) {
 		User currUser = this.getUser(user.getUsername());
 
-		return currUser.getAccount();
+		return currUser.getAccounts();
 	}
 
 	public List<User> getAllUsers() {
@@ -62,6 +62,6 @@ public class WebBankDatabase {
 
 	public void addAccToUser(User user, Account account) {
 		User currUser = this.getUser(user.getUsername());
-		currUser.setAccount(account);
+		currUser.getAccounts().add(account);
 	}
 }

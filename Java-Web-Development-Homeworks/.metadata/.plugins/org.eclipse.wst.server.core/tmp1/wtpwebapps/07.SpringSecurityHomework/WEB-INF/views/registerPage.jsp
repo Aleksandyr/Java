@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:set var="accNum" value= '<%= session.getAttribute("accNum") %>' />
 <c:set var="accInitAmount" value= '<%= session.getAttribute("accInitAmount") %>' />
@@ -11,24 +12,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>Enter acc number and get him!</h3>
 	
-	<button type="button" onclick="location = 'bankOperation'">Bank Operation</button>
-
-	<form:form method="POST" action="registerPage">
+	<form:form method="POST" action="getAccount">
 		<label>Username:</label>
-		<input type="text" name="username" />
+		<input type="text" name="username" value="${username}" />
 		<br/>
-		<label>Account number:</label>
-		<input type="text" name="acc_number" />
-		<br/>
-		<label>Current amount:</label>
-		<input type="number" name="curr_amount" />
-		<br/>
-		<label>Account currency:</label>
-		<input type="text" name="acc_currency" />
+		<label>All accounts</label>
+		<select id="accounts" name="accounts">
+			<c:if test="${not empty accounts}">	
+		        <c:forEach var="a" items="${accounts}">
+					  <option value="${a.getAccNumber()}">${a.getAccNumber()}</option>
+		        </c:forEach>
+			</c:if>
+		</select>
 		<br/>
 		<input type="submit" value="Submit" />
 	</form:form>
+	
+	<sec:authorize access="hasRole('ROLE_USER')">
+				<button type="button" onclick="location = 'bankOperation'">Bank Operation</button>
+	</sec:authorize>
+	<button type="button" onclick="location = '../webBank/'">HOME</button>
+	<button type="button" onclick="location = 'logout'">Logout</button>
+	
 	<div>
 		<h3>Acc info:</h3>
 		<p>Account number: ${accNum}</p>

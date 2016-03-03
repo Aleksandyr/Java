@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,8 +9,14 @@
 </head>
 	<body>
 		<form:form method="POST" action="bankOperation">
-			<label>Account number:</label>
-			<input type="text" name="accNumber" />
+			<label>All accounts</label>
+			<select id="myAcc" name="myAcc">
+				<c:if test="${not empty myAccounts}">	
+			        <c:forEach var="a" items="${myAccounts}">
+						  <option value="${a.getAccNumber()}">${a.getAccNumber()}</option>
+			        </c:forEach>
+				</c:if>
+			</select>
 			<br/>
 			<label>Deposit or withdraw:</label>
 			<select id="deposti_withdraw" name="deposit_withdraw">

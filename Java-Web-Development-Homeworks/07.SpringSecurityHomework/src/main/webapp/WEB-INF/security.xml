@@ -9,10 +9,10 @@
         http://www.springframework.org/schema/security/spring-security-4.0.xsd">
         
 	<security:http auto-config="true" use-expressions="true">
-		<security:form-login/>
+		<security:form-login />
 		<security:csrf disabled="true"/>
 		<security:intercept-url pattern="/login" access="permitAll"/>
-		<security:intercept-url pattern="/**" access="hasRole('USER')"/>
+		<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_BANK_EMPLOYEE')"/>
 		<security:logout/>
 		<security:session-management
 			invalid-session-url="/login"></security:session-management>

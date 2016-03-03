@@ -11,6 +11,13 @@
 			<label>Username:</label>
 			<input type="text" name="username" />
 			<br/>
+			<label>Password:</label>
+			<input type="password" name="password" />
+			<br/>
+			<select id="role" name="role">
+			  <option value="ROLE_USER">User</option>
+			  <option value="ROLE_BANK_EMPLOYEE">Bank employee</option>
+			</select>
 			<input type="submit" value="Submit" />
 		</form:form>
 	</body>
