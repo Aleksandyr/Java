@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;UserDetailsServiceImpl.java&apos; to &apos;LibraryProject/src/main/java/bg.jwd.library.security&apos;&#x0D;&#x0A;- Original project: &apos;07.SpringSecurityHomework&apos;&#x0D;&#x0A;- Destination element: &apos;LibraryProject/src/main/java/bg.jwd.library.security&apos;&#x0D;&#x0A;- Original element: &apos;bg.jwd.webBank.security.UserDetailsServiceImpl.java&apos;" description="Copy compilation unit" destination="=LibraryProject/src\/main\/java&lt;bg.jwd.library.security" element1="/src\/main\/java&lt;bg.jwd.webBank.security{UserDetailsServiceImpl.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1459607494833" units="1" version="1.0"/>
+</session>
