@@ -1,0 +1,13 @@
+package bg.jwd.webBank.dao;
+
+import bg.jwd.webBank.entities.User;
+
+public class UserDaoImpl implements UserDao {
+
+	@Override
+	public Boolean createUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

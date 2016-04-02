@@ -1,7 +1,0 @@
-package bg.jwd.bankAcc.services;
-
-import bg.jwd.bankAcc.entities.User;
-
-public interface ReqisterService {
-	boolean addUser(User user);
-}

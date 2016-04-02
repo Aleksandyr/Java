@@ -1,5 +1,0 @@
-package bg.jwd.webBank.security;
-
-public class UserDetailsServiceImpl {
-
-}

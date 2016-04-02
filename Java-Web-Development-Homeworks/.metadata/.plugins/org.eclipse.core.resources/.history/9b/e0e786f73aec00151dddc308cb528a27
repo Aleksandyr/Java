@@ -1,0 +1,7 @@
+package bg.jwd.webBank.dao;
+
+import bg.jwd.webBank.entities.Account;
+
+public interface BankDao {
+	public List<Account> getAllAccounts();
+}

@@ -1,0 +1,88 @@
+package bg.jwd.webBank.security;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import bg.jwd.webBank.database.WebBankDatabase;
+import bg.jwd.webBank.entities.Database;
+import bg.jwd.webBank.entities.User;
+
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+	private WebBankDatabase db;
+
+	public UserDetailsServiceImpl() {
+		db = Database.getDatabase();
+		this.accUsers();
+	}
+
+	public static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	public static final String USERNAME = "db";
+	public static final String PASSWORD = "db";
+
+	static {
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// List<GrantedAuthority> authorities = new ArrayList<>();
+		// authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		// authorities.add(new SimpleGrantedAuthority("ROLE_BANK_EMPLOYEE"));
+		// User user = this.db.getUser(username);
+
+		// Password: 123456
+		return this.db.getUser(username);
+	}
+
+	private void accUsers() {
+		List<GrantedAuthority> userAuthoritie = new ArrayList<>();
+		userAuthoritie.add(new SimpleGrantedAuthority("ROLE_USER"));
+
+		List<GrantedAuthority> bankEmployeeAuthoritie = new ArrayList<>();
+		bankEmployeeAuthoritie.add(new SimpleGrantedAuthority("ROLE_BANK_EMPLOYEE"));
+
+		User onlyUser = new User("user", "e10adc3949ba59abbe56e057f20f883e", userAuthoritie);
+		User bankEmployee = new User("employee", "e10adc3949ba59abbe56e057f20f883e", bankEmployeeAuthoritie);
+		this.db.addUser(onlyUser);
+		this.db.addUser(bankEmployee);
+	}
+
+	private Boolean addUser(User user) {
+		int counter = 1;
+		List<GrantedAuthority> roles = (List<GrantedAuthority>) user.getAuthorities();
+		String role = roles.toString();
+		String sql = "INSERT INTO users (id, username, password, role) values (?,?,?,?)";
+
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				PreparedStatement stmt = conn.prepareStatement(sql);) {
+
+			stmt.setLong(1, counter++);
+			stmt.setString(2, user.getUsername());
+			stmt.setString(3, user.getPassword());
+			stmt.setString(4, role);
+
+			stmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+}
