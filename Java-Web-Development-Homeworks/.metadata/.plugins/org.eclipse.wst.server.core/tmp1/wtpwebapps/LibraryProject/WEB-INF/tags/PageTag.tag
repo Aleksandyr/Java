@@ -7,5 +7,5 @@
 
 <ct:Header username="${username}"></ct:Header>
 <jsp:doBody></jsp:doBody>
-<ct:Footer version="1.1"></ct:Footer>
+<ct:Footer></ct:Footer>
 
