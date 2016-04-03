@@ -1,14 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+
 <html>
 <head>
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<ct:PageTag>
+		<jsp:body>
+			<div>Username: </div>
+		</jsp:body>
+	</ct:PageTag>
 </body>
 </html>

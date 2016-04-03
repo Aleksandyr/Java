@@ -1,0 +1,14 @@
+<%@ attribute name="title" %>
+
+<div class="navbar navbar-default">
+<a class="navbar-brand" href="/">Library</a>
+    <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="#">Post</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li><a class="navbar-brand"><u>Username</u></a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</div>
