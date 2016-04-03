@@ -1,0 +1,25 @@
+package bg.jwd.library.security;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+	@Autowired
+	private UserDao userDao;
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		AutoUser autoUser = userDao.getUser(username);
+
+		List<GrantedAuthority> authorities = new ArrayList<>();
+
+		for (Authority authority : autoUser.getAuthorities()) {
+			authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+		}
+
+		return new User(autoUser.getUsername(), autoUser.getPassword(), authorities);
+	}
+
+}

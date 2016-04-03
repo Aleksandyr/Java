@@ -1,0 +1,5 @@
+package bg.jwd.library.dao.user;
+
+public interface UserDao {
+
+}

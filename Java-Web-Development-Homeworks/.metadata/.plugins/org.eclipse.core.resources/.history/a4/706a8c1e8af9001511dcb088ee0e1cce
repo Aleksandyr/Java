@@ -1,0 +1,7 @@
+package bg.jwd.library.dao.user;
+
+public interface UserDao {
+	AutoUser getUser(String username);
+
+	List<AutoUser> getUsers(String username, String status);
+}
