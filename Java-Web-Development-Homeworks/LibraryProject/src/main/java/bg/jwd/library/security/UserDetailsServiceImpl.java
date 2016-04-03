@@ -24,7 +24,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		AutoUser autoUser = userDao.getUser(username);
 
 		List<GrantedAuthority> authorities = new ArrayList<>();
-
 		for (Authority authority : autoUser.getAuthorities()) {
 			authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
 		}

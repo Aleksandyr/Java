@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,6 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import bg.jwd.library.entity.user.Authority;
 import bg.jwd.library.entity.user.AutoUser;
 
 @Repository
@@ -22,17 +24,33 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public AutoUser getUser(String username) {
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<AutoUser> criteriaQuery = criteriaBuilder.createQuery(AutoUser.class);
-		Root<AutoUser> from = criteriaQuery.from(AutoUser.class);
-
-		criteriaQuery.where(from.get("username").in(username));
-
-		criteriaQuery.select(from);
-		TypedQuery<AutoUser> query = entityManager.createQuery(criteriaQuery);
+		Query query = entityManager.createNativeQuery("SELECT * FROM users WHERE username = ?", AutoUser.class);
+		query.setParameter(1, username);
+		// CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		// CriteriaQuery<AutoUser> criteriaQuery =
+		// criteriaBuilder.createQuery(AutoUser.class);
+		// Root<AutoUser> from = criteriaQuery.from(AutoUser.class);
+		//
+		// criteriaQuery.where(from.get("username").in(username));
+		//
+		// criteriaQuery.select(from);
+		// TypedQuery<AutoUser> query =
+		// entityManager.createQuery(criteriaQuery);
 		List<AutoUser> users = query.getResultList();
 
 		return users != null ? users.get(0) : null;
+	}
+
+	public List<Authority> getUserAuthoritiesByUser(String username) {
+		Query query = entityManager.createNativeQuery(
+				"SELECT auth.AUTHORITY FROM USERS s" + "JOIN USER_AUTHORITY us" + "ON s.ID = us.USER_ID"
+						+ "JOIN AUTHORITIES auth" + "ON auth.ID = us.AUTHORITY_ID" + "WHERE USERNAME = ?");
+
+		query.setParameter(1, username);
+
+		List<Authority> authorities = query.getResultList();
+
+		return authorities;
 	}
 
 	@Override
