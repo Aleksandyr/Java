@@ -4,11 +4,12 @@
 <html>
 	<head>
 		<title>Login</title>
+		<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
 	</head>
 	<body>
 		<ct:PageTag>
 			<jsp:body>
-				<form name="login" class="form-signin" action="/library/login" method="POST">
+				<form name="login" class="form-signin" id="login-form" action="/library/login" method="POST">
 			        <h2 class="form-signin-heading">Please sign in</h2>
 			        <label for="username" class="sr-only">Username</label>
 			        <input type="text" id="username" name="username" class="form-control" placeholder="Email address" required autofocus>

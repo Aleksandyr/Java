@@ -1,0 +1,12 @@
+package bg.jwd.library.controller.user;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import bg.jwd.library.constants.UrlConstants;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_USER_URL)
+public class userController {
+
+}

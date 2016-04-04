@@ -34,9 +34,6 @@ public class AutoUser implements Serializable {
 	@Column(name = "STATUS")
 	private String status;
 
-	@Column(name = "CREATED_BY")
-	private long createdBy;
-
 	@Column(name = "PID")
 	private String pid;
 
@@ -111,13 +108,5 @@ public class AutoUser implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(long createdBy) {
-		this.createdBy = createdBy;
 	}
 }

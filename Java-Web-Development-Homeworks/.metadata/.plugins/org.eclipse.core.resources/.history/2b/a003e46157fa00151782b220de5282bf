@@ -1,0 +1,13 @@
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<c:set var="username" value= '<%= session.getAttribute("username") %>' />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<spring:url value="/resources/style/style.css" var="mainCss" />
+
+<ct:Header username="${username}"></ct:Header>
+<jsp:doBody></jsp:doBody>
+<ct:Footer></ct:Footer>
+

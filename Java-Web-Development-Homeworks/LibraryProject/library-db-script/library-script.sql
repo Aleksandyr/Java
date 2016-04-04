@@ -8,7 +8,6 @@ CREATE TABLE users(
 	username VARCHAR2(50) NOT NULL, 
 	password VARCHAR2(100) NOT NULL, 
 	status NUMBER NOT NULL,
-	created_by NUMBER NOT NULL,
 	date_of_birth DATE, 
 	pid VARCHAR2(20) NOT NULL
 );

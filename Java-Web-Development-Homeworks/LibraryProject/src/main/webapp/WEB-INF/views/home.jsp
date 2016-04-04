@@ -4,11 +4,12 @@
 <html>
 <head>
 	<title>Home</title>
+	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
 </head>
 <body>
 	<ct:PageTag>
 		<jsp:body>
-			<div>Username: </div>
+			<div>Username: ${username}</div>
 		</jsp:body>
 	</ct:PageTag>
 </body>

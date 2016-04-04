@@ -1,0 +1,29 @@
+package bg.jwd.library.controller.account;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import bg.jwd.library.constants.UrlConstants;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_ACCOUNT_URL)
+public class AccountController {
+
+	@RequestMapping(value = UrlConstants.USER_LOGIN_URL, method = RequestMethod.GET)
+	public String loginPage(HttpServletRequest request) {
+		return "login";
+	}
+	
+	@RequestMapping(value = UrlConstants.USER_LOGIN_URL, method = RequestMethod.POST)
+	public String loginPostPage(HttpServletRequest request) {
+		return "login";
+	}
+
+	@RequestMapping(value = UrlConstants.USER_LOGOUT_URL, method = RequestMethod.GET)
+	public String logoutPage() {
+		return "redirect:" + UrlConstants.BASE_ACCOUNT_URL + UrlConstants.USER_LOGIN_URL;
+	}
+}

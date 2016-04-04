@@ -1,0 +1,11 @@
+package bg.jwd.library.controller.user;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import bg.jwd.library.constants.UrlConstants;
+
+@Contrller
+@RequestMapping(UrlConstants.BASE_CLIENT_URL)
+public class userController {
+
+}

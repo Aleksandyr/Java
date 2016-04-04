@@ -9,3 +9,6 @@
 1459698775827	Delete elements
 1459701269705	Move compilation unit
 1459701351902	Rename type 'LoginController'
+1459768170968	Move 'style' to 'resources'
+1459768173932	Move 'scripts' to 'resources'
+1459770425128	Delete element
