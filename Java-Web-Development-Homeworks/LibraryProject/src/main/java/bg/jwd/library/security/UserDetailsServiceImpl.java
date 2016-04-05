@@ -22,13 +22,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		AutoUser autoUser = userDao.getUser(username);
+		if (Integer.parseInt(autoUser.getStatus()) == 1) {
+			List<GrantedAuthority> authorities = new ArrayList<>();
+			for (Authority authority : autoUser.getAuthorities()) {
+				authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+			}
 
-		List<GrantedAuthority> authorities = new ArrayList<>();
-		for (Authority authority : autoUser.getAuthorities()) {
-			authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+			return new User(autoUser.getUsername(), autoUser.getPassword(), authorities);
 		}
 
-		return new User(autoUser.getUsername(), autoUser.getPassword(), authorities);
+		return new User("invalid", "invalid", new ArrayList<>());
 	}
 
 }

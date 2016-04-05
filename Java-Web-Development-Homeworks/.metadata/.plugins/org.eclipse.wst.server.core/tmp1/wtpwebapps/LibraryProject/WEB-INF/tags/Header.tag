@@ -9,7 +9,14 @@
         <li><a href="/library/home/">Home</a></li>
         <li><a href="#">Books</a></li>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-			<li><a href="/library/users/all">Users</a></li>
+	        <li class="dropdown" style="margin-top: 4%">
+			  <button class="btn btn-link" type="button" data-toggle="dropdown">User
+			  <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			    <li><a href="/library/users/all">All Users</a></li>
+			    <li><a href="/library/users/add">Add Users</a></li>
+			  </ul>
+			</li>
 		</sec:authorize>
     </ul>
     <ul class="nav navbar-nav pull-right">

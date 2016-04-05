@@ -37,4 +37,9 @@ public class HomeController {
 		return "home";
 	}
 
+	@RequestMapping(value = UrlConstants.HOME_INACTIVE_URL, method = RequestMethod.GET)
+	public String inactivePage(Locale locale, Model model) {
+		return "bannedUser";
+	}
+
 }

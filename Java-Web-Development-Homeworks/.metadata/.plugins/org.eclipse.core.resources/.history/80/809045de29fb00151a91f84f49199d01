@@ -1,0 +1,21 @@
+package bg.jwd.library.dao.authority;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+public class AuthorityDaoImpl implements AuthorityDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	public Boolean addUserAuthority(int userId, int authorityId) {
+		Query addUser = entityManager
+				.createNativeQuery("INSERT INTO user_authority (user_id, authority_id)" + "VALUES(?, ?)");
+
+		addUser.setParameter(1, userId).setParameter(2, authorityId).executeUpdate();
+
+		return true;
+	}
+
+}

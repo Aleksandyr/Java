@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<security:http auto-config="true" use-expressions="true">
-		<security:form-login login-page="/account/login" default-target-url="/home/"/>
+		<security:form-login login-page="/account/login" default-target-url="/home/" />
 		<security:csrf disabled="true"/>
 		<!-- <security:logout logout-success-url="/logout"-->
  		<security:logout logout-url="/account/logout" logout-success-url="/account/login"
@@ -17,7 +17,7 @@
 		<security:intercept-url pattern="/account/login"
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/**"
-			access="hasRole('USER')" />
+			access="hasAnyRole('USER', 'ADMIN')" />
 		<security:session-management
 			invalid-session-url="/account/login"></security:session-management>
 	</security:http>

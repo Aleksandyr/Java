@@ -13,9 +13,9 @@
 	<c:if test="${not empty user}">
 		<form:form style="width:20%; height: 20%; margin-left: auto; margin-right: auto;" name="delete" class="form-delete" id="delete-form" action="/library/users/delete/${user.getId()}" modelAttribute="users" method="POST">
 	        <h2 class="form-signin-heading">Delete form</h2>
-	        <label for="username" class="sr-only">Username</label>
+	        <label for="username">Username</label>
 	        <input type="text" id="username" name="username" class="form-control" placeholder="${user.getUsername()}" readonly>
-	        <label for="password" class="sr-only">Name</label>
+	        <label for="name">Name</label>
 	        <input type="text" id="name" name="name" class="form-control" placeholder="${user.getName()}" readonly>
 
 	        <input class="btn btn-danger btn-block" name="submit" type="submit" value="Delete" />

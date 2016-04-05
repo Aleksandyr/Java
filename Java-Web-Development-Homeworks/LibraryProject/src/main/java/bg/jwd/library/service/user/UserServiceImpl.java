@@ -1,5 +1,6 @@
 package bg.jwd.library.service.user;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Boolean editUserFromAdminById(Long id, int status) {
 		return userDao.editUserFromAdminById(id, status);
+	}
+
+	@Override
+	public Boolean addUser(AutoUser user) throws ParseException {
+		return userDao.addUser(user);
+	}
+
+	@Override
+	public AutoUser getUserByUsername(String username) {
+		return userDao.getUserByUsername(username);
 	}
 }

@@ -1,0 +1,5 @@
+package bg.jwd.library.service.authority;
+
+public interface AuthorityService {
+	Boolean addUserAuthority(int userId, int authorityId);
+}

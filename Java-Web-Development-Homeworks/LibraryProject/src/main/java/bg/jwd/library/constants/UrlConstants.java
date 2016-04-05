@@ -8,6 +8,7 @@ public class UrlConstants {
 	// Home url
 	public static final String BASE_HOME_URL = "/home";
 	public static final String HOME_URL = "/";
+	public static final String HOME_INACTIVE_URL = "/inactive";
 
 	// Account urls
 	public static final String BASE_ACCOUNT_URL = "/account";
@@ -16,7 +17,7 @@ public class UrlConstants {
 
 	// User urls
 	public static final String USER_REGISTER_URL = "/register";
-	public static final String ADD_USER_URL = "/addUser";
+	public static final String ADD_USER_URL = "/add";
 	public static final String DELETE_USER_URL = "/delete";
 	public static final String EDIT_USER_URL = "/edit";
 

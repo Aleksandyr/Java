@@ -1,0 +1,16 @@
+package bg.jwd.library.service.authority;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import bg.jwd.library.dao.authority.AuthorityDao;
+
+public class AuthorityServiceImpl {
+
+	@Autowired
+	private AuthorityDao authorityDao;
+
+	@Override
+	Boolean addUserAuthority(int userId, int authorityId) {
+		return authorityDao.addUserAuthority(userId, authorityId);
+	}
+}

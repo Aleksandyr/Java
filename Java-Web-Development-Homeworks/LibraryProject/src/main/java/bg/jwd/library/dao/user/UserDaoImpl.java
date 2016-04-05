@@ -1,5 +1,7 @@
 package bg.jwd.library.dao.user;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -93,6 +95,33 @@ public class UserDaoImpl implements UserDao {
 		editUserFromAdmin.setParameter(1, status).setParameter(2, id).executeUpdate();
 
 		return true;
+	}
+
+	@Override
+	@Transactional
+	public Boolean addUser(AutoUser user) throws ParseException {
+		Query addUser = entityManager
+				.createNativeQuery("INSERT INTO users (name, username, status, password, date_of_birth, pid)"
+						+ "VALUES(?, ?, ?, ?, ?, ?)");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(user.getDateOfBirth());
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		addUser.setParameter(1, user.getName()).setParameter(2, user.getUsername())
+				.setParameter(3, Integer.parseInt(user.getStatus())).setParameter(4, user.getPassword())
+				.setParameter(5, sqlDate).setParameter(6, user.getPid()).executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	public AutoUser getUserByUsername(String username) {
+		Query query = entityManager.createNativeQuery("SELECT * FROM users WHERE username = ?", AutoUser.class);
+		query.setParameter(1, username);
+
+		List<AutoUser> users = query.getResultList();
+
+		return users.size() != 0 ? users.get(0) : null;
 	}
 
 }
