@@ -10,4 +10,6 @@ public interface UserService {
 	List<AutoUser> getAllUsers();
 
 	AutoUser getUserById(Long id);
+
+	Boolean deleteUserById(Long id);
 }

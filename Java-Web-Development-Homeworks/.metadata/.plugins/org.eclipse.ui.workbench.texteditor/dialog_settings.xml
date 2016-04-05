@@ -2,19 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="08." key="selection"/>
+		<item value="resources" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="resources"/>
+			<item value="resource"/>
 			<item value="08."/>
 			<item value="07."/>
 			<item value="// List&lt;GrantedAuthority&gt; authorities = new ArrayList&lt;&gt;();"/>
 			<item value="1.6"/>
 			<item value="User newUser = new User();"/>
 			<item value="String username = (String) request.getAttribute(&quot;client_name&quot;);"/>
-			<item value="else if(requestUsername == &quot;pesho&quot; &amp;&amp; requestPassword == &quot;123&quot;){"/>
 		</list>
 		<list key="replacehistory">
 		</list>

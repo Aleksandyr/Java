@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import bg.jwd.library.entity.user.AutoUser;
 
@@ -56,7 +57,6 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<AutoUser> getAllUsers() {
 		Query query = entityManager.createNativeQuery("SELECT * FROM users", AutoUser.class);
-
 		List<AutoUser> users = query.getResultList();
 
 		return users;
@@ -70,6 +70,19 @@ public class UserDaoImpl implements UserDao {
 		List<AutoUser> users = query.getResultList();
 
 		return users != null ? users.get(0) : null;
+	}
+
+	@Override
+	@Transactional
+	public Boolean deleteUserById(Long id) {
+		Query deleteUsetAuthorityQuery = entityManager
+				.createNativeQuery("DELETE FROM user_authority WHERE user_id = ?");
+		deleteUsetAuthorityQuery.setParameter(1, id).executeUpdate();
+
+		Query deleteUserQuery = entityManager.createNativeQuery("DELETE FROM users WHERE id = ?");
+		deleteUserQuery.setParameter(1, id).executeUpdate();
+
+		return true;
 	}
 
 }

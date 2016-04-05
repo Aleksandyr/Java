@@ -1,11 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
+	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
 </head>
 <body>
 	<ct:PageTag>
@@ -59,9 +61,15 @@
 			        			</c:forEach>
 							</td>
 														   			               	  					
-							<td><a class="btn mini blue-stripe" href="{site_url()}admin/editFront/1">Edit</a></td>
-		
-		                   <td><a href="#" class="confirm-delete btn mini red-stripe">Delete</a></td>
+							<form:form modelAttribute="users" action="/library/users/edit/${u.getId()}" id="deleteButtonForm" method="get" >
+		                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
+		               			<td><input class="confirm-delete btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
+		               		</form:form>
+							
+							<form:form modelAttribute="users" action="/library/users/delete/${u.getId()}" id="deleteButtonForm" method="get" >
+		                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
+		               			<td><input class="confirm-delete btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
+		               		</form:form>
 		               </tr>
 			        </c:forEach>
 				</c:if>

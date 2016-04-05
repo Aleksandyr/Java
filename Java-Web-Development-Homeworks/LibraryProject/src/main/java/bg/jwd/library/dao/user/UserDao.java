@@ -12,4 +12,6 @@ public interface UserDao {
 	List<AutoUser> getUsers(String username, String status);
 
 	AutoUser getUserById(Long id);
+
+	Boolean deleteUserById(Long id);
 }

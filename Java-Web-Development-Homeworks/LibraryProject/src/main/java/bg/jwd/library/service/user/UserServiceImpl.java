@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
 	public AutoUser getUserById(Long id) {
 		return userDao.getUserById(id);
 	}
+
+	@Override
+	public Boolean deleteUserById(Long id) {
+		return userDao.deleteUserById(id);
+	}
 }

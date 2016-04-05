@@ -1,5 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 <%-- <spring:url value="/resources/style/style.css" var="mainCss" />
 
 <meta http-equiv = "Content-Language" content = "en"/>
