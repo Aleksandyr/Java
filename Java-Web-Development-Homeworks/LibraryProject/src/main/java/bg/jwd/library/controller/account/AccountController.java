@@ -20,7 +20,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = UrlConstants.USER_LOGOUT_URL, method = RequestMethod.GET)
-	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {

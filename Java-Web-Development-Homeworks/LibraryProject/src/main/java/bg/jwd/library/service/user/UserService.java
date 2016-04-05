@@ -12,4 +12,6 @@ public interface UserService {
 	AutoUser getUserById(Long id);
 
 	Boolean deleteUserById(Long id);
+
+	Boolean editUserFromAdminById(Long id, int status);
 }

@@ -85,4 +85,14 @@ public class UserDaoImpl implements UserDao {
 		return true;
 	}
 
+	@Override
+	@Transactional
+	public Boolean editUserFromAdminById(Long id, int status) {
+		Query editUserFromAdmin = entityManager.createNativeQuery("UPDATE users SET STATUS=? WHERE id=?");
+
+		editUserFromAdmin.setParameter(1, status).setParameter(2, id).executeUpdate();
+
+		return true;
+	}
+
 }

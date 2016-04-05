@@ -9,7 +9,7 @@
 <body>
 	<ct:PageTag>
 		<jsp:body>
-			<div>Username: ${username}</div>
+			<div><h1>HOME</h1></div>
 		</jsp:body>
 	</ct:PageTag>
 </body>

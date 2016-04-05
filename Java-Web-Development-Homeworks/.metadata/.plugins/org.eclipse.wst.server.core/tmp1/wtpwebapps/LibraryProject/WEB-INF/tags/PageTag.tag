@@ -3,7 +3,7 @@
 
 
 <ct:Header username="${username}"></ct:Header>
-	<div id="wrapper">
+	<div id="wrapper" style="width: 1100px; height: 500px; margin: 0 auto;">
 		<jsp:doBody></jsp:doBody>
 	</div>
 <ct:Footer></ct:Footer>

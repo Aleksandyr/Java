@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
 	public Boolean deleteUserById(Long id) {
 		return userDao.deleteUserById(id);
 	}
+
+	@Override
+	public Boolean editUserFromAdminById(Long id, int status) {
+		return userDao.editUserFromAdminById(id, status);
+	}
 }

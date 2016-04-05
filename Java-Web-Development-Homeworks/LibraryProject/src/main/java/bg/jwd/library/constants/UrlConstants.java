@@ -18,6 +18,7 @@ public class UrlConstants {
 	public static final String USER_REGISTER_URL = "/register";
 	public static final String ADD_USER_URL = "/addUser";
 	public static final String DELETE_USER_URL = "/delete";
+	public static final String EDIT_USER_URL = "/edit";
 
 	// Client urls
 	public static final String BASE_USER_URL = "/users";
