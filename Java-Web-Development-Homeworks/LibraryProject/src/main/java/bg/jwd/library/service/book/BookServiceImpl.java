@@ -34,4 +34,9 @@ public class BookServiceImpl implements BookService {
 	public Boolean deleteBookById(Long id) {
 		return BookDao.deleteBookById(id);
 	}
+
+	@Override
+	public Boolean addBook(Book book) throws ParseException {
+		return BookDao.addBook(book);
+	}
 }

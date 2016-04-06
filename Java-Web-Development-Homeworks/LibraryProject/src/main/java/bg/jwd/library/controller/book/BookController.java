@@ -1,6 +1,10 @@
 package bg.jwd.library.controller.book;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -37,6 +41,25 @@ public class BookController {
 		model.addAttribute("username", user.getUsername());
 
 		return "/book/allBooks";
+	}
+
+	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.GET)
+	public String addBookPage(Model model) {
+
+		return "/book/addBook";
+	}
+
+	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.POST)
+	public String addUser(HttpServletRequest request, @ModelAttribute("book") Book book)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
+
+		boolean isAdded = this.bookService.addBook(book);
+		if (isAdded == true) {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+
+		} else {
+			return "/book/addBook";
+		}
 	}
 
 	@RequestMapping(value = UrlConstants.EDIT_BOOKS_URL + "/{id}", method = RequestMethod.GET)

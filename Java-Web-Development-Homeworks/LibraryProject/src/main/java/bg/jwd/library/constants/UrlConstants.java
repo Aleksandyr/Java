@@ -32,4 +32,5 @@ public class UrlConstants {
 	public static final String ALL_BOOKS_URL = "/all";
 	public static final String DELETE_BOOKS_URL = "/delete";
 	public static final String EDIT_BOOKS_URL = "/edit";
+	public static final String ADD_BOOK_URL = "/add";
 }

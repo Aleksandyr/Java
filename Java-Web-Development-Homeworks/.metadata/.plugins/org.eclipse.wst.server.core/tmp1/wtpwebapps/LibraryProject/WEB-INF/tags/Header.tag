@@ -13,6 +13,7 @@
 			  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
 			    <li><a href="/library/books/all">All Books</a></li>
+			    <li><a href="/library/books/add">Add Books</a></li>
 			    <li><a href="/library/books/my">My Books</a></li>
 			  </ul>
 			</li>

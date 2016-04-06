@@ -13,4 +13,6 @@ public interface BookDao {
 	Boolean editBookFromAdminById(Long id, Book book) throws ParseException;
 
 	Boolean deleteBookById(Long id);
+
+	Boolean addBook(Book book) throws ParseException;
 }

@@ -62,4 +62,19 @@ public class BookDaoImpl implements BookDao {
 		return true;
 	}
 
+	@Override
+	@Transactional
+	public Boolean addBook(Book book) throws ParseException {
+		Query addBook = entityManager
+				.createNativeQuery("INSERT INTO books (name, author, year_of_poublishing)" + "VALUES(?, ?, ?)");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(book.getYearOfPoublishing());
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		addBook.setParameter(1, book.getName()).setParameter(2, book.getAuthor()).setParameter(3, sqlDate)
+				.executeUpdate();
+
+		return true;
+	}
+
 }
