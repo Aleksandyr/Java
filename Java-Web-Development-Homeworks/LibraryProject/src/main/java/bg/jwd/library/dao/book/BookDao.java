@@ -1,5 +1,9 @@
 package bg.jwd.library.dao.book;
 
-public interface BookDao {
+import java.util.List;
 
+import bg.jwd.library.entity.book.Book;
+
+public interface BookDao {
+	List<Book> getAllBooks();
 }

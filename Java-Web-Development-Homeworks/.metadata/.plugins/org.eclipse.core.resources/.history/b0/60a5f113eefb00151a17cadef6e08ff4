@@ -1,0 +1,35 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
+	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
+</head>
+<body>
+	<ct:PageTag>
+		<jsp:body>
+			<c:if test="${not empty books}">	
+		        <c:forEach var="u" items="${books}">
+					<div class="row">
+				        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				            <div class="listing listing-default">
+				                <div class="shape">
+				                    <div class="shape-text">buy</div>
+				                </div>
+				                <div class="listing-content">
+				                    <h3 class="lead">Standard listing</h3>
+				                    <p>Buy items on normal prices. No discounts available for this listing.</p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</c:forEach>
+			</c:if>
+		</jsp:body>
+	</ct:PageTag>
+</body>
+</html>

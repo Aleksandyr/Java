@@ -1,0 +1,5 @@
+package bg.jwd.library.entity.book;
+
+public class Lend {
+
+}

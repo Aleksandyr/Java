@@ -1,0 +1,10 @@
+package bg.jwd.library.entity.book;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "LENDS")
+public class Lend {
+
+}

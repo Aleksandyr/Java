@@ -1,0 +1,40 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<ct:PageTag>
+		<jsp:body>
+			<ul class="media-list">
+					<li class="media"><a class="pull-left" href="#"> <img class="media-object" alt="[[img alt tag]]" style="width: 64px; height: 64px;" src="[[img url]]" /> </a>
+						<div class="media-body">
+							<h4 class="media-heading">Media heading</h4>
+							<p>[[media caption]]</p>
+							<!-- Nested media object -->
+							<div class="media"><a class="pull-left" href="#"> <img class="media-object" alt="[[img alt tag]]" style="width: 64px; height: 64px;" src="[[img url]]" /> </a>
+							</div>
+							<!-- Nested media object -->
+							<div class="media"><a class="pull-left" href="#"> <img class="media-object" alt="[[img alt tag]]" style="width: 64px; height: 64px;" src="[[img url]]" /> </a>
+							<div class="media-body">
+							<h4 class="media-heading">Nested media heading</h4>
+							[[media caption]]</div>
+						</div>
+					</div>
+					</li>
+				<!-- Right aligned media object -->
+				<li class="media"><a class="pull-right" href="#"> <img class="media-object" alt="[[img alt tag]]" style="width: 64px; height: 64px;" src="[[img url]]" /> </a>
+					<div class="media-body">
+					<h4 class="media-heading">Media heading</h4>
+					[[media caption]]</div>
+				</li>
+			</ul>
+		</jsp:body>
+	</ct:PageTag>
+</body>
+</html>

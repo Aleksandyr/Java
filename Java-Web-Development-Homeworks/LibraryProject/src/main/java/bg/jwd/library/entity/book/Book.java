@@ -4,14 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import bg.jwd.library.entity.user.Authority;
 
+@Entity
+@Table(name = "BOOKS")
 public class Book implements Serializable {
 
 	private static final long serialVersionUID = 315247235922550809L;

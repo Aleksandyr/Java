@@ -47,7 +47,7 @@ public class UserController {
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("user", UserUtils.getUser());
 
-		return "users";
+		return "/user/users";
 	}
 
 	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class UserController {
 		if (user != null) {
 			model.addAttribute("user", user);
 
-			return "delete";
+			return "/user/delete";
 
 		} else {
 			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
@@ -74,7 +74,7 @@ public class UserController {
 			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
 
 		} else {
-			return "delete";
+			return "/user/delete";
 		}
 	}
 
@@ -86,7 +86,7 @@ public class UserController {
 		if (user != null) {
 			model.addAttribute("user", user);
 
-			return "editUserAdmin";
+			return "/user/editUserAdmin";
 
 		} else {
 			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
@@ -103,7 +103,7 @@ public class UserController {
 			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
 
 		} else {
-			return "editUserAdmin";
+			return "/user/editUserAdmin";
 		}
 	}
 
@@ -113,7 +113,7 @@ public class UserController {
 		List<Authority> authorities = this.authorityService.getAllAuthorities();
 		model.addAttribute("authorities", authorities);
 
-		return "addUser";
+		return "/user/addUser";
 	}
 
 	@RequestMapping(value = UrlConstants.ADD_USER_URL, method = RequestMethod.POST)
@@ -137,13 +137,13 @@ public class UserController {
 				if (isUserAddedToRol == true) {
 					return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
 				} else {
-					return "addUser";
+					return "/user/addUser";
 				}
 			} else {
-				return "addUser";
+				return "/user/addUser";
 			}
 		} else {
-			return "addUser";
+			return "/user/addUser";
 		}
 	}
 

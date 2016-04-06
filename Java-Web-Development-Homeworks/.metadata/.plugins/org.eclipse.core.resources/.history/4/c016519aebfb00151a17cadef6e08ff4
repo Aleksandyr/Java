@@ -1,0 +1,93 @@
+package bg.jwd.library.controller.profile;
+
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import bg.jwd.library.constants.UrlConstants;
+import bg.jwd.library.entity.user.AutoUser;
+import bg.jwd.library.security.User;
+import bg.jwd.library.service.user.UserService;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_PROFILE_URL)
+public class ProfileController {
+
+	@Autowired
+	private UserService userService;
+
+	@RequestMapping(value = UrlConstants.SHOW_PROFILE_URL, method = RequestMethod.GET)
+	public String editProfilePage(Model model) throws NoSuchAlgorithmException {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+		model.addAttribute("username", user.getUsername());
+
+		AutoUser userFromDb = this.userService.getUserById(user.getId());
+
+		if (userFromDb != null) {
+			model.addAttribute("user", userFromDb);
+			model.addAttribute("userDateOfBirth", userFromDb.getDateOfBirth().toString());
+
+			return "/profile/editProfile";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
+
+	@RequestMapping(value = UrlConstants.EDIT_PROFILE_URL, method = RequestMethod.POST)
+	public String editProfile(HttpServletRequest request, @ModelAttribute("autoUser") AutoUser user)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User currUser = (User) authentication.getPrincipal();
+
+		String password = request.getParameter("password");
+		String confirmPassword = request.getParameter("confirm_password");
+
+		if (password.equals(confirmPassword)) {
+			convertPasswordToMD5(user);
+			Boolean isEdited = this.userService.editProfile(currUser.getId(), user);
+
+			if (isEdited == true) {
+				return "redirect:" + UrlConstants.BASE_ACCOUNT_URL + UrlConstants.USER_LOGOUT_URL;
+
+			} else {
+				return "editProfile";
+			}
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_PROFILE_URL + UrlConstants.SHOW_PROFILE_URL;
+		}
+	}
+
+	private void convertPasswordToMD5(AutoUser user) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+
+		MessageDigest m = MessageDigest.getInstance("MD5");
+		m.reset();
+		m.update(user.getPassword().getBytes("UTF-8"));
+		byte[] digest = m.digest();
+		BigInteger bigInt = new BigInteger(1, digest);
+		String hashtext = bigInt.toString(16);
+
+		while (hashtext.length() < 32) {
+			hashtext = "0" + hashtext;
+		}
+
+		user.setPassword(hashtext.toString());
+	}
+}

@@ -1,0 +1,10 @@
+package bg.jwd.library.controller.book;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import bg.jwd.library.service.book.BookService;
+
+public class BookController {
+	@Autowired
+	private BookService bookService;
+}

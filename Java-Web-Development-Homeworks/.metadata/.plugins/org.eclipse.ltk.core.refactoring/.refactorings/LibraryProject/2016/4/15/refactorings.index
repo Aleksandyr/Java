@@ -21,3 +21,14 @@
 1459931529634	Delete element
 1459931804435	Delete element
 1459932037839	Rename package 'bg.jwd.library.controller.bookController'
+1459942071611	Move 'addUser.jsp' to 'user'
+1459942120152	Move 'addUser.jsp' to 'views'
+1459942124727	Delete element
+1459942176225	Move 'addUser.jsp' to 'user'
+1459942252767	Move 'bannedUser.jsp' to 'user'
+1459942254971	Move 'delete.jsp' to 'user'
+1459942262058	Move 'editUserAdmin.jsp' to 'user'
+1459942268899	Move 'users.jsp' to 'user'
+1459942273222	Delete element
+1459942469979	Move 'editProfile.jsp' to 'profile'
+1459942585645	Move 'home.jsp' to 'home'

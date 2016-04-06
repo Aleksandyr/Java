@@ -26,4 +26,8 @@ public class UrlConstants {
 	public static final String BASE_PROFILE_URL = "/profile";
 	public static final String SHOW_PROFILE_URL = "/show";
 	public static final String EDIT_PROFILE_URL = "/edit";
+
+	// Books urls
+	public static final String BASE_BOOK_URL = "/books";
+	public static final String ALL_BOOKS_URL = "/all";
 }

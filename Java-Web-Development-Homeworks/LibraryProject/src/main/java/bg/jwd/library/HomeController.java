@@ -34,12 +34,12 @@ public class HomeController {
 
 		model.addAttribute("username", user.getUsername());
 
-		return "home";
+		return "/home/home";
 	}
 
 	@RequestMapping(value = UrlConstants.HOME_INACTIVE_URL, method = RequestMethod.GET)
 	public String inactivePage(Locale locale, Model model) {
-		return "bannedUser";
+		return "/user/bannedUser";
 	}
 
 }

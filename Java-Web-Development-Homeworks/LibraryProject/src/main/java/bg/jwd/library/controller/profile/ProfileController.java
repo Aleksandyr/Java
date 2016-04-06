@@ -42,7 +42,7 @@ public class ProfileController {
 			model.addAttribute("user", userFromDb);
 			model.addAttribute("userDateOfBirth", userFromDb.getDateOfBirth().toString());
 
-			return "editProfile";
+			return "/profile/editProfile";
 
 		} else {
 			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
@@ -67,7 +67,7 @@ public class ProfileController {
 				return "redirect:" + UrlConstants.BASE_ACCOUNT_URL + UrlConstants.USER_LOGOUT_URL;
 
 			} else {
-				return "editProfile";
+				return "/profile/editProfile";
 			}
 
 		} else {
