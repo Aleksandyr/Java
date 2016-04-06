@@ -1,5 +1,6 @@
 package bg.jwd.library.service.book;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,15 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> getAllBooks() {
 		return BookDao.getAllBooks();
+	}
+
+	@Override
+	public Book getBookById(Long id) {
+		return BookDao.getBookById(id);
+	}
+
+	@Override
+	public Boolean editBookFromAdminById(Long id, Book book) throws ParseException {
+		return BookDao.editBookFromAdminById(id, book);
 	}
 }

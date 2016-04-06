@@ -19,6 +19,21 @@
 					      <h4 class = "list-group-item-heading">
 					         ${b.getName()}
 					      </h4>
+				       <table style="margin-left: 80%">
+							<tr>
+							<td>
+					      <form:form modelAttribute="users" action="/library/books/edit/${b.getId()}" id="deleteButtonForm" method="get" >
+		                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
+		               			<td><input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" /></td>
+		               		</form:form>
+							</td>
+							<td>
+							<form:form modelAttribute="users" action="/library/books/delete/${b.getId()}" id="deleteButtonForm" method="get" >
+		               			<td><input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Delete" /></td>
+		               		</form:form>
+		               		</td>
+		               		</tr>
+		               		</table>
 					   </a>
 					   
 					   <a href = "#" class = "list-group-item">

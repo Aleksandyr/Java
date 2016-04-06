@@ -1,0 +1,48 @@
+package bg.jwd.library.dao.book;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
+import bg.jwd.library.entity.book.Book;
+
+@Repository
+public class BookDaoImpl implements BookDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	public List<Book> getAllBooks() {
+		Query getAllBooksQuery = entityManager.createNativeQuery("SELECT * FROM books", Book.class);
+
+		List<Book> books = getAllBooksQuery.getResultList();
+
+		return books;
+	}
+
+	@Override
+	public Book getBookById(Long id) {
+		Query getBookById = entityManager.createNativeQuery("SELECT * FROM books WHERE id = ?", Book.class);
+		getBookById.setParameter(1, id);
+
+		List<Book> books = getBookById.getResultList();
+
+		return books != null ? books.get(0) : null;
+	}
+
+	@Override
+	public Boolean editBookFromAdminById(Long id, Book book) {
+		Query editBookFromAdmin = entityManager
+				.createNativeQuery("UPDATE books SET name=?, author=?, year_of_poublishing  WHERE id=?");
+
+		editBookFromAdmin.setParameter(1, status).setParameter(2, id).executeUpdate();
+
+		return true;
+	}
+
+}
