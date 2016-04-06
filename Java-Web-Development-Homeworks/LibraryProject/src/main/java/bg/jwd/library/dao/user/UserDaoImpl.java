@@ -124,4 +124,19 @@ public class UserDaoImpl implements UserDao {
 		return users.size() != 0 ? users.get(0) : null;
 	}
 
+	@Override
+	@Transactional
+	public Boolean editProfile(Long id, AutoUser user) throws ParseException {
+		Query editProfile = entityManager
+				.createNativeQuery("UPDATE users SET username=?, name=?, date_of_birth=?, password=? WHERE id=?");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(user.getDateOfBirth());
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		editProfile.setParameter(1, user.getUsername()).setParameter(2, user.getName()).setParameter(3, sqlDate)
+				.setParameter(4, user.getPassword()).setParameter(5, id).executeUpdate();
+
+		return true;
+	}
+
 }

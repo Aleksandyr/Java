@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,8 +23,11 @@
 		</select>
 		<label for="role_add_user">Role</label>
 	 	<select class="form-control" name="role" id="role_add_user">
-		    <option value="2" selected="selected">User</option>
-  			<option value="3">Admin</option>
+	 		<c:if test="${not empty authorities}">	
+		        <c:forEach var="auth" items="${authorities}">
+				    <option value="${auth.getId()}">${auth.getAuthority()}</option>
+	  			 </c:forEach>
+			</c:if>
 		</select>
 		<label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" required>

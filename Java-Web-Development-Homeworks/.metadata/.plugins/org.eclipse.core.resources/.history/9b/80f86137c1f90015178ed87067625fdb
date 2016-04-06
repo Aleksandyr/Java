@@ -1,8 +1,0 @@
-package bg.jwd.library.controller.client;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@RequestMapping(value = "/client")
-public class ClientController {
-
-}

@@ -20,5 +20,7 @@ public interface UserDao {
 
 	Boolean editUserFromAdminById(Long id, int status);
 
+	Boolean editProfile(Long id, AutoUser user) throws ParseException;
+
 	Boolean addUser(AutoUser user) throws ParseException;
 }

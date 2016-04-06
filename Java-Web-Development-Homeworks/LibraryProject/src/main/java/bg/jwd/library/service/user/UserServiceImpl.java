@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
 	public AutoUser getUserByUsername(String username) {
 		return userDao.getUserByUsername(username);
 	}
+
+	@Override
+	public Boolean editProfile(Long id, AutoUser user) throws ParseException {
+		return userDao.editProfile(id, user);
+	}
 }

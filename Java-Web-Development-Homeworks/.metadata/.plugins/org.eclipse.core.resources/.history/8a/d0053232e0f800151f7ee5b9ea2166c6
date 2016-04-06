@@ -1,5 +1,0 @@
-package bg.jwd.library.security;
-
-public class UserDetailsServiceImpl implements UserDetailsService {
-
-}

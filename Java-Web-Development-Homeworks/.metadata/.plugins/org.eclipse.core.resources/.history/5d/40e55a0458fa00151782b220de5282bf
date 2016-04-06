@@ -1,5 +1,0 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-<spring:url value="/resources/style/style.css" var="mainCss" />
-
-<link href="${mainCss}" rel="stylesheet" />

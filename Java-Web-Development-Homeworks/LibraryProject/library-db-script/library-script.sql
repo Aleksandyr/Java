@@ -130,3 +130,19 @@ ALTER TABLE user_authority ADD FOREIGN KEY (authority_id) REFERENCES authorities
 ALTER TABLE lends ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 ALTER TABLE lends ADD FOREIGN KEY (book_id) REFERENCES books(id);
+
+
+---------------------
+-- INSERT into tables
+---------------------
+
+-- INSERT into authorities
+INSERT INTO authorities (authority) VALUES ('ROLE_USER')
+
+INSERT INTO authorities (authority) VALUES ('ROLE_ADMIN')
+
+-- INSERT into users
+INSERT INTO users (name, username, status, password, date_of_birth, pid)
+VALUES ('asd','asd', 1, '0192023a7bbd73250516f069df18b500', '28-APR-92', '912-9324-1231') --password (admin123)
+
+-- INSERT into user_authority

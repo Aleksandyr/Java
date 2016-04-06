@@ -5,11 +5,14 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bg.jwd.library.constants.UrlConstants;
+import bg.jwd.library.entity.user.Authority;
 import bg.jwd.library.entity.user.AutoUser;
+import bg.jwd.library.security.User;
 import bg.jwd.library.service.authority.AuthorityService;
 import bg.jwd.library.service.user.UserService;
 import bg.jwd.library.utils.UserUtils;
@@ -37,8 +42,9 @@ public class UserController {
 	@RequestMapping(value = UrlConstants.ALL_USERS_URL, method = RequestMethod.GET)
 	public String getAllUsersPage(Model model) {
 		model.addAttribute("users", userService.getAllUsers());
-		model.addAttribute("userRegisterUrl", UrlConstants.USER_REGISTER_URL);
-		model.addAttribute("addUserUrl", UrlConstants.ADD_USER_URL);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+		model.addAttribute("username", user.getUsername());
 		model.addAttribute("user", UserUtils.getUser());
 
 		return "users";
@@ -103,6 +109,10 @@ public class UserController {
 
 	@RequestMapping(value = UrlConstants.ADD_USER_URL, method = RequestMethod.GET)
 	public String addUserPage(Model model) {
+
+		List<Authority> authorities = this.authorityService.getAllAuthorities();
+		model.addAttribute("authorities", authorities);
+
 		return "addUser";
 	}
 
@@ -119,12 +129,16 @@ public class UserController {
 		if (checkIfUserExist == null) {
 			Boolean isAdded = this.userService.addUser(user);
 			AutoUser userFromDb = this.userService.getUserByUsername(username);
-			int role = Integer.parseInt(request.getParameter("role"));
-			Boolean isUserAddedToRol = this.authorityService.addUserAuthority(userFromDb.getId(), role);
 
 			if (isAdded == true) {
-				return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
+				int role = Integer.parseInt(request.getParameter("role"));
+				Boolean isUserAddedToRol = this.authorityService.addUserAuthority(userFromDb.getId(), role);
 
+				if (isUserAddedToRol == true) {
+					return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
+				} else {
+					return "addUser";
+				}
 			} else {
 				return "addUser";
 			}

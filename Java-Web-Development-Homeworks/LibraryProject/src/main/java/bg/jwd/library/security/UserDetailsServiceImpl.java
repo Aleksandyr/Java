@@ -28,10 +28,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
 			}
 
-			return new User(autoUser.getUsername(), autoUser.getPassword(), authorities);
+			return new User(autoUser.getId(), autoUser.getUsername(), autoUser.getPassword(), authorities);
 		}
 
-		return new User("invalid", "invalid", new ArrayList<>());
+		return new User(123L, "invalid", "invalid", new ArrayList<>());
 	}
 
 }

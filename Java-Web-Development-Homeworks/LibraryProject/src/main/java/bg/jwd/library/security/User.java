@@ -15,15 +15,17 @@ public class User implements UserDetails {
 	private boolean enabled;
 	private String username;
 	private String password;
+	private Long id;
 	private Collection<GrantedAuthority> authorities;
 
-	public User(String username, String password, Collection<GrantedAuthority> authorities) {
+	public User(Long id, String username, String password, Collection<GrantedAuthority> authorities) {
 		this.enabled = true;
 		this.accountNonExpired = true;
 		this.credentialsNonExpired = true;
 		this.accountNonLocked = true;
 		this.username = username;
 		this.password = password;
+		this.id = id;
 		this.authorities = authorities;
 	}
 
@@ -92,5 +94,13 @@ public class User implements UserDetails {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

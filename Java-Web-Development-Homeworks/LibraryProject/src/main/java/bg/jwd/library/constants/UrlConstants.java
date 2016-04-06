@@ -16,12 +16,14 @@ public class UrlConstants {
 	public static final String USER_LOGOUT_URL = "/logout";
 
 	// User urls
-	public static final String USER_REGISTER_URL = "/register";
+	public static final String BASE_USER_URL = "/users";
+	public static final String ALL_USERS_URL = "/all";
 	public static final String ADD_USER_URL = "/add";
 	public static final String DELETE_USER_URL = "/delete";
 	public static final String EDIT_USER_URL = "/edit";
 
-	// Client urls
-	public static final String BASE_USER_URL = "/users";
-	public static final String ALL_USERS_URL = "/all";
+	// Prifle urls
+	public static final String BASE_PROFILE_URL = "/profile";
+	public static final String SHOW_PROFILE_URL = "/show";
+	public static final String EDIT_PROFILE_URL = "/edit";
 }
