@@ -1,0 +1,47 @@
+package bg.jwd.library.entity.book;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import bg.jwd.library.entity.user.Authority;
+
+public class Book implements Serializable {
+
+	private static final long serialVersionUID = 315247235922550809L;
+	
+	@Id
+	@Column(name = "ID")
+	private long id;
+
+	@Column(name = "NAME")
+	private String name;
+	
+	@Column(name = "AUTHOR")
+	private String author;
+
+	@Column(name = "PASSWORD")
+	private String password;
+
+	@Column(name = "STATUS")
+	private String status;
+
+	@Column(name = "PID")
+	private String pid;
+
+	@Column(name = "DATE_OF_BIRTH")
+	private String dateOfBirth;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "USER_AUTHORITY", joinColumns = {
+			@JoinColumn(name = "USER_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") })
+	private List<Authority> authorities;
+
+}

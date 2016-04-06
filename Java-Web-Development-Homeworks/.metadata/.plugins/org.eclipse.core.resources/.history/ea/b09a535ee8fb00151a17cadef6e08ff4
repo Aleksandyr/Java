@@ -1,0 +1,7 @@
+package bg.jwd.library.entity.book;
+
+import java.io.Serializable;
+
+public class Book implements Serializable {
+
+}

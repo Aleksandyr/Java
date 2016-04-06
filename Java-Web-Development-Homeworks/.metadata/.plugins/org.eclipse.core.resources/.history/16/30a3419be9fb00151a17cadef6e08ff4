@@ -1,0 +1,5 @@
+package bg.jwd.library.service.book;
+
+public class BookServiceImpl {
+
+}

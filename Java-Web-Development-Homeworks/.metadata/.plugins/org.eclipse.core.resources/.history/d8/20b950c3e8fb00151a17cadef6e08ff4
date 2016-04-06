@@ -1,0 +1,9 @@
+package bg.jwd.library.entity.book;
+
+import java.io.Serializable;
+
+public class Book implements Serializable {
+
+	private static final long serialVersionUID = 315247235922550809L;
+
+}
