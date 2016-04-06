@@ -1,0 +1,10 @@
+package bg.jwd.library.service.lend;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface LendService {
+
+	Boolean lendBook();
+
+}

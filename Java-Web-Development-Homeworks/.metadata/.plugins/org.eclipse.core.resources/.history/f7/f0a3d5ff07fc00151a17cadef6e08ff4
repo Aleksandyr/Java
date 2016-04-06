@@ -1,0 +1,49 @@
+package bg.jwd.library.entity.book;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "LENDS")
+public class Lend implements Serializable {
+
+	private static final long serialVersionUID = -5750570126279129194L;
+
+	@Id
+	@Column(name = "ID")
+	private long id;
+
+	@Column(name = "DATE_OF_LENDING")
+	private String dateOfLending;
+
+	@Column(name = "DATE_OF_RETURN")
+	private String dateOfReturn;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getDateOfLending() {
+		return dateOfLending;
+	}
+
+	public void setDateOfLending(String dateOfLending) {
+		this.dateOfLending = dateOfLending;
+	}
+
+	public String getDateOfReturn() {
+		return dateOfReturn;
+	}
+
+	public void setDateOfReturn(String dateOfReturn) {
+		this.dateOfReturn = dateOfReturn;
+	}
+}

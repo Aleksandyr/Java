@@ -1,0 +1,12 @@
+package bg.jwd.library.controller.lend;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import bg.jwd.library.constants.UrlConstants;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_BOOK_URL)
+public class LendController {
+
+}

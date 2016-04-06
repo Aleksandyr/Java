@@ -1,15 +1,10 @@
 package bg.jwd.library.entity.book;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,12 +25,6 @@ public class Book implements Serializable {
 
 	@Column(name = "YEAR_OF_POUBLISHING")
 	private String yearOfPoublishing;
-
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "LENDS", joinColumns = {
-			@JoinColumn(name = "BOOK_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "USER_ID", referencedColumnName = "ID") })
-	private List<Lend> lends;
 
 	public long getId() {
 		return id;
@@ -67,14 +56,6 @@ public class Book implements Serializable {
 
 	public void setYearOfPoublishing(String yearOfPoublishing) {
 		this.yearOfPoublishing = yearOfPoublishing;
-	}
-
-	public List<Lend> getLends() {
-		return lends;
-	}
-
-	public void setLends(List<Lend> lends) {
-		this.lends = lends;
 	}
 
 }

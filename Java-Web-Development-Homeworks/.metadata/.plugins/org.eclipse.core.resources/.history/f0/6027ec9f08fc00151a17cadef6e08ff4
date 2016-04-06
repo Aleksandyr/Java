@@ -1,0 +1,10 @@
+package bg.jwd.library.service.lend;
+
+import java.sql.Date;
+import java.text.ParseException;
+
+public interface LendService {
+
+	Boolean lendBook(Long userId, Long bookId, Date dateOfLending, Date dateOfReturn) throws ParseException;
+
+}

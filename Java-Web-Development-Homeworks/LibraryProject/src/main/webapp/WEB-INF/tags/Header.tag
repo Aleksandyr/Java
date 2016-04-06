@@ -13,7 +13,9 @@
 			  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
 			    <li><a href="/library/books/all">All Books</a></li>
-			    <li><a href="/library/books/add">Add Books</a></li>
+			    <sec:authorize access="hasRole('ROLE_ADMIN')">
+			    	<li><a href="/library/books/add">Add Books</a></li>
+			    </sec:authorize>
 			    <li><a href="/library/books/my">My Books</a></li>
 			  </ul>
 			</li>

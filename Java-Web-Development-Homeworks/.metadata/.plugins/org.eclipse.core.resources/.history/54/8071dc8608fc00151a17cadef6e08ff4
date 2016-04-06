@@ -1,0 +1,8 @@
+package bg.jwd.library.dao.lend;
+
+import java.sql.Date;
+import java.text.ParseException;
+
+public interface LendDao {
+	Boolean lendBook(Long userId, Long bookId, Date dateOfLending, Date dateOfReturn) throws ParseException;
+}

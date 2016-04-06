@@ -1,0 +1,8 @@
+package bg.jwd.library.service.lend;
+
+@Service
+public interface LendService {
+	
+	Boolean lendBook();
+
+}

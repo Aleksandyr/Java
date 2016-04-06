@@ -69,6 +69,18 @@
 &lt;/ul&gt;</content>
   </entry>
   <entry>
+    <title>SpringOne2GX 2015 replay: Reactive Web Applications</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/04/05/springone2gx-2015-replay-reactive-web-applications" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-04-06:2454</id>
+    <updated>2016-04-05T14:39:00Z</updated>
+    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Stephane Maldini, Rossen Stoyanchev&lt;br/&gt;Web / Javascript track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/reactive-web-applications-53170985"&gt;http://www.slideshare.net/SpringCentral/reactive-web-applications-53170985&lt;/a&gt;&lt;br/&gt;In our previous talk &amp;ldquo;Intro to Reactive Programming&amp;rdquo; we defined reactive programming and provided details around key initiatives such as Reactive Streams and ReactiveX. In this talk we&amp;rsquo;ll focus on where we are today with building reactive web applications. We&amp;rsquo;ll take a look at the choice of runtimes, how Reactive Streams may be applied to network I/O, and what the programming model may look like. While this is a forward looking talk, we&amp;rsquo;ll spend plenty of time demoing code built with with back-pressure ready libraries available today.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/f4Teko8vauk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
+  <entry>
     <title>1 Stream, 2 Applications, and 3 Dependencies for Spring Cloud Data Flow</title>
     <link rel="alternate" href="https://spring.io/blog/2016/04/05/1-stream-2-applications-and-3-dependencies-for-spring-cloud-data-flow" />
     <category term="engineering" label="Engineering" />
@@ -792,22 +804,5 @@ public class VoteHandler {&#xD;
 &lt;div class="paragraph"&gt;&#xD;
 &lt;p&gt;If you happen to be in Barcelona mid May (never a bad time to be in Barcelona anyway!), don't miss the chance to join the &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where I'll be presenting on the latest and greatest in Spring in general. Also, the registration for &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; (early August, Las Vegas) has opened recently, in case you want to benefit from early bird ticket pricing.&lt;/p&gt;&#xD;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security SAML 1.0.2 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/21/spring-security-saml-1-0-2-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2016-03-18:2432</id>
-    <updated>2016-03-21T14:03:39Z</updated>
-    <content type="html">&lt;p&gt;I&amp;rsquo;m pleased to announce the release of Spring Security SAML 1.0.2. Among other things, this release provides a critical update that resolves Deadlock in MetadataManager. Updating is recommended for everyone.&lt;/p&gt;
-&lt;div class="callout"&gt;&#xD;
-&lt;div class="callout-title"&gt;Upcoming Conferences&lt;/div&gt;&#xD;
-&lt;p&gt;Make sure to register for &lt;a href="http://www.springio.net/"&gt;Spring I/O conference&lt;/a&gt; where you can learn about the latest and greatest Spring has to offer.&lt;/p&gt;&#xD;
-&lt;p&gt;If you are interested in attending &lt;a href="http://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; make sure you register before the early bird discount ends to save big!&lt;/p&gt;&#xD;
-&lt;/div&gt;
-&lt;p&gt;&lt;a href="https://spring.io/spring-security-saml"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security-saml/docs/1.0.x/reference/html/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-security-saml/issues?q=milestone%3A1.0.2"&gt;Changelog&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -1,0 +1,11 @@
+package bg.jwd.library.service.lend;
+
+import java.text.ParseException;
+
+import bg.jwd.library.entity.book.Lend;
+
+public interface LendService {
+
+	Boolean lendBook(Long userId, Long bookId, Lend lend) throws ParseException;
+
+}

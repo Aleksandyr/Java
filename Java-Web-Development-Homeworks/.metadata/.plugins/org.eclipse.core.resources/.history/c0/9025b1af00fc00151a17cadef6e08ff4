@@ -1,0 +1,22 @@
+package bg.jwd.library.dao.lend;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Repository
+public class LendDaoImpl implements LendDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	@Transactional
+	public Boolean lendBook() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

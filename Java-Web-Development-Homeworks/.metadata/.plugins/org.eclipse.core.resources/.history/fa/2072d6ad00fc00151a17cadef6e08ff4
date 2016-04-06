@@ -1,0 +1,5 @@
+package bg.jwd.library.dao.lend;
+
+public class LendDaoImpl {
+
+}

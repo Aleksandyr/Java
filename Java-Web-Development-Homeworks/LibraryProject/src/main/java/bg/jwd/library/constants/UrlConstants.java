@@ -33,4 +33,8 @@ public class UrlConstants {
 	public static final String DELETE_BOOKS_URL = "/delete";
 	public static final String EDIT_BOOKS_URL = "/edit";
 	public static final String ADD_BOOK_URL = "/add";
+
+	// Books lend urls
+	public static final String BOOK_LEND_URL = "/lend";
+	public static final String BOOK_LEND_ADD_URL = "/add";
 }

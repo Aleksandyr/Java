@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import bg.jwd.library.entity.book.Book;
+
 @Entity
 @Table(name = "USERS")
 public class AutoUser implements Serializable {
@@ -45,6 +47,12 @@ public class AutoUser implements Serializable {
 			@JoinColumn(name = "USER_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
 					@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID") })
 	private List<Authority> authorities;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "LENDS", joinColumns = {
+			@JoinColumn(name = "USER_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "BOOK_ID", referencedColumnName = "ID") })
+	private List<Book> books;
 
 	public String getUsername() {
 		return username;
@@ -108,5 +116,13 @@ public class AutoUser implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 }

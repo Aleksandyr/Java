@@ -24,7 +24,6 @@ import bg.jwd.library.service.book.BookService;
 
 @Controller
 @RequestMapping(UrlConstants.BASE_BOOK_URL)
-@Secured("ROLE_ADMIN")
 public class BookController {
 
 	@Autowired
@@ -43,12 +42,14 @@ public class BookController {
 		return "/book/allBooks";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.GET)
 	public String addBookPage(Model model) {
 
 		return "/book/addBook";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.POST)
 	public String addUser(HttpServletRequest request, @ModelAttribute("book") Book book)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
@@ -62,6 +63,7 @@ public class BookController {
 		}
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.EDIT_BOOKS_URL + "/{id}", method = RequestMethod.GET)
 	public String editBookPage(@PathVariable("id") long bookId, Model model) {
 
@@ -77,6 +79,7 @@ public class BookController {
 		}
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.EDIT_BOOKS_URL + "/{id}", method = RequestMethod.POST)
 	public String editBook(@PathVariable("id") long bookId, Model model, @ModelAttribute("book") Book book)
 			throws ParseException {
@@ -91,6 +94,7 @@ public class BookController {
 		}
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.GET)
 	public String deteleBookPage(@PathVariable("id") long bookId, Model model) {
 
@@ -106,6 +110,7 @@ public class BookController {
 		}
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.POST)
 	public String deleteBook(@PathVariable("id") long bookId, Model model) {
 

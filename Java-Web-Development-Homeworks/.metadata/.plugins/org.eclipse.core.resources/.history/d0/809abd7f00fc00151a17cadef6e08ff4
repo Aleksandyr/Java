@@ -1,0 +1,9 @@
+package bg.jwd.library.dao.lend;
+
+import java.util.List;
+
+import bg.jwd.library.entity.book.Book;
+
+public interface LendDao {
+	Boolean lendBook();
+}

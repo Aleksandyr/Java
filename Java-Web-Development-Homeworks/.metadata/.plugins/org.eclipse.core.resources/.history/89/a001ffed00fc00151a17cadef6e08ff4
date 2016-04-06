@@ -1,0 +1,20 @@
+package bg.jwd.library.service.lend;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import bg.jwd.library.dao.book.BookDao;
+
+@Service
+public class LendServiceImpl implements LendService {
+
+	@Autowired
+	private LendDao lendDao;
+	
+	@Override
+	public Boolean lendBook() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
