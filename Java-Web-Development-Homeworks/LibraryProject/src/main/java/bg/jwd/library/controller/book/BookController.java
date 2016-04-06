@@ -68,4 +68,32 @@ public class BookController {
 		}
 	}
 
+	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.GET)
+	public String deteleBookPage(@PathVariable("id") long bookId, Model model) {
+
+		Book book = this.bookService.getBookById(bookId);
+
+		if (book != null) {
+			model.addAttribute("book", book);
+
+			return "/book/deleteBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
+
+	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.POST)
+	public String deleteBook(@PathVariable("id") long bookId, Model model) {
+
+		Boolean isDeleted = this.bookService.deleteBookById(bookId);
+
+		if (isDeleted == true) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.ALL_BOOKS_URL;
+
+		} else {
+			return "/book/deleteBook";
+		}
+	}
+
 }

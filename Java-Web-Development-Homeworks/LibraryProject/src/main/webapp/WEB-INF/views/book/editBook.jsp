@@ -21,7 +21,7 @@
 	        <input type="text" id="yearOfPoublishing" name="yearOfPoublishing" class="form-control" value="${book.getYearOfPoublishing()}">
 	        
 	        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" />
-			<a class="btn btn-default btn-block" href="/library/users/all/">Cancel</a>
+			<a class="btn btn-default btn-block" href="/library/books/all/">Cancel</a>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       	</form:form>
    	</c:if>

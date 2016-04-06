@@ -53,4 +53,13 @@ public class BookDaoImpl implements BookDao {
 		return true;
 	}
 
+	@Override
+	@Transactional
+	public Boolean deleteBookById(Long id) {
+		Query deleteBookQuery = entityManager.createNativeQuery("DELETE FROM books WHERE id = ?");
+		deleteBookQuery.setParameter(1, id).executeUpdate();
+
+		return true;
+	}
+
 }

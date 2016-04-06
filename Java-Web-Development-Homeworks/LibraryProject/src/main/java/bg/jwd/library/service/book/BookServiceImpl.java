@@ -29,4 +29,9 @@ public class BookServiceImpl implements BookService {
 	public Boolean editBookFromAdminById(Long id, Book book) throws ParseException {
 		return BookDao.editBookFromAdminById(id, book);
 	}
+
+	@Override
+	public Boolean deleteBookById(Long id) {
+		return BookDao.deleteBookById(id);
+	}
 }
