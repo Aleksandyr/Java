@@ -25,4 +25,9 @@ public class LendServiceImpl implements LendService {
 		return this.lendDao.allLendsBook();
 	}
 
+	@Override
+	public LendBookInfo getLendBook(Long lendId) throws ParseException {
+		return this.lendDao.getLendBook(lendId);
+	}
+
 }

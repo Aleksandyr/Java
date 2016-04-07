@@ -10,4 +10,6 @@ public interface LendService {
 	Boolean lendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn) throws ParseException;
 
 	List<LendBookInfo> allLendsBook() throws ParseException;
+
+	LendBookInfo getLendBook(Long lendId) throws ParseException;
 }

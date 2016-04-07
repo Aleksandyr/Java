@@ -82,4 +82,23 @@ public class LendController {
 			return "/book/editBook";
 		}
 	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.EDIT_LEND_BOOK_URL + "/{bookId}/{id}", method = RequestMethod.GET)
+	public String editBookPage(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Book book = this.bookService.getBookById(bookId);
+		LendBookInfo lendBook = this.lendService.getLendBook(lendId);
+
+		if (book != null && lendBook != null) {
+			model.addAttribute("book", book);
+			model.addAttribute("lendBook", lendBook);
+
+			return "/book/editLendBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
 }

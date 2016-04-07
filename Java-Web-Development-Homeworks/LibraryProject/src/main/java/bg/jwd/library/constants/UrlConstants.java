@@ -39,4 +39,5 @@ public class UrlConstants {
 	public static final String BOOK_LEND_URL = "/lends";
 	public static final String BOOK_LEND_ADD_URL = "/add";
 	public static final String BOOK_ALL_LENDS_URL = "/all";
+	public static final String EDIT_LEND_BOOK_URL = "/edit";
 }

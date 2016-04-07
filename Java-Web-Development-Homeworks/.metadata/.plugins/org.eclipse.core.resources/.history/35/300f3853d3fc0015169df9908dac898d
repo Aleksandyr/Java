@@ -1,0 +1,80 @@
+package bg.jwd.library.dao.lend;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import bg.jwd.library.dto.lend.LendBookInfo;
+
+@Repository
+public class LendDaoImpl implements LendDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	@Transactional
+	public Boolean lendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn) throws ParseException {
+		Query addBook = entityManager.createNativeQuery(
+				"INSERT INTO lends (user_id, book_id, date_of_lending, date_of_return)" + "VALUES(?, ?, ?, ?)");
+
+		java.util.Date convertDateOfLendDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfLending);
+		java.sql.Date sqlDateOfLend = new java.sql.Date(convertDateOfLendDate.getTime());
+
+		java.util.Date convertDateOfReturn = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfReturn);
+		java.sql.Date sqlDateOfReturn = new java.sql.Date(convertDateOfReturn.getTime());
+
+		addBook.setParameter(1, userId).setParameter(2, bookId).setParameter(3, sqlDateOfLend)
+				.setParameter(4, sqlDateOfReturn).executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	public List<LendBookInfo> allLendsBook() throws ParseException {
+		Query getLendBookQuery = entityManager.createNativeQuery(
+				"SELECT l.id AS id, u.id AS userId, b.id as bookId, u.username, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id");
+
+		List result = getLendBookQuery.getResultList();
+		List<LendBookInfo> books = new ArrayList<LendBookInfo>();
+
+		for (Iterator i = result.iterator(); i.hasNext();) {
+			Object[] values = (Object[]) i.next();
+
+			Long lendId = BigDecimal.longValue(values[0]);
+			Long userId = (Long) values[1];
+			Long bookId = (Long) values[2];
+			String username = (String) values[3];
+			String name = (String) values[4];
+			String author = (String) values[5];
+			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[6]);
+			String dateOfLending = convertTimestampToDate((Timestamp) values[7]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[8]);
+			LendBookInfo book = new LendBookInfo(lendId, userId, bookId, username, name, author, yearOfPoublishing,
+					dateOfLending, dateOfReturn);
+			books.add(book);
+
+		}
+
+		return books;
+	}
+
+	private String convertTimestampToDate(Timestamp timestamp) throws ParseException {
+		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
+
+		return dateFormat;
+	}
+
+}

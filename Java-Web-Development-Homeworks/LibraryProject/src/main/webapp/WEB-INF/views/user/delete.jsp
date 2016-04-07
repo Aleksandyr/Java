@@ -12,7 +12,7 @@
 <body>
 	<c:if test="${not empty user}">
 		<form:form style="width:20%; height: 20%; margin-left: auto; margin-right: auto;" name="delete" class="form-delete" id="delete-form" action="/library/users/delete/${user.getId()}" modelAttribute="users" method="POST">
-	        <h2 class="form-signin-heading">Delete form</h2>
+	        <h2 class="form-signin-heading">Delete user</h2>
 	        <label for="username">Username</label>
 	        <input type="text" id="username" name="username" class="form-control" placeholder="${user.getUsername()}" placeholder>
 	        <label for="name">Name</label>

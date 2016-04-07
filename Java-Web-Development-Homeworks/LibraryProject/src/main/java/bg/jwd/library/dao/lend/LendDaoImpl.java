@@ -1,5 +1,6 @@
 package bg.jwd.library.dao.lend;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,7 @@ public class LendDaoImpl implements LendDao {
 	@Override
 	public List<LendBookInfo> allLendsBook() throws ParseException {
 		Query getLendBookQuery = entityManager.createNativeQuery(
-				"SELECT u.username, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+				"SELECT l.id AS id, u.id AS userId, b.id as bookId, u.username, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
 						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id");
 
 		List result = getLendBookQuery.getResultList();
@@ -52,14 +53,17 @@ public class LendDaoImpl implements LendDao {
 		for (Iterator i = result.iterator(); i.hasNext();) {
 			Object[] values = (Object[]) i.next();
 
-			String username = (String) values[0];
-			String name = (String) values[1];
-			String author = (String) values[2];
-			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[3]);
-			String dateOfLending = convertTimestampToDate((Timestamp) values[4]);
-			String dateOfReturn = convertTimestampToDate((Timestamp) values[5]);
-			LendBookInfo book = new LendBookInfo(username, name, author, yearOfPoublishing, dateOfLending,
-					dateOfReturn);
+			Long lendId = ((BigDecimal) values[0]).longValue();
+			Long userId = ((BigDecimal) values[1]).longValue();
+			Long bookId = ((BigDecimal) values[2]).longValue();
+			String username = (String) values[3];
+			String name = (String) values[4];
+			String author = (String) values[5];
+			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[6]);
+			String dateOfLending = convertTimestampToDate((Timestamp) values[7]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[8]);
+			LendBookInfo book = new LendBookInfo(lendId, userId, bookId, username, name, author, yearOfPoublishing,
+					dateOfLending, dateOfReturn);
 			books.add(book);
 
 		}
@@ -67,10 +71,34 @@ public class LendDaoImpl implements LendDao {
 		return books;
 	}
 
+	@Override
+	public LendBookInfo getLendBook(Long lendId) throws ParseException {
+		Query getLendBookQuery = entityManager
+				.createNativeQuery("SELECT id, date_of_lending, date_of_return FROM lends WHERE id = ?");
+
+		getLendBookQuery.setParameter(1, lendId);
+
+		List result = getLendBookQuery.getResultList();
+		List<LendBookInfo> lends = new ArrayList<LendBookInfo>();
+
+		for (Iterator i = result.iterator(); i.hasNext();) {
+			Object[] values = (Object[]) i.next();
+
+			Long lendIdRes = ((BigDecimal) values[0]).longValue();
+			String dateOfLending = convertTimestampToDate((Timestamp) values[1]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[2]);
+
+			LendBookInfo lend = new LendBookInfo(lendIdRes, dateOfLending, dateOfReturn);
+			lends.add(lend);
+
+		}
+
+		return lends.size() != 0 ? lends.get(0) : null;
+	}
+
 	private String convertTimestampToDate(Timestamp timestamp) throws ParseException {
 		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
 
 		return dateFormat;
 	}
-
 }

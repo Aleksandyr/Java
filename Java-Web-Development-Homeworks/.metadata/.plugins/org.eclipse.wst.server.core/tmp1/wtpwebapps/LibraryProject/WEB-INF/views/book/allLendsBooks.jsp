@@ -42,20 +42,20 @@
 						</tr>
 					</thead>
 					<tbody>
-				        <c:forEach var="b" items="${lendsBook}">
+				        <c:forEach var="lb" items="${lendsBook}">
 					        <tr>   
-					        	<td>${b.getUsername()}</td>
-								<td>${b.getName()}</td>
-								<td>${b.getAuthor()}</td>
-								<td>${b.getYearOfPoublishing()}</td>
-								<td>${b.getDateOfLending()}</td>
-								<td>${b.getDateOfReturn()}</td>
+					        	<td>${lb.getUsername()}</td>
+								<td>${lb.getName()}</td>
+								<td>${lb.getAuthor()}</td>
+								<td>${lb.getYearOfPoublishing()}</td>
+								<td>${lb.getDateOfLending()}</td>
+								<td>${lb.getDateOfReturn()}</td>
 								
 								<td>
-									<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/lends/edit/${u.getId()}';">
+									<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/lends/edit/${lb.getBookId()}/${lb.getId()}';">
 								</td>
 								<td>
-									<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/lends/delete/${u.getId()}';">
+									<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/lends/delete/${lb.getBookId()}/${lb.getId()}';">
 								</td>						
   			                </tr>
 				        </c:forEach>

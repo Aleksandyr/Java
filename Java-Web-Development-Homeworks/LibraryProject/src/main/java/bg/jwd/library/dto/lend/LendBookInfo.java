@@ -5,6 +5,12 @@ import java.io.Serializable;
 public class LendBookInfo implements Serializable {
 	private static final long serialVersionUID = -1866782762304912715L;
 
+	private Long id;
+
+	private Long userId;
+
+	private Long bookId;
+
 	private String username;
 
 	private String name;
@@ -17,8 +23,17 @@ public class LendBookInfo implements Serializable {
 
 	private String dateOfReturn;
 
-	public LendBookInfo(String username, String name, String author, String yearOfPoublishing, String dateOfLending,
-			String dateOfReturn) {
+	public LendBookInfo(Long id, String dateOfLending, String dateOfReturn) {
+		this.id = id;
+		this.dateOfLending = dateOfLending;
+		this.dateOfReturn = dateOfReturn;
+	}
+
+	public LendBookInfo(Long id, Long userId, Long bookId, String username, String name, String author,
+			String yearOfPoublishing, String dateOfLending, String dateOfReturn) {
+		this.id = id;
+		this.userId = userId;
+		this.bookId = bookId;
 		this.username = username;
 		this.name = name;
 		this.author = author;
@@ -73,5 +88,29 @@ public class LendBookInfo implements Serializable {
 
 	public void setDateOfReturn(String dateOfReturn) {
 		this.dateOfReturn = dateOfReturn;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 }
