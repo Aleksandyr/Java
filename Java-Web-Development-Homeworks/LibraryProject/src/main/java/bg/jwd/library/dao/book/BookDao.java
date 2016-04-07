@@ -3,6 +3,7 @@ package bg.jwd.library.dao.book;
 import java.text.ParseException;
 import java.util.List;
 
+import bg.jwd.library.dto.book.MyBook;
 import bg.jwd.library.entity.book.Book;
 
 public interface BookDao {
@@ -15,4 +16,6 @@ public interface BookDao {
 	Boolean deleteBookById(Long id);
 
 	Boolean addBook(Book book) throws ParseException;
+
+	List<MyBook> getMyBooks(Long userId) throws ParseException;
 }

@@ -1,0 +1,72 @@
+package bg.jwd.library.dto.book;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+
+@Entity  
+public class MyBooks implements Serializable {
+
+	private static final long serialVersionUID = 1423839051291723609L;
+
+	@GeneratedValue
+	@Column(name = "NAME")
+	private String name;
+
+	@GeneratedValue
+	@Column(name = "AUTHOR")
+	private String author;
+
+	@GeneratedValue
+	@Column(name = "YEAR_OF_POUBLISHING")
+	private String yearOfPoublishing;
+
+	@GeneratedValue
+	@Column(name = "DATE_OF_LENDING")
+	private String dateOfLending;
+
+	@GeneratedValue
+	@Column(name = "DATE_OF_RETURN")
+	private String dateOfReturn;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getYearOfPoublishing() {
+		return yearOfPoublishing;
+	}
+
+	public void setYearOfPoublishing(String yearOfPoublishing) {
+		this.yearOfPoublishing = yearOfPoublishing;
+	}
+
+	public String getDateOfLending() {
+		return dateOfLending;
+	}
+
+	public void setDateOfLending(String dateOfLending) {
+		this.dateOfLending = dateOfLending;
+	}
+
+	public String getDateOfReturn() {
+		return dateOfReturn;
+	}
+
+	public void setDateOfReturn(String dateOfReturn) {
+		this.dateOfReturn = dateOfReturn;
+	}
+}

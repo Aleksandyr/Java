@@ -1,7 +1,10 @@
 package bg.jwd.library.dao.book;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,6 +14,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import bg.jwd.library.dto.book.MyBook;
 import bg.jwd.library.entity.book.Book;
 
 @Repository
@@ -21,7 +25,8 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public List<Book> getAllBooks() {
-		Query getAllBooksQuery = entityManager.createNativeQuery("SELECT * FROM books", Book.class);
+		Query getAllBooksQuery = entityManager
+				.createNativeQuery("SELECT b.id, b.name, b.author, b.year_of_poublishing FROM books b", Book.class);
 
 		List<Book> books = getAllBooksQuery.getResultList();
 
@@ -30,7 +35,8 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public Book getBookById(Long id) {
-		Query getBookById = entityManager.createNativeQuery("SELECT * FROM books WHERE id = ?", Book.class);
+		Query getBookById = entityManager.createNativeQuery(
+				"SELECT b.id, b.name, b.author, b.year_of_poublishing FROM books b WHERE id = ?", Book.class);
 		getBookById.setParameter(1, id);
 
 		List<Book> books = getBookById.getResultList();
@@ -75,6 +81,43 @@ public class BookDaoImpl implements BookDao {
 				.executeUpdate();
 
 		return true;
+	}
+
+	@Override
+	public List<MyBook> getMyBooks(Long userId) throws ParseException {
+		Query getMyBooksQuery = entityManager.createNativeQuery(
+				"SELECT b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id"
+						+ " WHERE u.id = ?");
+
+		getMyBooksQuery.setParameter(1, userId);
+
+		List result = getMyBooksQuery.getResultList();
+		List<MyBook> myBooks = new ArrayList<MyBook>();
+
+		for (Iterator i = result.iterator(); i.hasNext();) {
+			Object[] values = (Object[]) i.next();
+			// out.println(++count + ": " + values[0] + ", " + values[1] + "<br
+			// />");
+
+			String name = (String) values[0];
+			String author = (String) values[1];
+			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[2]);
+			String dateOfLending = convertTimestampToDate((Timestamp) values[3]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[4]);
+			MyBook book = new MyBook(name, author, yearOfPoublishing, dateOfLending, dateOfReturn);
+			myBooks.add(book);
+
+		}
+
+		return myBooks;
+	}
+
+	private String convertTimestampToDate(Timestamp timestamp) throws ParseException {
+		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
+		// String string = dateFormat.format(new Date());
+
+		return dateFormat;
 	}
 
 }

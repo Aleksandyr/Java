@@ -13,60 +13,62 @@
 <body>
 	<ct:PageTag>
 		<jsp:body>
-			<c:if test="${not empty books}">	
-		        <c:forEach var="b" items="${books}">		        
-					<div class = "list-group">
-					   <a href = "#" class = "list-group-item active">
-					      <h4 class = "list-group-item-heading">
-					         ${b.getName()}
-					      </h4>
-					       <table style="margin-left: 80%">
-								<tr>
-							       <sec:authorize access="hasRole('ROLE_ADMIN')">
-										<td>
-								     	 <form:form modelAttribute="users" action="/library/books/edit/${b.getId()}" id="deleteButtonForm" method="get" >
-					                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
-					               			<td><input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" /></td>
-					               		</form:form>
-										</td>
-										<td>
-										<form:form modelAttribute="users" action="/library/books/delete/${b.getId()}" id="deleteButtonForm" method="get" >
-					               			<td><input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Delete" /></td>
-					               		</form:form>
-					               		</td>
-    				               	</sec:authorize>
-				               		<td>
-				               		<form:form modelAttribute="users" action="/library/books/lend/add/${b.getId()}" id="deleteButtonForm" method="get" >
-				               			<td><input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Lend" /></td>
-				               		</form:form>
-				               		</td>
-			               		</tr>
-		               		</table>
-					   </a>
-					   
-					   <a href = "#" class = "list-group-item">
-					      <h4 class = "list-group-item-heading">
-					         ${b.getAuthor()}
-					      </h4>
-					      
-					      <p class = "list-group-item-text">
-					         You will get a free domain registration with website pages.
-					      </p>
-					   </a>
-					   
-					   <a href = "#" class = "list-group-item">
-					      <h4 class = "list-group-item-heading">
-					         ${b.getYearOfPoublishing()}
-					      </h4>
-					      
-					      <p class = "list-group-item-text">
-					         We provide 24*7 support.
-					      </p>
-					   </a>
-					</div>
-				</c:forEach>
-			</c:if>
-		</jsp:body>
-	</ct:PageTag>
+		<div id="myModal" class="modal hide fade">
+		    <div class="modal-header">
+		        <button type="button" class="close"></button>
+		        <h3 id="myModalLabel">Delete</h3>
+		    </div>
+		    <div class="modal-body">
+		        <p></p>
+		    </div>
+		    <div class="modal-footer">
+		        <button class="btn">Close</button>
+		        <button class="btn red" id="btnYes">Confirm</button>
+		    </div>
+	   </div>
+	   <c:choose>
+	   		<c:when test="${not empty books}">	
+			   <table class="table table-striped table-hover table-users">
+					<thead>
+						<tr>
+							
+							<th class="hidden-phone">Name</th>
+							<th>Author</th>
+							<th>Date of publishing</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+				        <c:forEach var="b" items="${books}">
+					        <tr>   
+								<td class="hidden-phone">${b.getName()}</td>
+								<td>${b.getAuthor()}</td>
+								<td>${b.getYearOfPoublishing()}</td>
+															   			               	  					
+								<form:form modelAttribute="book" action="/library/books/edit/${b.getId()}" id="deleteButtonForm" method="get" >
+			                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
+			               			<td><input class="btn-primary btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
+			               		</form:form>
+			               		
+			               		<form:form modelAttribute="book" action="/library/books/lend/add/${b.getId()}" id="deleteButtonForm" method="get" >
+			                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
+			               			<td><input class="btn-success btn mini red-stripe" name="submit" type="submit" value="Lend" /></td>
+			               		</form:form>
+								
+								<form:form modelAttribute="book" action="/library/books/delete/${b.getId()}" id="deleteButtonForm" method="get" >
+			               			<td><input class="btn-danger btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
+			               		</form:form>
+			               </tr>
+				        </c:forEach>
+		           </tbody>
+		  		</table>
+			</c:when>
+			<c:otherwise>
+				<h1>No books!</h1>
+			</c:otherwise>
+		</c:choose>
+	</jsp:body>
+</ct:PageTag>
 </body>
 </html>

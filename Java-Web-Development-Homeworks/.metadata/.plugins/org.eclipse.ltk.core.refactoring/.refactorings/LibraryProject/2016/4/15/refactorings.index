@@ -33,3 +33,5 @@
 1459942469979	Move 'editProfile.jsp' to 'profile'
 1459942585645	Move 'home.jsp' to 'home'
 1459954699251	Delete element
+1460026495427	Move 'login.jsp' to 'user'
+1460038489294	Rename type 'MyBooks'

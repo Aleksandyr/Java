@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bg.jwd.library.dao.book.BookDao;
+import bg.jwd.library.dto.book.MyBook;
 import bg.jwd.library.entity.book.Book;
 
 @Service
@@ -38,5 +39,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Boolean addBook(Book book) throws ParseException {
 		return BookDao.addBook(book);
+	}
+
+	@Override
+	public List<MyBook> getMyBooks(Long userId) throws ParseException {
+		return BookDao.getMyBooks(userId);
 	}
 }

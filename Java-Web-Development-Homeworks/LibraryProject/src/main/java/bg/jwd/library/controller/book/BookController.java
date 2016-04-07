@@ -42,6 +42,19 @@ public class BookController {
 		return "/book/allBooks";
 	}
 
+	@RequestMapping(value = UrlConstants.MY_BOOKS_URL, method = RequestMethod.GET)
+	public String getMyBooksPage(Model model) throws ParseException {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+
+		model.addAttribute("myBooks", bookService.getMyBooks(user.getId()));
+
+		model.addAttribute("username", user.getUsername());
+
+		return "/book/myBooks";
+	}
+
 	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.GET)
 	public String addBookPage(Model model) {

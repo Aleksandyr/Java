@@ -16,7 +16,7 @@ public class AccountController {
 
 	@RequestMapping(value = UrlConstants.USER_LOGIN_URL, method = RequestMethod.GET)
 	public String loginPage(HttpServletRequest request) {
-		return "login";
+		return "/user/login";
 	}
 
 	@RequestMapping(value = UrlConstants.USER_LOGOUT_URL, method = RequestMethod.GET)

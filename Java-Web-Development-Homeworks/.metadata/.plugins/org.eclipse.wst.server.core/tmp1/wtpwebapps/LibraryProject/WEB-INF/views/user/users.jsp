@@ -63,11 +63,11 @@
 														   			               	  					
 							<form:form modelAttribute="users" action="/library/users/edit/${u.getId()}" id="deleteButtonForm" method="get" >
 		                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
-		               			<td><input class="confirm-delete btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
+		               			<td><input class="btn-primary btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
 		               		</form:form>
 							
 							<form:form modelAttribute="users" action="/library/users/delete/${u.getId()}" id="deleteButtonForm" method="get" >
-		               			<td><input class="confirm-delete btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
+		               			<td><input class="btn-danger btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
 		               		</form:form>
 		               </tr>
 			        </c:forEach>

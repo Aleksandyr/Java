@@ -1,0 +1,56 @@
+package bg.jwd.library.dto.book;
+
+import javax.persistence.Column;
+
+public class MyBooks {
+
+	private String name;
+
+	private String author;
+
+	private String yearOfPoublishing;
+
+	private String dateOfLending;
+
+	private String dateOfReturn;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getYearOfPoublishing() {
+		return yearOfPoublishing;
+	}
+
+	public void setYearOfPoublishing(String yearOfPoublishing) {
+		this.yearOfPoublishing = yearOfPoublishing;
+	}
+
+	public String getDateOfLending() {
+		return dateOfLending;
+	}
+
+	public void setDateOfLending(String dateOfLending) {
+		this.dateOfLending = dateOfLending;
+	}
+
+	public String getDateOfReturn() {
+		return dateOfReturn;
+	}
+
+	public void setDateOfReturn(String dateOfReturn) {
+		this.dateOfReturn = dateOfReturn;
+	}
+}

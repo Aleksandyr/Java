@@ -1,0 +1,124 @@
+package bg.jwd.library.dao.book;
+
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import bg.jwd.library.dto.book.MyBooks;
+import bg.jwd.library.entity.book.Book;
+
+@Repository
+public class BookDaoImpl implements BookDao {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	public List<Book> getAllBooks() {
+		Query getAllBooksQuery = entityManager
+				.createNativeQuery("SELECT b.id, b.name, b.author, b.year_of_poublishing FROM books b", Book.class);
+
+		List<Book> books = getAllBooksQuery.getResultList();
+
+		return books;
+	}
+
+	@Override
+	public Book getBookById(Long id) {
+		Query getBookById = entityManager.createNativeQuery(
+				"SELECT b.id, b.name, b.author, b.year_of_poublishing FROM books b WHERE id = ?", Book.class);
+		getBookById.setParameter(1, id);
+
+		List<Book> books = getBookById.getResultList();
+
+		return books != null ? books.get(0) : null;
+	}
+
+	@Override
+	@Transactional
+	public Boolean editBookFromAdminById(Long id, Book book) throws ParseException {
+		Query editBookFromAdmin = entityManager
+				.createNativeQuery("UPDATE books SET name=?, author=?, year_of_poublishing=?  WHERE id=?");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(book.getYearOfPoublishing());
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		editBookFromAdmin.setParameter(1, book.getName()).setParameter(2, book.getAuthor()).setParameter(3, sqlDate)
+				.setParameter(4, book.getId()).executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	@Transactional
+	public Boolean deleteBookById(Long id) {
+		Query deleteBookQuery = entityManager.createNativeQuery("DELETE FROM books WHERE id = ?");
+		deleteBookQuery.setParameter(1, id).executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	@Transactional
+	public Boolean addBook(Book book) throws ParseException {
+		Query addBook = entityManager
+				.createNativeQuery("INSERT INTO books (name, author, year_of_poublishing)" + "VALUES(?, ?, ?)");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(book.getYearOfPoublishing());
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		addBook.setParameter(1, book.getName()).setParameter(2, book.getAuthor()).setParameter(3, sqlDate)
+				.executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	public List<MyBooks> getMyBooks(Long userId) throws ParseException {
+		Query getMyBooksQuery = entityManager.createNativeQuery(
+				"SELECT b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id"
+						+ " WHERE u.id = ?");
+
+		getMyBooksQuery.setParameter(1, userId);
+
+		List resultat = getMyBooksQuery.getResultList();
+
+		int count = 0;
+		int sum = 0;
+		for (Iterator i = resultat.iterator(); i.hasNext();) {
+			Object[] values = (Object[]) i.next();
+			// out.println(++count + ": " + values[0] + ", " + values[1] + "<br
+			// />");
+
+			String name = (String) values[0];
+			String author = (String) values[1];
+			String yearOfPoublishing = convertTimestampToDate((String) values[2]);
+
+		}
+
+		// String name = getMyBooksQuery.get;
+
+		// List<Book> books = getMyBooksQuery.getResultList();
+
+		return new ArrayList<MyBooks>();
+	}
+
+	private String convertTimestampToDate(String timestamp) throws ParseException {
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(timestamp);
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		return sqlDate.toString();
+	}
+
+}

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.apache.tomcat.util.net.jsse.openssl.Authentication"/>
-<fullyQualifiedTypeName name="bg.jwd.library.security.User"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Url"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContextHolder"/>
@@ -10,16 +9,25 @@
 <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="bg.jwd.library.entity.user.AutoUser"/>
-<fullyQualifiedTypeName name="bg.jwd.library.constants.UrlConstants"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="bg.jwd.library.dao.authority.AuthorityDao"/>
 <fullyQualifiedTypeName name="bg.jwd.library.service.authority.AuthorityService"/>
 <fullyQualifiedTypeName name="org.springframework.util.DigestUtils"/>
-<fullyQualifiedTypeName name="java.security.MessageDigest"/>
 <fullyQualifiedTypeName name="java.math.BigInteger"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 <fullyQualifiedTypeName name="bg.jwd.library.entity.user.Authority"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.security.MessageDigest"/>
+<fullyQualifiedTypeName name="bg.jwd.library.service.book.BookService"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="bg.jwd.library.constants.UrlConstants"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="bg.jwd.library.service.lend.LendService"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="oracle.sql.DATE"/>
+<fullyQualifiedTypeName name="bg.jwd.library.entity.book.Lend"/>
+<fullyQualifiedTypeName name="bg.jwd.library.entity.book.Book"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="bg.jwd.library.security.User"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 </qualifiedTypeNameHistroy>
