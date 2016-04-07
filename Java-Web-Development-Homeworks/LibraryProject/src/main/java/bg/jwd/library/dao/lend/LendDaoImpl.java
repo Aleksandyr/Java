@@ -1,7 +1,11 @@
 package bg.jwd.library.dao.lend;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +13,8 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import bg.jwd.library.dto.lend.LendBookInfo;
 
 @Repository
 public class LendDaoImpl implements LendDao {
@@ -32,6 +38,39 @@ public class LendDaoImpl implements LendDao {
 				.setParameter(4, sqlDateOfReturn).executeUpdate();
 
 		return true;
+	}
+
+	@Override
+	public List<LendBookInfo> allLendsBook() throws ParseException {
+		Query getLendBookQuery = entityManager.createNativeQuery(
+				"SELECT u.username, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id");
+
+		List result = getLendBookQuery.getResultList();
+		List<LendBookInfo> books = new ArrayList<LendBookInfo>();
+
+		for (Iterator i = result.iterator(); i.hasNext();) {
+			Object[] values = (Object[]) i.next();
+
+			String username = (String) values[0];
+			String name = (String) values[1];
+			String author = (String) values[2];
+			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[3]);
+			String dateOfLending = convertTimestampToDate((Timestamp) values[4]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[5]);
+			LendBookInfo book = new LendBookInfo(username, name, author, yearOfPoublishing, dateOfLending,
+					dateOfReturn);
+			books.add(book);
+
+		}
+
+		return books;
+	}
+
+	private String convertTimestampToDate(Timestamp timestamp) throws ParseException {
+		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
+
+		return dateFormat;
 	}
 
 }

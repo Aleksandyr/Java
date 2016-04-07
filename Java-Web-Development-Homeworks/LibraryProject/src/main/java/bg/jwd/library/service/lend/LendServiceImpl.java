@@ -1,11 +1,13 @@
 package bg.jwd.library.service.lend;
 
 import java.text.ParseException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bg.jwd.library.dao.lend.LendDao;
+import bg.jwd.library.dto.lend.LendBookInfo;
 
 @Service
 public class LendServiceImpl implements LendService {
@@ -16,6 +18,11 @@ public class LendServiceImpl implements LendService {
 	@Override
 	public Boolean lendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn) throws ParseException {
 		return this.lendDao.lendBook(userId, bookId, dateOfLending, dateOfReturn);
+	}
+
+	@Override
+	public List<LendBookInfo> allLendsBook() throws ParseException {
+		return this.lendDao.allLendsBook();
 	}
 
 }

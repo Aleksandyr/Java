@@ -45,20 +45,16 @@
 								<td class="hidden-phone">${b.getName()}</td>
 								<td>${b.getAuthor()}</td>
 								<td>${b.getYearOfPoublishing()}</td>
-															   			               	  					
-								<form:form modelAttribute="book" action="/library/books/edit/${b.getId()}" id="deleteButtonForm" method="get" >
-			                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
-			               			<td><input class="btn-primary btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
-			               		</form:form>
-			               		
-			               		<form:form modelAttribute="book" action="/library/books/lend/add/${b.getId()}" id="deleteButtonForm" method="get" >
-			                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
-			               			<td><input class="btn-success btn mini red-stripe" name="submit" type="submit" value="Lend" /></td>
-			               		</form:form>
 								
-								<form:form modelAttribute="book" action="/library/books/delete/${b.getId()}" id="deleteButtonForm" method="get" >
-			               			<td><input class="btn-danger btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
-			               		</form:form>
+								<td>
+									<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/edit/${b.getId()}';">
+								</td>
+								<td>
+									<input type="button" class="btn-success btn mini red-stripe" value="Lend" onclick="window.location = '/library/books/lends/add/${b.getId()}';">
+								</td>
+								<td>
+									<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/delete/${b.getId()}';">
+								</td>															   			               	  				
 			               </tr>
 				        </c:forEach>
 		           </tbody>

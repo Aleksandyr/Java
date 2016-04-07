@@ -21,6 +21,7 @@
 			</li>
 		</sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
+        	<li><a href="/library/books/lends/all">All lends</a></li>
 	        <li class="dropdown" style="margin-top: 4%">
 			  <button class="btn btn-link" type="button" data-toggle="dropdown">User
 			  <span class="caret"></span></button>

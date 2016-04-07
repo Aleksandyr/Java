@@ -1,0 +1,13 @@
+package bg.jwd.library.dto.lend;
+
+public class LendBookInfo {
+	private String name;
+
+	private String author;
+
+	private String yearOfPoublishing;
+
+	private String dateOfLending;
+
+	private String dateOfReturn;
+}

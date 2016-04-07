@@ -1,0 +1,19 @@
+package bg.jwd.library.dto.lend;
+
+import java.io.Serializable;
+
+public class LendBookInfo implements Serializable {
+	private static final long serialVersionUID = -1866782762304912715L;
+
+	private String username;
+	
+	private String name;
+
+	private String author;
+
+	private String yearOfPoublishing;
+
+	private String dateOfLending;
+
+	private String dateOfReturn;
+}

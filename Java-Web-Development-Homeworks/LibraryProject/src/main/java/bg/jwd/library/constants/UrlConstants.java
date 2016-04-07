@@ -36,6 +36,7 @@ public class UrlConstants {
 	public static final String MY_BOOKS_URL = "/my";
 
 	// Books lend urls
-	public static final String BOOK_LEND_URL = "/lend";
+	public static final String BOOK_LEND_URL = "/lends";
 	public static final String BOOK_LEND_ADD_URL = "/add";
+	public static final String BOOK_ALL_LENDS_URL = "/all";
 }

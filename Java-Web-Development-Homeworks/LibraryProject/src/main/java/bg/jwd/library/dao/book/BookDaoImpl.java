@@ -97,8 +97,6 @@ public class BookDaoImpl implements BookDao {
 
 		for (Iterator i = result.iterator(); i.hasNext();) {
 			Object[] values = (Object[]) i.next();
-			// out.println(++count + ": " + values[0] + ", " + values[1] + "<br
-			// />");
 
 			String name = (String) values[0];
 			String author = (String) values[1];
@@ -115,7 +113,6 @@ public class BookDaoImpl implements BookDao {
 
 	private String convertTimestampToDate(Timestamp timestamp) throws ParseException {
 		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
-		// String string = dateFormat.format(new Date());
 
 		return dateFormat;
 	}

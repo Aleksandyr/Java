@@ -60,15 +60,13 @@
 			        				<p class="hidden-phone">${a.getAuthority()}</p>
 			        			</c:forEach>
 							</td>
-														   			               	  					
-							<form:form modelAttribute="users" action="/library/users/edit/${u.getId()}" id="deleteButtonForm" method="get" >
-		                   		<%-- <td><a href="/library/users/delete/${u.getId()}" class="confirm-delete btn mini red-stripe">Delete</a></td> --%>
-		               			<td><input class="btn-primary btn mini red-stripe" name="submit" type="submit" value="Edit" /></td>
-		               		</form:form>
 							
-							<form:form modelAttribute="users" action="/library/users/delete/${u.getId()}" id="deleteButtonForm" method="get" >
-		               			<td><input class="btn-danger btn mini red-stripe" name="submit" type="submit" value="Delete" /></td>
-		               		</form:form>
+							<td>
+								<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/users/edit/${u.getId()}';">
+							</td>
+							<td>
+								<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/users/delete/${u.getId()}';">
+							</td>
 		               </tr>
 			        </c:forEach>
 				</c:if>
