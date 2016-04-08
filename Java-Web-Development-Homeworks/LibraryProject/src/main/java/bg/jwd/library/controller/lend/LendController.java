@@ -35,7 +35,7 @@ public class LendController {
 	private BookService bookService;
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.BOOK_ALL_LENDS_URL, method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
 	public String alllendsBookPage(Model model) throws ParseException {
 
 		List<LendBookInfo> lendsBook = this.lendService.allLendsBook();
@@ -45,7 +45,7 @@ public class LendController {
 		return "/book/allLendsBooks";
 	}
 
-	@RequestMapping(value = UrlConstants.BOOK_LEND_ADD_URL + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.ADD_URL + "/{id}", method = RequestMethod.GET)
 	public String lendBookPage(@PathVariable("id") long bookId, Model model) {
 
 		Book book = this.bookService.getBookById(bookId);
@@ -62,7 +62,7 @@ public class LendController {
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.BOOK_LEND_ADD_URL + "/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.ADD_URL + "/{id}", method = RequestMethod.POST)
 	public String lendBook(@PathVariable("id") long bookId, HttpServletRequest request) throws ParseException {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -76,7 +76,7 @@ public class LendController {
 		Boolean isLended = this.lendService.addLendBook(user.getId(), book.getId(), getYearOfLending, getDateOfReturn);
 
 		if (isLended == true) {
-			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.ALL_BOOKS_URL;
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.LIST_URL;
 
 		} else {
 			return "/book/editBook";
@@ -84,7 +84,7 @@ public class LendController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.EDIT_LEND_BOOK_URL + "/{bookId}/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{bookId}/{id}", method = RequestMethod.GET)
 	public String editBookLend(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
 			throws ParseException {
 
@@ -103,7 +103,7 @@ public class LendController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.EDIT_LEND_BOOK_URL + "/{bookId}/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{bookId}/{id}", method = RequestMethod.POST)
 	public String editBookLendPage(@PathVariable("id") long lendId, Model model, HttpServletRequest request)
 			throws ParseException {
 
@@ -115,10 +115,43 @@ public class LendController {
 		Boolean isEditedLendBook = this.lendService.editLendBook(lendId, sqlDate);
 
 		if (isEditedLendBook) {
-			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL
-					+ UrlConstants.BOOK_ALL_LENDS_URL;
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
 		} else {
 			return "/book/editLendBook";
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{bookId}/{id}", method = RequestMethod.GET)
+	public String deleteBookLendPage(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Book book = this.bookService.getBookById(bookId);
+		LendBookInfo lendBook = this.lendService.getLendBook(lendId);
+
+		if (book != null && lendBook != null) {
+			model.addAttribute("book", book);
+			model.addAttribute("lendBook", lendBook);
+
+			return "/book/deleteLendBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{bookId}/{id}", method = RequestMethod.POST)
+	public String deleteBookLend(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Boolean isDeleted = this.lendService.deleteLendBook(lendId);
+
+		if (isDeleted) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
+
+		} else {
+			return "/book/deleteLendBook";
 		}
 	}
 }

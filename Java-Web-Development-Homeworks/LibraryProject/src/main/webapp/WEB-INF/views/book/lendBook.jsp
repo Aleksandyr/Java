@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:if test="${not empty book}">
-		<form:form style="width:20%; height: 20%; margin-left: auto; margin-right: auto;" name="lend" class="form-lend" id="lend-form" action="/library/books/lend/add/${book.getId()}" modelAttribute="book" method="POST">
+		<form:form style="width:20%; height: 20%; margin-left: auto; margin-right: auto;" name="lend" class="form-lend" id="lend-form" action="/library/books/lends/add/${book.getId()}" modelAttribute="book" method="POST">
 	        <h2 class="form-signin-heading">Lend book</h2>
 	        <label for="name">Name</label>
 	        <input type="text" id="name" name="name" class="form-control" placeholder="${book.getName()}" readonly>

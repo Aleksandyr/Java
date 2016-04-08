@@ -1,5 +1,6 @@
 package bg.jwd.library.dao.book;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,7 +87,7 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public List<MyBook> getMyBooks(Long userId) throws ParseException {
 		Query getMyBooksQuery = entityManager.createNativeQuery(
-				"SELECT b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
+				"SELECT b.id, b.id as bookId, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
 						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id"
 						+ " WHERE u.id = ?");
 
@@ -98,12 +99,14 @@ public class BookDaoImpl implements BookDao {
 		for (Iterator i = result.iterator(); i.hasNext();) {
 			Object[] values = (Object[]) i.next();
 
-			String name = (String) values[0];
-			String author = (String) values[1];
-			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[2]);
-			String dateOfLending = convertTimestampToDate((Timestamp) values[3]);
-			String dateOfReturn = convertTimestampToDate((Timestamp) values[4]);
-			MyBook book = new MyBook(name, author, yearOfPoublishing, dateOfLending, dateOfReturn);
+			Long id = ((BigDecimal) values[0]).longValue();
+			Long bookId = ((BigDecimal) values[1]).longValue();
+			String name = (String) values[2];
+			String author = (String) values[3];
+			String yearOfPoublishing = convertTimestampToDate((Timestamp) values[4]);
+			String dateOfLending = convertTimestampToDate((Timestamp) values[5]);
+			String dateOfReturn = convertTimestampToDate((Timestamp) values[6]);
+			MyBook book = new MyBook(id, bookId, name, author, yearOfPoublishing, dateOfLending, dateOfReturn);
 			myBooks.add(book);
 
 		}

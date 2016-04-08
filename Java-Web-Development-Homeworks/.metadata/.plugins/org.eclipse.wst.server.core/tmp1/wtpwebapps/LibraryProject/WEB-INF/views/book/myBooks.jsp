@@ -37,6 +37,10 @@
 							<th>Year of publishing</th>
 							<th>Date of lending</th>
 							<th>Date of return</th>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<th></th>
+								<th></th>
+							</sec:authorize>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,6 +51,14 @@
 								<td>${b.getYearOfPoublishing()}</td>
 								<td>${b.getDateOfLending()}</td>
 								<td>${b.getDateOfReturn()}</td>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<td>
+										<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/lends/edit/${b.getBookId()}/${b.getId()}';">
+									</td>
+									<td>
+										<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/lends/delete/${b.getBookId()}/${b.getId()}';">
+									</td>					
+								</sec:authorize>
   			                </tr>
 				        </c:forEach>
 		           </tbody>

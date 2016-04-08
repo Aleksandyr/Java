@@ -24,7 +24,7 @@
 		          <div class="form-group">
 		            <label class="col-lg-3 control-label">Date of birth:</label>
 		            <div class="col-lg-8">
-		              <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" required />
+		              <input class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" value="${user.getDateOfBirth()}" required />
 		            </div>
 		          </div>
 		          <div class="form-group">
@@ -50,7 +50,8 @@
 		            <div class="col-md-8">
 		              <input type="submit" name="submit" class="btn btn-primary" value="Save Changes">
 		              <span></span>
-		              <button class="btn btn-default"><a href="/library/home/">Cancel</a></button>
+		              <input type="button" class="btn btn-default" value="Cancel" onclick="window.location = '/library/home/';">
+		              <!-- <button type="button" onvlivk class="btn btn-default"><a href="/library/home/">Cancel</a></button> -->
 		            </div>
 		          </div>
 		        </form:form>

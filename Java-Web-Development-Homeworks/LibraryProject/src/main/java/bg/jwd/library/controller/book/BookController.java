@@ -29,7 +29,7 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
-	@RequestMapping(value = UrlConstants.ALL_BOOKS_URL, method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
 	public String getAllBooksPage(Model model) {
 
 		model.addAttribute("books", bookService.getAllBooks());
@@ -56,14 +56,14 @@ public class BookController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.ADD_URL, method = RequestMethod.GET)
 	public String addBookPage(Model model) {
 
 		return "/book/addBook";
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.ADD_BOOK_URL, method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.ADD_URL, method = RequestMethod.POST)
 	public String addUser(HttpServletRequest request, @ModelAttribute("book") Book book)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
 
@@ -77,7 +77,7 @@ public class BookController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.EDIT_BOOKS_URL + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{id}", method = RequestMethod.GET)
 	public String editBookPage(@PathVariable("id") long bookId, Model model) {
 
 		Book book = this.bookService.getBookById(bookId);
@@ -93,14 +93,14 @@ public class BookController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.EDIT_BOOKS_URL + "/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{id}", method = RequestMethod.POST)
 	public String editBook(@PathVariable("id") long bookId, Model model, @ModelAttribute("book") Book book)
 			throws ParseException {
 
 		Boolean isEdited = this.bookService.editBookFromAdminById(bookId, book);
 
 		if (isEdited == true) {
-			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.ALL_BOOKS_URL;
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.LIST_URL;
 
 		} else {
 			return "/book/editBook";
@@ -108,7 +108,7 @@ public class BookController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{id}", method = RequestMethod.GET)
 	public String deteleBookPage(@PathVariable("id") long bookId, Model model) {
 
 		Book book = this.bookService.getBookById(bookId);
@@ -124,13 +124,13 @@ public class BookController {
 	}
 
 	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{id}", method = RequestMethod.POST)
 	public String deleteBook(@PathVariable("id") long bookId, Model model) {
 
 		Boolean isDeleted = this.bookService.deleteBookById(bookId);
 
 		if (isDeleted == true) {
-			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.ALL_BOOKS_URL;
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.LIST_URL;
 
 		} else {
 			return "/book/deleteBook";

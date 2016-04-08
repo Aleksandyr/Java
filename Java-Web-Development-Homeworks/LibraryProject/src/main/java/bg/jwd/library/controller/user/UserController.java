@@ -39,7 +39,7 @@ public class UserController {
 	@Autowired
 	private AuthorityService authorityService;
 
-	@RequestMapping(value = UrlConstants.ALL_USERS_URL, method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
 	public String getAllUsersPage(Model model) {
 		model.addAttribute("users", userService.getAllUsers());
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -50,7 +50,7 @@ public class UserController {
 		return "/user/users";
 	}
 
-	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{id}", method = RequestMethod.GET)
 	public String deleteUserPage(@PathVariable("id") long userId, Model model) {
 
 		AutoUser user = this.userService.getUserById(userId);
@@ -65,20 +65,20 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.DELETE_USER_URL + "/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{id}", method = RequestMethod.POST)
 	public String delete(@PathVariable("id") long userId, Model model) {
 
 		Boolean isDeleted = this.userService.deleteUserById(userId);
 
 		if (isDeleted == true) {
-			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
+			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.LIST_URL;
 
 		} else {
 			return "/user/delete";
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.EDIT_USER_URL + "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{id}", method = RequestMethod.GET)
 	public String editUserPage(@PathVariable("id") long userId, Model model) {
 
 		AutoUser user = this.userService.getUserById(userId);
@@ -93,21 +93,21 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.EDIT_USER_URL + "/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{id}", method = RequestMethod.POST)
 	public String editUser(@PathVariable("id") long userId, Model model, HttpServletRequest request) {
 
 		int status = Integer.parseInt(request.getParameter("status_select"));
 		Boolean isEdited = this.userService.editUserFromAdminById(userId, status);
 
 		if (isEdited == true) {
-			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
+			return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.LIST_URL;
 
 		} else {
 			return "/user/editUserAdmin";
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.ADD_USER_URL, method = RequestMethod.GET)
+	@RequestMapping(value = UrlConstants.ADD_URL, method = RequestMethod.GET)
 	public String addUserPage(Model model) {
 
 		List<Authority> authorities = this.authorityService.getAllAuthorities();
@@ -116,7 +116,7 @@ public class UserController {
 		return "/user/addUser";
 	}
 
-	@RequestMapping(value = UrlConstants.ADD_USER_URL, method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.ADD_URL, method = RequestMethod.POST)
 	public String addUser(HttpServletRequest request, @ModelAttribute("autoUser") AutoUser user)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
 
@@ -135,7 +135,7 @@ public class UserController {
 				Boolean isUserAddedToRol = this.authorityService.addUserAuthority(userFromDb.getId(), role);
 
 				if (isUserAddedToRol == true) {
-					return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.ALL_USERS_URL;
+					return "redirect:" + UrlConstants.BASE_USER_URL + UrlConstants.LIST_URL;
 				} else {
 					return "/user/addUser";
 				}

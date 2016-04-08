@@ -5,6 +5,12 @@ public class UrlConstants {
 	private UrlConstants() {
 	}
 
+	// CRUD operations urls
+	public static final String ADD_URL = "/add";
+	public static final String UPDATE_URL = "/edit";
+	public static final String DELETE_URL = "/delete";
+	public static final String LIST_URL = "/all";
+
 	// Home url
 	public static final String BASE_HOME_URL = "/home";
 	public static final String HOME_URL = "/";
@@ -17,27 +23,15 @@ public class UrlConstants {
 
 	// User urls
 	public static final String BASE_USER_URL = "/users";
-	public static final String ALL_USERS_URL = "/all";
-	public static final String ADD_USER_URL = "/add";
-	public static final String DELETE_USER_URL = "/delete";
-	public static final String EDIT_USER_URL = "/edit";
 
 	// Prifle urls
 	public static final String BASE_PROFILE_URL = "/profile";
 	public static final String SHOW_PROFILE_URL = "/show";
-	public static final String EDIT_PROFILE_URL = "/edit";
 
 	// Books urls
 	public static final String BASE_BOOK_URL = "/books";
-	public static final String ALL_BOOKS_URL = "/all";
-	public static final String DELETE_BOOKS_URL = "/delete";
-	public static final String EDIT_BOOKS_URL = "/edit";
-	public static final String ADD_BOOK_URL = "/add";
 	public static final String MY_BOOKS_URL = "/my";
 
 	// Books lend urls
 	public static final String BOOK_LEND_URL = "/lends";
-	public static final String BOOK_LEND_ADD_URL = "/add";
-	public static final String BOOK_ALL_LENDS_URL = "/all";
-	public static final String EDIT_LEND_BOOK_URL = "/edit";
 }

@@ -6,6 +6,10 @@ public class MyBook implements Serializable {
 
 	private static final long serialVersionUID = 1423839051291723609L;
 
+	private Long id;
+
+	private Long bookId;
+
 	private String name;
 
 	private String author;
@@ -16,7 +20,10 @@ public class MyBook implements Serializable {
 
 	private String dateOfReturn;
 
-	public MyBook(String name, String author, String yearOfPoublishing, String dateOfLending, String dateOfReturn) {
+	public MyBook(Long id, Long bookId, String name, String author, String yearOfPoublishing, String dateOfLending,
+			String dateOfReturn) {
+		this.id = id;
+		this.bookId = bookId;
 		this.name = name;
 		this.author = author;
 		this.yearOfPoublishing = yearOfPoublishing;
@@ -62,5 +69,21 @@ public class MyBook implements Serializable {
 
 	public void setDateOfReturn(String dateOfReturn) {
 		this.dateOfReturn = dateOfReturn;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 }

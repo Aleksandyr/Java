@@ -35,7 +35,10 @@
 							<th class="hidden-phone">Name</th>
 							<th>Author</th>
 							<th>Date of publishing</th>
-							<th></th>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<th></th>
+								<th></th>
+							</sec:authorize>
 							<th></th>
 						</tr>
 					</thead>
@@ -46,15 +49,17 @@
 								<td>${b.getAuthor()}</td>
 								<td>${b.getYearOfPoublishing()}</td>
 								
-								<td>
-									<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/edit/${b.getId()}';">
-								</td>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+									<td>
+										<input type="button" class="btn-primary btn mini red-stripe" value="Edit" onclick="window.location = '/library/books/edit/${b.getId()}';">
+									</td>
+									<td>
+										<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/delete/${b.getId()}';">
+									</td>		
+								</sec:authorize>
 								<td>
 									<input type="button" class="btn-success btn mini red-stripe" value="Lend" onclick="window.location = '/library/books/lends/add/${b.getId()}';">
-								</td>
-								<td>
-									<input type="button" class="btn-danger btn mini red-stripe" value="Delete" onclick="window.location = '/library/books/delete/${b.getId()}';">
-								</td>															   			               	  				
+								</td>													   			               	  				
 			               </tr>
 				        </c:forEach>
 		           </tbody>

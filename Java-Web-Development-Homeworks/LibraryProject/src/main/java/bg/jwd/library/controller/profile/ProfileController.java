@@ -49,7 +49,7 @@ public class ProfileController {
 		}
 	}
 
-	@RequestMapping(value = UrlConstants.EDIT_PROFILE_URL, method = RequestMethod.POST)
+	@RequestMapping(value = UrlConstants.UPDATE_URL, method = RequestMethod.POST)
 	public String editProfile(HttpServletRequest request, @ModelAttribute("autoUser") AutoUser user)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
 
