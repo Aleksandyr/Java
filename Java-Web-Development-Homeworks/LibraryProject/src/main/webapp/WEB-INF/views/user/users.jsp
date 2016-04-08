@@ -12,6 +12,29 @@
 <body>
 	<ct:PageTag>
 		<jsp:body>
+		<div>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" name="name" id="name" placeholder="Search by name">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" name="pid" id="pid" placeholder="Search by PID">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="Search by birthday">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+		</div>
+		
+		<input type="submit" class="btn btn-default" value="All Users" onclick="window.location = '/library/users/all';">
+		
 		<div id="myModal" class="modal hide fade">
 		    <div class="modal-header">
 		        <button type="button" class="close"></button>

@@ -5,7 +5,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bg.jwd.library.constants.UrlConstants;
 import bg.jwd.library.entity.user.Authority;
@@ -40,8 +43,29 @@ public class UserController {
 	private AuthorityService authorityService;
 
 	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
-	public String getAllUsersPage(Model model) {
-		model.addAttribute("users", userService.getAllUsers());
+	public String getAllUsersPage(Model model, @RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "pid", required = false) String pid,
+			@RequestParam(value = "dateOfBirth", required = false) String dateOfBirth) {
+
+		List<AutoUser> users = new ArrayList<AutoUser>();
+
+		String paramName = name;
+		String paramPid = pid;
+		// String paramDateOfBirth = dateOfBirth;
+
+		if (paramName != null && paramName != "") {
+			String vlidateName = paramName.trim().toLowerCase();
+			users = this.userService.getAllUsers().stream().filter(b -> b.getName().toLowerCase().equals(vlidateName))
+					.collect(Collectors.toList());
+		} else if (paramPid != null && paramPid != "") {
+			String vlidatePid = paramPid.trim().toLowerCase();
+			users = this.userService.getAllUsers().stream().filter(b -> b.getPid().toLowerCase().equals(vlidatePid))
+					.collect(Collectors.toList());
+		} else {
+			users = this.userService.getAllUsers();
+		}
+
+		model.addAttribute("users", users);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = (User) authentication.getPrincipal();
 		model.addAttribute("username", user.getUsername());
