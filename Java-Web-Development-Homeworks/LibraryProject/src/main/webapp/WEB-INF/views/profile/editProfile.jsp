@@ -36,13 +36,13 @@
 		          <div class="form-group">
 		            <label class="col-md-3 control-label">Password:</label>
 		            <div class="col-md-8">
-		              <input class="form-control" type="password" id="password" name="password" value="123456" required />
+		              <input class="form-control" type="password" id="password" name="password" required />
 		            </div>
 		          </div>
 		          <div class="form-group">
 		            <label class="col-md-3 control-label">Confirm password:</label>
 		            <div class="col-md-8">
-		              <input class="form-control" type="password" id="confirm_password" name="confirm_password" value="123456" required />
+		              <input class="form-control" type="password" id="confirm_password" name="confirm_password" required />
 		            </div>
 		          </div>
 		          <div class="form-group">

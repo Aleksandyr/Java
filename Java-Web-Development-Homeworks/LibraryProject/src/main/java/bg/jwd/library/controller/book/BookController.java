@@ -3,6 +3,9 @@ package bg.jwd.library.controller.book;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bg.jwd.library.constants.UrlConstants;
 import bg.jwd.library.entity.book.Book;
@@ -30,9 +34,24 @@ public class BookController {
 	private BookService bookService;
 
 	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
-	public String getAllBooksPage(Model model) {
+	public String getAllBooksPage(Model model, @RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "author", required = false) String author,
+			@RequestParam(value = "yearOfPoublishing", required = false) String yearOfPoublishing) {
 
-		model.addAttribute("books", bookService.getAllBooks());
+		List<Book> books = new ArrayList<Book>();
+
+		String paramName = name;
+		String paramAuthor = author;
+		String paramYearOfPoublishing = yearOfPoublishing;
+
+		if (paramName != null) {
+			books = this.bookService.getAllBooks().stream().filter(b -> b.getName().equals(paramName))
+					.collect(Collectors.toList());
+		} else {
+			books = this.bookService.getAllBooks();
+		}
+
+		model.addAttribute("books", books);
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = (User) authentication.getPrincipal();

@@ -13,6 +13,28 @@
 <body>
 	<ct:PageTag>
 		<jsp:body>
+		
+		<div>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" name="name" id="name" placeholder="Search by name">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" name="author" id="author" placeholder="Search by author">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+			<form class="navbar-form" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
+			    </div>
+			    <button type="submit" class="btn btn-default">Search</button>
+			</form>
+		</div>
+		
 		<div id="myModal" class="modal hide fade">
 		    <div class="modal-header">
 		        <button type="button" class="close"></button>
@@ -66,7 +88,7 @@
 		  		</table>
 			</c:when>
 			<c:otherwise>
-				<h1>No books!</h1>
+				<h1 style="verticle-aling:center; margin-top:bottom">No books!</h1>
 			</c:otherwise>
 		</c:choose>
 	</jsp:body>
