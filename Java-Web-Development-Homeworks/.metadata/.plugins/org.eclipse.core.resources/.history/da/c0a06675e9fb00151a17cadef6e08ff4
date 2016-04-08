@@ -1,5 +1,0 @@
-package bg.jwd.library.dao.book;
-
-public class BookDaoImpl {
-
-}

@@ -73,7 +73,7 @@ public class LendController {
 		String getYearOfLending = request.getParameter("dateOfLending");
 		String getDateOfReturn = request.getParameter("dateOfReturn");
 
-		Boolean isLended = this.lendService.lendBook(user.getId(), book.getId(), getYearOfLending, getDateOfReturn);
+		Boolean isLended = this.lendService.addLendBook(user.getId(), book.getId(), getYearOfLending, getDateOfReturn);
 
 		if (isLended == true) {
 			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.ALL_BOOKS_URL;
@@ -85,7 +85,7 @@ public class LendController {
 
 	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = UrlConstants.EDIT_LEND_BOOK_URL + "/{bookId}/{id}", method = RequestMethod.GET)
-	public String editBookPage(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+	public String editBookLend(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
 			throws ParseException {
 
 		Book book = this.bookService.getBookById(bookId);
@@ -99,6 +99,26 @@ public class LendController {
 
 		} else {
 			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.EDIT_LEND_BOOK_URL + "/{bookId}/{id}", method = RequestMethod.POST)
+	public String editBookLendPage(@PathVariable("id") long lendId, Model model, HttpServletRequest request)
+			throws ParseException {
+
+		String dateOfReturn = request.getParameter("dateOfReturn");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfReturn);
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		Boolean isEditedLendBook = this.lendService.editLendBook(lendId, sqlDate);
+
+		if (isEditedLendBook) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL
+					+ UrlConstants.BOOK_ALL_LENDS_URL;
+		} else {
+			return "/book/editLendBook";
 		}
 	}
 }

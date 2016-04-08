@@ -1,0 +1,45 @@
+package bg.jwd.library.service.lend;
+
+import java.sql.Date;
+import java.text.ParseException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import bg.jwd.library.dao.lend.LendDao;
+import bg.jwd.library.dto.lend.LendBookInfo;
+
+@Service
+public class LendServiceImpl implements LendService {
+
+	@Autowired
+	private LendDao lendDao;
+
+	@Override
+	public Boolean addLendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn)
+			throws ParseException {
+		return this.lendDao.addLendBook(userId, bookId, dateOfLending, dateOfReturn);
+	}
+
+	@Override
+	public List<LendBookInfo> allLendsBook() throws ParseException {
+		return this.lendDao.allLendsBook();
+	}
+
+	@Override
+	public LendBookInfo getLendBook(Long lendId) throws ParseException {
+		return this.lendDao.getLendBook(lendId);
+	}
+
+	@Override
+	public Boolean deleteLendBook(Long lendId) {
+		return this.lendDao.deleteLendBook(lendId);
+	}
+
+	@Override
+	public Boolean editLendBook(Long lendId, Date dateOfReturn) {
+		return this.editLendBook(lendId, dateOfReturn);
+	}
+
+}

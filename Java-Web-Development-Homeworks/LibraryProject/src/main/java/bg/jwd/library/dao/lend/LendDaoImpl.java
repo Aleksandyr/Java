@@ -1,6 +1,7 @@
 package bg.jwd.library.dao.lend;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,8 @@ public class LendDaoImpl implements LendDao {
 
 	@Override
 	@Transactional
-	public Boolean lendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn) throws ParseException {
+	public Boolean addLendBook(Long userId, Long bookId, String dateOfLending, String dateOfReturn)
+			throws ParseException {
 		Query addBook = entityManager.createNativeQuery(
 				"INSERT INTO lends (user_id, book_id, date_of_lending, date_of_return)" + "VALUES(?, ?, ?, ?)");
 
@@ -47,7 +49,7 @@ public class LendDaoImpl implements LendDao {
 				"SELECT l.id AS id, u.id AS userId, b.id as bookId, u.username, b.name, b.author, b.year_of_poublishing, l.date_of_lending, l.date_of_return FROM books b"
 						+ " JOIN lends l" + " ON b.id = l.book_id" + " JOIN users u" + " ON l.user_id = u.id");
 
-		List result = getLendBookQuery.getResultList();
+		List<String> result = getLendBookQuery.getResultList();
 		List<LendBookInfo> books = new ArrayList<LendBookInfo>();
 
 		for (Iterator i = result.iterator(); i.hasNext();) {
@@ -64,6 +66,7 @@ public class LendDaoImpl implements LendDao {
 			String dateOfReturn = convertTimestampToDate((Timestamp) values[8]);
 			LendBookInfo book = new LendBookInfo(lendId, userId, bookId, username, name, author, yearOfPoublishing,
 					dateOfLending, dateOfReturn);
+
 			books.add(book);
 
 		}
@@ -100,5 +103,25 @@ public class LendDaoImpl implements LendDao {
 		String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(timestamp);
 
 		return dateFormat;
+	}
+
+	@Override
+	@Transactional
+	public Boolean deleteLendBook(Long lendId) {
+		Query deleteLendQuery = entityManager.createNativeQuery("DELETE FROM lends WHERE id = ?");
+
+		deleteLendQuery.setParameter(1, lendId).executeUpdate();
+
+		return true;
+	}
+
+	@Override
+	@Transactional
+	public Boolean editLendBook(Long lendId, Date dateOfReturn) {
+		Query editLendQuery = entityManager.createNativeQuery("UPDATE lends SET date_of_return=? WHERE id=?");
+
+		editLendQuery.setParameter(1, dateOfReturn).setParameter(2, lendId).executeUpdate();
+
+		return true;
 	}
 }

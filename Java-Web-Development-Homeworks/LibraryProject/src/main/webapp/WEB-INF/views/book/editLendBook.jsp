@@ -25,7 +25,7 @@
 	        <input type="date" id="dateOfReturn" name="dateOfReturn" class="form-control" value="${lendBook.getDateOfReturn()}" >
 	        
 	        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" />
-			<a class="btn btn-default btn-block" href="/library/books/all/">Cancel</a>
+			<a class="btn btn-default btn-block" href="/library/books/lends/all/">Cancel</a>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       	</form:form>
    	</c:if>

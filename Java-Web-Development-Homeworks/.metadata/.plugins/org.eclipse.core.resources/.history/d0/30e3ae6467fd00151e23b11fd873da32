@@ -1,0 +1,57 @@
+package bg.jwd.library.entity.book;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
+
+@Embeddable
+@Table(name = "LENDS")
+public class Lend implements Serializable {
+
+	private static final long serialVersionUID = 9098742245172291938L;
+
+	@Column(name = "DATE_OF_LENDING")
+	private String dateOfLending;
+
+	@Column(name = "DATE_OF_RETURN")
+	private String dateOfReturn;
+
+	// List<Book> books;
+	//
+	// List<AutoUser> users;
+
+	public String getDateOfLending() {
+		return dateOfLending;
+	}
+
+	public void setDateOfLending(String dateOfLending) {
+		this.dateOfLending = dateOfLending;
+	}
+
+	public String getDateOfReturn() {
+		return dateOfReturn;
+	}
+
+	public void setDateOfReturn(String dateOfReturn) {
+		this.dateOfReturn = dateOfReturn;
+	}
+
+	// public List<Book> getBooks() {
+	// return books;
+	// }
+	//
+	// public void setBooks(List<Book> books) {
+	// this.books = books;
+	// }
+	//
+	// public List<AutoUser> getUsers() {
+	// return users;
+	// }
+	//
+	// public void setUsers(List<AutoUser> users) {
+	// this.users = users;
+	// }
+
+}
