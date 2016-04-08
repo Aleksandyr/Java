@@ -36,7 +36,8 @@ public class BookController {
 	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
 	public String getAllBooksPage(Model model, @RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "author", required = false) String author,
-			@RequestParam(value = "yearOfPoublishing", required = false) String yearOfPoublishing) {
+			@RequestParam(value = "yearOfPoublishing", required = false) String yearOfPoublishing)
+					throws ParseException {
 
 		List<Book> books = new ArrayList<Book>();
 
@@ -44,10 +45,25 @@ public class BookController {
 		String paramAuthor = author;
 		String paramYearOfPoublishing = yearOfPoublishing;
 
-		if (paramName != null) {
-			books = this.bookService.getAllBooks().stream().filter(b -> b.getName().equals(paramName))
+		if (paramName != null && paramName != "") {
+			String vlidateName = paramName.trim().toLowerCase();
+			books = this.bookService.getAllBooks().stream().filter(b -> b.getName().toLowerCase().equals(vlidateName))
 					.collect(Collectors.toList());
-		} else {
+		} else if (paramAuthor != null && paramAuthor != "") {
+			String vlidateAuthorName = paramAuthor.trim().toLowerCase();
+			books = this.bookService.getAllBooks().stream()
+					.filter(b -> b.getAuthor().toLowerCase().equals(vlidateAuthorName)).collect(Collectors.toList());
+		} /*
+			 * else if (paramYearOfPoublishing != null && paramYearOfPoublishing
+			 * != "") { String trimDate = paramYearOfPoublishing.trim(); Date
+			 * date = new SimpleDateFormat("yyyy-MM-dd").parse(trimDate); books
+			 * = this.bookService.getAllBooks().stream().filter(b ->
+			 * b.getYearOfPoublishing().equals(date))
+			 * .collect(Collectors.toList());
+			 */
+		else
+
+		{
 			books = this.bookService.getAllBooks();
 		}
 
@@ -59,6 +75,7 @@ public class BookController {
 		model.addAttribute("username", user.getUsername());
 
 		return "/book/allBooks";
+
 	}
 
 	@RequestMapping(value = UrlConstants.MY_BOOKS_URL, method = RequestMethod.GET)

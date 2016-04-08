@@ -27,13 +27,15 @@
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>
-			<form class="navbar-form" role="search">
+			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			        <input type="text" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
+			        <input type="date" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>
 		</div>
+		
+		<input type="submit" class="btn btn-default" value="All Books" onclick="window.location = '/library/books/all';">
 		
 		<div id="myModal" class="modal hide fade">
 		    <div class="modal-header">
