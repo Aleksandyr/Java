@@ -16,27 +16,19 @@
 		<div>
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			        <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Search by book name">
+			        <input type="text" class="form-control" name="name" id="name" placeholder="Search by name">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			        <input type="text" class="form-control" name="clientName" id=""clientName"" placeholder="Search by client name">
+			        <input type="text" class="form-control" name="author" id="author" placeholder="Search by author">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			    	<label for="dateOfLending">Date of lending</label>
-			        <input type="date" class="form-control" name="dateOfLending" id="dateOfLending" placeholder="Search by date of lend">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			    	<label for="dateOfReturn">Date of return</label>
-			        <input type="date" class="form-control" name="dateOfReturn" id="dateOfReturn" placeholder="Search by date of return">
+			        <input type="date" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>

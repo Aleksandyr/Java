@@ -28,15 +28,7 @@
 			</form>
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
-			    	<label for="dateOfLending">Date of lending</label>
-			        <input type="date" class="form-control" name="dateOfLending" id="dateOfLending" placeholder="Search by date of lend">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			    	<label for="dateOfReturn">Date of return</label>
-			        <input type="date" class="form-control" name="dateOfReturn" id="dateOfReturn" placeholder="Search by date of return">
+			        <input type="date" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>

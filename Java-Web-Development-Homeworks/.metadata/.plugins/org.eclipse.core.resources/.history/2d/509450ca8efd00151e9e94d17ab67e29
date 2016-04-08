@@ -13,37 +13,6 @@
 <body>
 	<ct:PageTag>
 		<jsp:body>
-		<div>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			        <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Search by book name">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			        <input type="text" class="form-control" name="clientName" id=""clientName"" placeholder="Search by client name">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			    	<label for="dateOfLending">Date of lending</label>
-			        <input type="date" class="form-control" name="dateOfLending" id="dateOfLending" placeholder="Search by date of lend">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			    	<label for="dateOfReturn">Date of return</label>
-			        <input type="date" class="form-control" name="dateOfReturn" id="dateOfReturn" placeholder="Search by date of return">
-			    </div>
-			    <button type="submit" class="btn btn-default">Search</button>
-			</form>
-		</div>
-		
-		<input type="submit" class="btn btn-default" value="All Lends" onclick="window.location = '/library/books/lends/all';">
-		
 		<div id="myModal" class="modal hide fade">
 		    <div class="modal-header">
 		        <button type="button" class="close"></button>

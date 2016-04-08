@@ -47,7 +47,7 @@ public class LendController {
 		List<LendBookInfo> lendsBook = new ArrayList<LendBookInfo>();
 
 		String paramBookName = bookName;
-		String paramClientName = clientName;
+		String paramAuthor = clientName;
 		String paramDateOfLending = dateOfLending;
 		String paramDateOfReturn = dateOfReturn;
 
@@ -55,10 +55,10 @@ public class LendController {
 			String vlidateBookName = paramBookName.trim().toLowerCase();
 			lendsBook = this.lendService.allLendsBook().stream()
 					.filter(b -> b.getName().toLowerCase().equals(vlidateBookName)).collect(Collectors.toList());
-		} else if (paramClientName != null && paramClientName != "") {
-			String vlidateClientName = paramClientName.trim().toLowerCase();
+		} else if (paramAuthor != null && paramAuthor != "") {
+			String vlidateAuthorName = paramAuthor.trim().toLowerCase();
 			lendsBook = this.lendService.allLendsBook().stream()
-					.filter(b -> b.getUsername().toLowerCase().equals(vlidateClientName)).collect(Collectors.toList());
+					.filter(b -> b.getAuthor().toLowerCase().equals(vlidateAuthorName)).collect(Collectors.toList());
 		} else {
 			lendsBook = this.lendService.allLendsBook();
 		}

@@ -2,10 +2,8 @@ package bg.jwd.library.controller.lend;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,27 +39,9 @@ public class LendController {
 	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
 	public String alllendsBookPage(Model model, @RequestParam(value = "bookName", required = false) String bookName,
 			@RequestParam(value = "clientName", required = false) String clientName,
-			@RequestParam(value = "dateOfLending", required = false) String dateOfLending,
-			@RequestParam(value = "dateOfReturn", required = false) String dateOfReturn) throws ParseException {
+			@RequestParam(value = "dateOfBirth", required = false) String dateOfLending) throws ParseException {
 
-		List<LendBookInfo> lendsBook = new ArrayList<LendBookInfo>();
-
-		String paramBookName = bookName;
-		String paramClientName = clientName;
-		String paramDateOfLending = dateOfLending;
-		String paramDateOfReturn = dateOfReturn;
-
-		if (paramBookName != null && paramBookName != "") {
-			String vlidateBookName = paramBookName.trim().toLowerCase();
-			lendsBook = this.lendService.allLendsBook().stream()
-					.filter(b -> b.getName().toLowerCase().equals(vlidateBookName)).collect(Collectors.toList());
-		} else if (paramClientName != null && paramClientName != "") {
-			String vlidateClientName = paramClientName.trim().toLowerCase();
-			lendsBook = this.lendService.allLendsBook().stream()
-					.filter(b -> b.getUsername().toLowerCase().equals(vlidateClientName)).collect(Collectors.toList());
-		} else {
-			lendsBook = this.lendService.allLendsBook();
-		}
+		List<LendBookInfo> lendsBook = this.lendService.allLendsBook();
 
 		model.addAttribute("lendsBook", lendsBook);
 

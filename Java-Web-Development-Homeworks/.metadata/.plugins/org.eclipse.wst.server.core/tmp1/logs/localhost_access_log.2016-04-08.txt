@@ -938,3 +938,17 @@
 0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:32:02 +0300] "GET /library/users/all?name=admin HTTP/1.1" 200 4975
 0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:32:07 +0300] "GET /library/users/all?pid=123 HTTP/1.1" 200 4971
 0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:32:10 +0300] "GET /library/users/all?pid=123456 HTTP/1.1" 200 4975
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:32:13 +0300] "GET /library/users/all?name=pesho HTTP/1.1" 200 4971
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:32:18 +0300] "GET /library/users/all HTTP/1.1" 200 5842
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:33:47 +0300] "GET /library/books/all HTTP/1.1" 200 6383
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:33:50 +0300] "GET /library/books/lends/all HTTP/1.1" 200 4262
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:36:51 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5662
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:36:54 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5662
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:37:43 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5701
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:38:01 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5741
+127.0.0.1 - - [08/Apr/2016:16:44:24 +0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:44:27 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5780
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:44:35 +0300] "GET /library/books/lends/all?bookName=C%23 HTTP/1.1" 200 5170
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:44:39 +0300] "GET /library/books/lends/all?clientName=pesho HTTP/1.1" 200 5170
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:44:42 +0300] "GET /library/books/lends/all?clientName=admin HTTP/1.1" 200 5173
+0:0:0:0:0:0:0:1 - - [08/Apr/2016:16:44:44 +0300] "GET /library/books/lends/all HTTP/1.1" 200 5780
