@@ -49,7 +49,7 @@ public class LendController {
 		String paramBookName = bookName;
 		String paramClientName = clientName;
 		String paramDateOfLending = dateOfLending;
-		String paramDateOfReturn = dateOfReturn;
+		// String paramDateOfReturn = dateOfReturn;
 
 		if (paramBookName != null && paramBookName != "") {
 			String vlidateBookName = paramBookName.trim().toLowerCase();
@@ -60,12 +60,8 @@ public class LendController {
 			lendsBook = this.lendService.allLendsBook().stream()
 					.filter(b -> b.getUsername().toLowerCase().equals(vlidateClientName)).collect(Collectors.toList());
 		} else if (paramDateOfLending != null && paramDateOfLending != "") {
-			String trimDate = paramDateOfLending.trim();
+			String trimDate = paramDateOfLending.trim() + " 00:00:00.0";
 			lendsBook = this.lendService.allLendsBook().stream().filter(l -> l.getDateOfLending().equals(trimDate))
-					.collect(Collectors.toList());
-		} else if (paramDateOfReturn != null && paramDateOfReturn != "") {
-			String trimDate = paramDateOfReturn.trim();
-			lendsBook = this.lendService.allLendsBook().stream().filter(l -> l.getDateOfReturn().equals(trimDate))
 					.collect(Collectors.toList());
 		} else {
 			lendsBook = this.lendService.allLendsBook();
