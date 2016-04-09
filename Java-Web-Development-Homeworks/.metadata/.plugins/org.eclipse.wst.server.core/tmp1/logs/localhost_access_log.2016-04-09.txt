@@ -122,3 +122,15 @@
 0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:19:09 +0300] "GET /library/books/lends/all HTTP/1.1" 200 7041
 0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:19:17 +0300] "GET /library/books/lends/all?dateOfReturn=2016-04-21 HTTP/1.1" 200 6431
 0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:19:24 +0300] "GET /library/books/lends/all?dateOfLending=2016-04-08 HTTP/1.1" 200 7041
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:21:03 +0300] "GET /library/users/all HTTP/1.1" 200 7158
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:21:06 +0300] "GET /library/books/lends/all HTTP/1.1" 200 7041
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:21:09 +0300] "GET /library/books/all HTTP/1.1" 200 7711
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:21:15 +0300] "GET /library/users/all HTTP/1.1" 200 7158
+127.0.0.1 - - [09/Apr/2016:18:22:33 +0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:22:50 +0300] "GET /library/users/all HTTP/1.1" 200 7158
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:23:09 +0300] "GET /library/users/all?dateOfBirth=2016-04-29 HTTP/1.1" 200 5400
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:23:15 +0300] "GET /library/users/all HTTP/1.1" 200 7158
+127.0.0.1 - - [09/Apr/2016:18:24:32 +0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:24:36 +0300] "GET /library/users/all HTTP/1.1" 200 7158
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:24:43 +0300] "GET /library/users/all?dateOfBirth=2016-04-29 HTTP/1.1" 200 6291
+0:0:0:0:0:0:0:1 - - [09/Apr/2016:18:24:47 +0300] "GET /library/users/all HTTP/1.1" 200 7158

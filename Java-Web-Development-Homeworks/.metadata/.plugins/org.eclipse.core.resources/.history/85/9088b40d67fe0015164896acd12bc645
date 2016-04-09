@@ -62,7 +62,7 @@ public class UserController {
 			users = this.userService.getAllUsers().stream().filter(b -> b.getPid().toLowerCase().equals(vlidatePid))
 					.collect(Collectors.toList());
 		} else if (paramDateOfBirth != null && paramDateOfBirth != "") {
-			String trimDate = paramDateOfBirth.trim() + " 00:00:00.0";
+			String trimDate = paramDateOfBirth.trim() + "00:00:00.0";
 			users = this.userService.getAllUsers().stream().filter(b -> b.getDateOfBirth().equals(trimDate))
 					.collect(Collectors.toList());
 		} else {

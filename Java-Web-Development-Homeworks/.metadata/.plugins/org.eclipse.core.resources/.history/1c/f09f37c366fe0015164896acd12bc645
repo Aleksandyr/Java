@@ -51,7 +51,7 @@ public class UserController {
 
 		String paramName = name;
 		String paramPid = pid;
-		String paramDateOfBirth = dateOfBirth;
+		// String paramDateOfBirth = dateOfBirth;
 
 		if (paramName != null && paramName != "") {
 			String vlidateName = paramName.trim().toLowerCase();
@@ -60,10 +60,6 @@ public class UserController {
 		} else if (paramPid != null && paramPid != "") {
 			String vlidatePid = paramPid.trim().toLowerCase();
 			users = this.userService.getAllUsers().stream().filter(b -> b.getPid().toLowerCase().equals(vlidatePid))
-					.collect(Collectors.toList());
-		} else if (paramDateOfBirth != null && paramDateOfBirth != "") {
-			String trimDate = paramDateOfBirth.trim() + " 00:00:00.0";
-			users = this.userService.getAllUsers().stream().filter(b -> b.getDateOfBirth().equals(trimDate))
 					.collect(Collectors.toList());
 		} else {
 			users = this.userService.getAllUsers();
