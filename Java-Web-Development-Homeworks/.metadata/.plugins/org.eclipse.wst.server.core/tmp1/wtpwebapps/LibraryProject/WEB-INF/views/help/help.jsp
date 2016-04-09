@@ -64,7 +64,8 @@
 		        <tr><th>API</th><th>Description</th></tr>
 		    </thead>
 		    <tbody>
-		        <ct:ApiTableCol urlPath="/profile/show" methodType="GET" description="My profile."></ct:ApiTableCol>
+		        <ct:ApiTableCol urlPath="/profile/show" methodType="GET" description="My profile info."></ct:ApiTableCol>
+		         <ct:ApiTableCol urlPath="/profile/edit" methodType="POST" description="Change my profile info."></ct:ApiTableCol>
 		    </tbody>
 		</table>
 		
