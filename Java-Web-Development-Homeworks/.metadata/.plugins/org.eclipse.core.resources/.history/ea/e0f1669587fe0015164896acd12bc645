@@ -1,0 +1,12 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ attribute name="urlPath" %>
+<%@ attribute name="methodType" %>
+<%@ attribute name="description" %>
+
+<tr>
+   <td class="api-name"><a href="/Help/Api/GET-api-Account-UserInfo">GET api/Account/UserInfo</a></td>
+   <td class="api-documentation">
+       <p>No documentation available.</p>
+   </td>
+</tr>

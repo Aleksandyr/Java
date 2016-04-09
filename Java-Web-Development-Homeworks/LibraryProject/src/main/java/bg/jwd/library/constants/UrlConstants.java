@@ -39,4 +39,7 @@ public class UrlConstants {
 	public static final String BASE_ERROR_URL = "/error";
 	public static final String ERROR_404_URL = "/404";
 	public static final String ERROR_500_URL = "/500";
+
+	// Help urls
+	public static final String BASE_HELP_URL = "help";
 }

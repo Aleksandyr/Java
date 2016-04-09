@@ -1,0 +1,30 @@
+package bg.jwd.library.controller.help;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import bg.jwd.library.constants.UrlConstants;
+import bg.jwd.library.entity.book.Book;
+import bg.jwd.library.security.User;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_HELP_URL)
+public class HelpController {
+	
+	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
+	public String getHelpPage(){
+		
+		return "/help/help";
+
+	}
+}

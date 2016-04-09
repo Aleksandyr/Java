@@ -34,6 +34,7 @@
     </ul>
     <ul class="nav navbar-nav pull-right">
         <li><a class="navbar-brand" href="/library/profile/show">${username}</a></li>
+        <li><a class="navbar-brand" href="/library/help/">API</a></li>
         <li><a href="/library/account/logout">Logout</a></li>
     </ul>
 </div>

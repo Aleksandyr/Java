@@ -44,6 +44,11 @@ public class LendController {
 			@RequestParam(value = "dateOfLending", required = false) String dateOfLending,
 			@RequestParam(value = "dateOfReturn", required = false) String dateOfReturn) throws ParseException {
 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+
+		model.addAttribute("username", user.getUsername());
+
 		List<LendBookInfo> lendsBook = new ArrayList<LendBookInfo>();
 
 		String paramBookName = bookName;

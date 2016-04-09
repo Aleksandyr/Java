@@ -1,0 +1,192 @@
+package bg.jwd.library.controller.lend;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import bg.jwd.library.constants.UrlConstants;
+import bg.jwd.library.dto.lend.LendBookInfo;
+import bg.jwd.library.entity.book.Book;
+import bg.jwd.library.security.User;
+import bg.jwd.library.service.book.BookService;
+import bg.jwd.library.service.lend.LendService;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL)
+public class LendController {
+
+	@Autowired
+	private LendService lendService;
+
+	@Autowired
+	private BookService bookService;
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.LIST_URL, method = RequestMethod.GET)
+	public String alllendsBookPage(Model model, @RequestParam(value = "bookName", required = false) String bookName,
+			@RequestParam(value = "clientName", required = false) String clientName,
+			@RequestParam(value = "dateOfLending", required = false) String dateOfLending,
+			@RequestParam(value = "dateOfReturn", required = false) String dateOfReturn) throws ParseException {
+
+		List<LendBookInfo> lendsBook = new ArrayList<LendBookInfo>();
+
+		String paramBookName = bookName;
+		String paramClientName = clientName;
+		String paramDateOfLending = dateOfLending;
+		String paramDateOfReturn = dateOfReturn;
+
+		if (paramBookName != null && paramBookName != "") {
+			String vlidateBookName = paramBookName.trim().toLowerCase();
+			lendsBook = this.lendService.allLendsBook().stream()
+					.filter(b -> b.getName().toLowerCase().equals(vlidateBookName)).collect(Collectors.toList());
+		} else if (paramClientName != null && paramClientName != "") {
+			String vlidateClientName = paramClientName.trim().toLowerCase();
+			lendsBook = this.lendService.allLendsBook().stream()
+					.filter(b -> b.getUsername().toLowerCase().equals(vlidateClientName)).collect(Collectors.toList());
+		} else if (paramDateOfLending != null && paramDateOfLending != "") {
+			String trimDate = paramDateOfLending.trim();
+			lendsBook = this.lendService.allLendsBook().stream().filter(l -> l.getDateOfLending().equals(trimDate))
+					.collect(Collectors.toList());
+		} else if (paramDateOfReturn != null && paramDateOfReturn != "") {
+			String trimDate = paramDateOfReturn.trim();
+			lendsBook = this.lendService.allLendsBook().stream().filter(l -> l.getDateOfReturn().equals(trimDate))
+					.collect(Collectors.toList());
+		} else {
+			lendsBook = this.lendService.allLendsBook();
+		}
+
+		model.addAttribute("lendsBook", lendsBook);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+
+		model.addAttribute("username", user.getUsername());
+
+		return "/book/allLendsBooks";
+	}
+
+	@RequestMapping(value = UrlConstants.ADD_URL + "/{id}", method = RequestMethod.GET)
+	public String lendBookPage(@PathVariable("id") long bookId, Model model) {
+
+		Book book = this.bookService.getBookById(bookId);
+
+		if (book != null) {
+			model.addAttribute("book", book);
+			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+			model.addAttribute("dateToday", date);
+
+			return "/book/lendBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
+
+	@RequestMapping(value = UrlConstants.ADD_URL + "/{id}", method = RequestMethod.POST)
+	public String lendBook(@PathVariable("id") long bookId, HttpServletRequest request) throws ParseException {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) authentication.getPrincipal();
+
+		Book book = this.bookService.getBookById(bookId);
+
+		String getYearOfLending = request.getParameter("dateOfLending");
+		String getDateOfReturn = request.getParameter("dateOfReturn");
+
+		Boolean isLended = this.lendService.addLendBook(user.getId(), book.getId(), getYearOfLending, getDateOfReturn);
+
+		if (isLended == true) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.LIST_URL;
+
+		} else {
+			return "/book/editBook";
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{bookId}/{id}", method = RequestMethod.GET)
+	public String editBookLend(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Book book = this.bookService.getBookById(bookId);
+		LendBookInfo lendBook = this.lendService.getLendBook(lendId);
+
+		if (book != null && lendBook != null) {
+			model.addAttribute("book", book);
+			model.addAttribute("lendBook", lendBook);
+
+			return "/book/editLendBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_HOME_URL + UrlConstants.HOME_URL;
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.UPDATE_URL + "/{bookId}/{id}", method = RequestMethod.POST)
+	public String editBookLendPage(@PathVariable("id") long lendId, Model model, HttpServletRequest request)
+			throws ParseException {
+
+		String dateOfReturn = request.getParameter("dateOfReturn");
+
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfReturn);
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+		Boolean isEditedLendBook = this.lendService.editLendBook(lendId, sqlDate);
+
+		if (isEditedLendBook) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
+		} else {
+			return "/book/editLendBook";
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{bookId}/{id}", method = RequestMethod.GET)
+	public String deleteBookLendPage(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Book book = this.bookService.getBookById(bookId);
+		LendBookInfo lendBook = this.lendService.getLendBook(lendId);
+
+		if (book != null && lendBook != null) {
+			model.addAttribute("book", book);
+			model.addAttribute("lendBook", lendBook);
+
+			return "/book/deleteLendBook";
+
+		} else {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
+		}
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = UrlConstants.DELETE_URL + "/{bookId}/{id}", method = RequestMethod.POST)
+	public String deleteBookLend(@PathVariable("bookId") long bookId, @PathVariable("id") long lendId, Model model)
+			throws ParseException {
+
+		Boolean isDeleted = this.lendService.deleteLendBook(lendId);
+
+		if (isDeleted) {
+			return "redirect:" + UrlConstants.BASE_BOOK_URL + UrlConstants.BOOK_LEND_URL + UrlConstants.LIST_URL;
+
+		} else {
+			return "/book/deleteLendBook";
+		}
+	}
+}

@@ -1,0 +1,181 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="ct" uri="http://jwd.bg/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
+	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
+</head>
+<body>
+<ct:PageTag>
+		<jsp:body>
+	    <div class="navbar navbar-inverse navbar-fixed-top">
+	        <div class="container">
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand" href="/">Application name</a>
+	            </div>
+	            <div class="navbar-collapse collapse">
+	                <ul class="nav navbar-nav">
+	                    <li><a href="/">Home</a></li>
+	                    <li><a href="/Help">API</a></li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="container body-content">
+	        
+	
+	<link type="text/css" href="/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+	<header class="help-page">
+	    <div class="content-wrapper">
+	        <div class="float-left">
+	            <h1>ASP.NET Web API Help Page</h1>
+	        </div>
+	    </div>
+	</header>
+	<div id="body" class="help-page">
+	    <section class="featured">
+	        <div class="content-wrapper">
+	            <h2>Introduction</h2>
+	            <p>
+	                Provide a general description of your APIs here.
+	            </p>
+	        </div>
+	    </section>
+	    <section class="content-wrapper main-content clear-fix">
+	
+	
+	<h2 id="Account">Account</h2>
+	<table class="help-page-table">
+	    <thead>
+	        <tr><th>API</th><th>Description</th></tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Account-UserInfo">GET api/Account/UserInfo</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-Logout">POST api/Account/Logout</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Account-ManageInfo_returnUrl_generateState">GET api/Account/ManageInfo?returnUrl={returnUrl}&amp;generateState={generateState}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-ChangePassword">POST api/Account/ChangePassword</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-SetPassword">POST api/Account/SetPassword</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-AddExternalLogin">POST api/Account/AddExternalLogin</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-RemoveLogin">POST api/Account/RemoveLogin</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Account-ExternalLogin_provider_error">GET api/Account/ExternalLogin?provider={provider}&amp;error={error}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Account-ExternalLogins_returnUrl_generateState">GET api/Account/ExternalLogins?returnUrl={returnUrl}&amp;generateState={generateState}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-Register">POST api/Account/Register</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Account-RegisterExternal">POST api/Account/RegisterExternal</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+	
+	<h2 id="Values">Values</h2>
+	<table class="help-page-table">
+	    <thead>
+	        <tr><th>API</th><th>Description</th></tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Values">GET api/Values</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/GET-api-Values-id">GET api/Values/{id}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/POST-api-Values">POST api/Values</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/PUT-api-Values-id">PUT api/Values/{id}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td class="api-name"><a href="/Help/Api/DELETE-api-Values-id">DELETE api/Values/{id}</a></td>
+	            <td class="api-documentation">
+	                <p>No documentation available.</p>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>    </section>
+	</div>
+	
+	        <hr />
+	        <footer>
+	            <p>&copy; 2016 - My ASP.NET Application</p>
+	        </footer>
+	    </div>
+	</ct:PageTag>
+</jsp:body>
+
+</body>
+</html>

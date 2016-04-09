@@ -20,4 +20,8 @@
         <name>LoadScriptsAndStyles</name>
         <path>/WEB-INF/tags/LoadScriptsAndStyles.tag</path>
     </tag-file>
+    <tag-file>
+        <name>ApiTableCol</name>
+        <path>/WEB-INF/tags/ApiTableCol.tag</path>
+    </tag-file>
 </taglib>

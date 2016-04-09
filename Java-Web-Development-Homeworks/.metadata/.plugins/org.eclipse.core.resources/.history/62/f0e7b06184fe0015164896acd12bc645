@@ -1,0 +1,12 @@
+package bg.jwd.library.controller.help;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import bg.jwd.library.constants.UrlConstants;
+
+@Controller
+@RequestMapping(UrlConstants.BASE_HELP_URL)
+public class HelpController {
+
+}
