@@ -3,6 +3,51 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.3.7/packaged/jquery.noty.packaged.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+
+<!-- <script>
+var noty = (function() {
+    function Noty() {
+    }
+
+    Noty.prototype.showError = function (selector, message) {
+        $(selector).noty({
+            text: message,
+            type: 'error',
+            timeout: 5000,
+            buttons: [{
+                addClass: 'btn btn-danger',
+                text: 'Close',
+                onClick: function($noty) {
+                    $noty.close();
+                }
+            }]
+        });
+    };
+
+    Noty.prototype.showSuccess = function (selector, message) {
+        $(selector).noty({
+            text: message,
+            type: 'success',
+            timeout: 2000
+        });
+    };
+
+    return {
+        load : function () {
+            return new Noty();
+        }
+    }
+}());
+
+var notyImpl = noty.load();
+
+$('#edit_user_btn').on('click', function(){
+		notyImpl.showSuccess('#success-message', 'user edited!');
+});
+</script> -->
+
 <%-- <spring:url value="/resources/style/style.css" var="mainCss" />
 
 <meta http-equiv = "Content-Language" content = "en"/>

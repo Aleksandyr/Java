@@ -48,8 +48,8 @@ public class LendController {
 
 		String paramBookName = bookName;
 		String paramClientName = clientName;
-		String paramDateOfLending = dateOfLending;
-		String paramDateOfReturn = dateOfReturn;
+		// String paramDateOfLending = dateOfLending;
+		// String paramDateOfReturn = dateOfReturn;
 
 		if (paramBookName != null && paramBookName != "") {
 			String vlidateBookName = paramBookName.trim().toLowerCase();

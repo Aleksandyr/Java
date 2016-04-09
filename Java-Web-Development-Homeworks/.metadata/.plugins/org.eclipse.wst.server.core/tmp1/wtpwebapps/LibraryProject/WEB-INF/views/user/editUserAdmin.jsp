@@ -7,7 +7,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Insert title here</title>
-	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
 </head>
 <body>
 	<c:if test="${not empty user}">
@@ -34,10 +33,11 @@
 			</c:choose>
 			</select>
 	        
-	        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" />
+	        <input class="btn btn-lg btn-primary btn-block" id="edit_user_btn" name="submit" type="submit" value="Edit" />
 			<a class="btn btn-default btn-block" href="/library/users/all/">Cancel</a>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       	</form:form>
    	</c:if>
+  	<ct:LoadScriptsAndStyles></ct:LoadScriptsAndStyles>
 </body>
 </html>

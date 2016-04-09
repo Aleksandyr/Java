@@ -27,6 +27,7 @@
 			</form>
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
+			    <label for="dateOfBirth">Date of birth</label>
 			        <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="Search by birthday">
 			    </div>
 			    <button type="submit" class="btn btn-default">Search</button>

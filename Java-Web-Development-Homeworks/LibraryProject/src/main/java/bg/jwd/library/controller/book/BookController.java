@@ -53,17 +53,13 @@ public class BookController {
 			String vlidateAuthorName = paramAuthor.trim().toLowerCase();
 			books = this.bookService.getAllBooks().stream()
 					.filter(b -> b.getAuthor().toLowerCase().equals(vlidateAuthorName)).collect(Collectors.toList());
-		} /*
-			 * else if (paramYearOfPoublishing != null && paramYearOfPoublishing
-			 * != "") { String trimDate = paramYearOfPoublishing.trim(); Date
-			 * date = new SimpleDateFormat("yyyy-MM-dd").parse(trimDate); books
-			 * = this.bookService.getAllBooks().stream().filter(b ->
-			 * b.getYearOfPoublishing().equals(date))
-			 * .collect(Collectors.toList());
-			 */
-		else
-
-		{
+		} else if (paramYearOfPoublishing != null && paramYearOfPoublishing != "") {
+			String trimDate = paramYearOfPoublishing.trim() + " 00:00:00.0";
+			// Date date = new SimpleDateFormat("yyyy-MM-dd").parse(trimDate);
+			// String dateToString = date.toString() + "00:00:00.0";
+			books = this.bookService.getAllBooks().stream().filter(b -> b.getYearOfPoublishing().equals(trimDate))
+					.collect(Collectors.toList());
+		} else {
 			books = this.bookService.getAllBooks();
 		}
 

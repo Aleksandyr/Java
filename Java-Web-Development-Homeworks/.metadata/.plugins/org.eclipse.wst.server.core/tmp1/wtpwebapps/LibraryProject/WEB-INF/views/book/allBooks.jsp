@@ -28,6 +28,7 @@
 			    <button type="submit" class="btn btn-default">Search</button>
 			</form>
 			<form class="navbar-form navbar-left" role="search">
+			    <label for="yearOfPoublishing">Year of poublishing</label>
 			    <div class="form-group">
 			        <input type="date" class="form-control" name="yearOfPoublishing" id="yearOfPoublishing" placeholder="Search by year">
 			    </div>
