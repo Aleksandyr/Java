@@ -58,7 +58,7 @@
  	<error-page>
 	    <!-- Missing resource -->
 	    <error-code>404</error-code>
-	    <location>/WEB-INF/views/commonErrorPages/404NotFound.jsp</location>
+	    <location>/WEB-INF/views/commonErrorPages/502NetworkError.jsp</location>
 	</error-page>
 	<error-page>
 	    <!-- Missing resource -->
