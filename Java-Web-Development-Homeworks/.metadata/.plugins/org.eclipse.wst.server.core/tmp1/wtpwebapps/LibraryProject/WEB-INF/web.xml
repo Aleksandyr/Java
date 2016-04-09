@@ -12,12 +12,6 @@
 	    </taglib>
 	  </jsp-config>
 	  
-  	<error-page>
-	    <!-- Missing resource -->
-	    <error-code>404</error-code>
-	    <location>/WEB-INF/views/commonErrorPages/404NotFound.jsp</location>
-	</error-page>
-	  
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -55,4 +49,20 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<error-page>
+	    <!-- Missing resource -->
+	    <error-code>403</error-code>
+	    <location>/WEB-INF/views/commonErrorPages/403AccessDenied.jsp</location>
+	</error-page>
+ 	<error-page>
+	    <!-- Missing resource -->
+	    <error-code>404</error-code>
+	    <location>/WEB-INF/views/commonErrorPages/404NotFound.jsp</location>
+	</error-page>
+	<error-page>
+	    <!-- Missing resource -->
+	    <error-code>500</error-code>
+	    <location>/WEB-INF/views/commonErrorPages/500ServerError.jsp</location>
+	</error-page>
 </web-app>

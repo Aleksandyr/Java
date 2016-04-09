@@ -9,17 +9,32 @@
 </head>
 <body>
 	<div class="container">
-	  <div class="row">
-	    <div class="span12">
-	      <div class="hero-unit center">
-	          <h1>Page Not Found <small><font face="Tahoma" color="red">Error 404</font></small></h1>
-	          <br />
-	          <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have prevously come from</p>
-	          <p><b>Or you could just press this neat little button:</b></p>
-	          <a href="/library/home/" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Take Me Home</a>
-	        </div>
-	       </div>
-	      </div>
+	  <div class="container">
+		  <!-- Jumbotron -->
+		  <div class="jumbotron">
+		    <h1><i class="fa fa-frown-o red"></i>404 Not Found!</h1>
+		    <p class="lead">We couldn't find what you're looking for on <em><span id="display-domain"></span></em>.</p>
+		    <p><button onclick="window.location = '/library/home/';" class="btn btn-default btn-lg"><span class="green">Take Me To The Homepage</span></button>
+		    </p>
+		  </div>
+		</div>
+		<div class="container">
+		  <div class="body-content">
+		    <div class="row">
+		      <div class="col-md-6">
+		        <h2>What happened?</h2>
+		        <p class="lead">A 404 error status implies that the file or page that you're looking for could not be found.</p>
+		      </div>
+		      <div class="col-md-6">
+		        <h2>What can I do?</h2>
+		        <p class="lead">If you're a site visitor</p>
+		        <p>Please use your browser's back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.</p>
+		        <p class="lead">If you're the site owner</p>
+		         <p>Please check that you're in the right place and get in touch with your website provider if you believe this to be an error.</p>
+		     </div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	
 </body>

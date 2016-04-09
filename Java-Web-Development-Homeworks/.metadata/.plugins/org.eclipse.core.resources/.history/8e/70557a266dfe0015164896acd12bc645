@@ -1,0 +1,9 @@
+package bg.jwd.library.controller.commonError;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+@Web
+public class commonErrorController {
+
+}

@@ -1,0 +1,7 @@
+package bg.jwd.library.controller.commonError;
+
+@Controller
+@Web
+public class commonErrorController {
+
+}
