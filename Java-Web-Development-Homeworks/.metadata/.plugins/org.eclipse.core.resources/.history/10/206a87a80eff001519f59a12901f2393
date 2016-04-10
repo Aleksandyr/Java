@@ -81,9 +81,6 @@ public class UserDaoImpl implements UserDao {
 				.createNativeQuery("DELETE FROM user_authority WHERE user_id = ?");
 		deleteUsetAuthorityQuery.setParameter(1, id).executeUpdate();
 
-		Query deleteUserFromLend = entityManager.createNativeQuery("DELETE FROM lends WHERE user_id = ?");
-		deleteUserFromLend.setParameter(1, id).executeUpdate();
-
 		Query deleteUserQuery = entityManager.createNativeQuery("DELETE FROM users WHERE id = ?");
 		deleteUserQuery.setParameter(1, id).executeUpdate();
 

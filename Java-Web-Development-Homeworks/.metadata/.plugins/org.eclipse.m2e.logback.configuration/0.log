@@ -16414,3 +16414,7 @@ java.io.StreamCorruptedException: invalid stream header: 00000000
 2016-04-10 14:17:13,874 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
 2016-04-10 14:17:13,876 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-04-10 14:17:13,881 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-04-10 14:23:33,718 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-04-10 14:23:33,721 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2016-04-10 14:23:33,722 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1251 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-04-10 14:23:33,726 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
