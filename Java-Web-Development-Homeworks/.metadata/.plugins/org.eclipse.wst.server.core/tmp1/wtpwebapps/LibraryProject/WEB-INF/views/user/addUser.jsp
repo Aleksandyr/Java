@@ -32,7 +32,7 @@
 		<label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" required>
         <label for="date_of_birth">Date of birth</label>
-        <input type="date" id="date_of_birth" name="dateOfBirth" class="form-control">
+        <input type="date" id="date_of_birth" name="dateOfBirth" class="form-control" required>
         <label for="pid">PID</label>
         <input type="text" id="pid" name="pid" class="form-control" placeholder="PID" required>
         

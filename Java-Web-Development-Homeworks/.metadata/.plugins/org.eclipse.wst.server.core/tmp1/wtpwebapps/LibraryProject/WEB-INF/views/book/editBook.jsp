@@ -14,11 +14,11 @@
 		<form:form style="width:20%; height: 20%; margin-left: auto; margin-right: auto;" name="edit" class="form-edit" id="edit-form" action="/library/books/edit/${book.getId()}" modelAttribute="book" method="POST">
 	        <h2 class="form-signin-heading">Edit book</h2>
 	        <label for="name">Name</label>
-	        <input type="text" id="name" name="name" class="form-control" value="${book.getName()}">
+	        <input type="text" id="name" name="name" class="form-control" value="${book.getName()}" required>
 	        <label for="author">Author</label>
-	        <input type="text" id="author" name="author" class="form-control" value="${book.getAuthor()}">
+	        <input type="text" id="author" name="author" class="form-control" value="${book.getAuthor()}" required>
 	        <label for="yearOfPoublishing">Year of poublishing</label>
-	        <input type="text" id="yearOfPoublishing" name="yearOfPoublishing" class="form-control" value="${book.getYearOfPoublishing()}">
+	        <input type="text" id="yearOfPoublishing" name="yearOfPoublishing" class="form-control" value="${book.getYearOfPoublishing()}" required>
 	        
 	        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Edit" />
 			<a class="btn btn-default btn-block" href="/library/books/all/">Cancel</a>

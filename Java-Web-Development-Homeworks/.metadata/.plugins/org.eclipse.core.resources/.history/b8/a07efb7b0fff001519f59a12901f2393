@@ -22,7 +22,7 @@
 	        <label for="dateOfLending">Date of lending</label>
 	        <input type="text" id="dateOfLending" name="dateOfLending" class="form-control" value="${dateToday}" readonly>
 	        <label for="dateOfReturn">Year of poublishing</label>
-	        <input type="date" id="dateOfReturn" name="dateOfReturn" class="form-control" required>
+	        <input type="date" id="dateOfReturn" name="dateOfReturn" class="form-control">
 	        
 	        <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Lend" />
 			<a class="btn btn-default btn-block" href="/library/books/all/">Cancel</a>

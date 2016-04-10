@@ -13,11 +13,11 @@
 	<form:form style="width:25%; height: 20%; margin-left: auto; margin-right: auto;" name="add-user" class="form-add-user" id="add-user-form" action="/library/books/add" modelAttribute="book" method="POST">
         <h2 class="form-signin-heading">Add book</h2>
          <label for="name">Name</label>
-	        <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+	        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
 	        <label for="author">Author</label>
-	        <input type="text" id="author" name="author" class="form-control" placeholder="Author">
+	        <input type="text" id="author" name="author" class="form-control" placeholder="Author" required>
 	        <label for="yearOfPoublishing">Year of poublishing</label>
-	        <input type="date" id="yearOfPoublishing" name="yearOfPoublishing" class="form-control">
+	        <input type="date" id="yearOfPoublishing" name="yearOfPoublishing" class="form-control" required>
         
 
         <input class="btn btn-lg btn-primary btn-block" name="submit" type="submit" value="Add" style="margin-top: 3%" />
