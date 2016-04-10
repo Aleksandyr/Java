@@ -48,7 +48,7 @@
 		    </thead>
 		    <tbody>
 		        <ct:ApiTableCol urlPath="/account/login" methodType="GET" description="Login page."></ct:ApiTableCol>
-		        <ct:ApiTableCol urlPath="/account/logout" methodType="POST" description="Logout."></ct:ApiTableCol>
+		        <ct:ApiTableCol urlPath="/account/logout" methodType="GET" description="Login page."></ct:ApiTableCol>
 		    </tbody>
 		</table>
 		
